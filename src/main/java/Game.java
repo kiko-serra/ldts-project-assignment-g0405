@@ -7,6 +7,7 @@ import com.googlecode.lanterna.terminal.Terminal;
 import java.io.IOException;
 public class Game {
     private final TerminalScreen screen;
+    private Map map = new Map(40, 20);
 
     public Game(int width, int height) throws IOException {
         Terminal terminal = new DefaultTerminalFactory().setInitialTerminalSize(new TerminalSize(width, height)).createTerminal();
@@ -19,7 +20,7 @@ public class Game {
     }
     public void draw() throws IOException {
         screen.clear();
-        screen.setCharacter(10, 10, TextCharacter.fromCharacter('X')[0]);
+        map.draw(screen.newTextGraphics());
         screen.refresh();
     }
 }
