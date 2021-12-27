@@ -2,21 +2,17 @@ import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 
-public class Jack_The_Sparrow extends Components implements Characters{
+public class Biscuits extends Components implements Characters{
     private Position position;
 
-    public Jack_The_Sparrow(int x, int y){
+    public Biscuits(int x, int y) {
         super(x, y);
-
         this.position = super.getPosition();
     }
 
-    public Position getPosition() {
-        return this.position;
-    }
 
     public void draw(TextGraphics graphics) {
         graphics.setBackgroundColor(TextColor.Factory.fromString("#171717"));
-        graphics.putString(new TerminalPosition(position.getX(), position.getY()), "X");
+        graphics.putString(new TerminalPosition(position.getX(), position.getY()), "O");
     }
 }
