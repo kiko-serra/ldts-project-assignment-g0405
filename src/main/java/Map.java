@@ -64,9 +64,16 @@ public class Map {
     private List<Biscuits> createBiscuits(){
         Random random = new Random();
         List<Biscuits> biscuits = new ArrayList<>();
+        Biscuits biscuit;
 
         for (int i = 0; i < 5; i++) {
-            biscuits.add(new Biscuits(random.nextInt(width - 2) + 1, random.nextInt(height - 2) + 1));
+            biscuit = new Biscuits(random.nextInt(width - 2) + 1, random.nextInt(height - 2) + 1);
+            if(checkPosition(biscuit)){
+                biscuits.add(biscuit);
+            }
+            else{
+                i--;
+            }
         }
 
         return biscuits;
@@ -88,12 +95,41 @@ public class Map {
     }
     private List<Pirate> createPirate(){
         Random random = new Random();
-        List<Pirate> pirate = new ArrayList<>();
+        List<Pirate> pirates = new ArrayList<>();
+        Pirate pirate;
 
         for (int i = 0; i < 5; i++) {
-            pirate.add(new Pirate(random.nextInt(width - 2) + 1, random.nextInt(height - 2) + 1));
-        }
+            pirate = new Pirate(random.nextInt(width - 2) + 1, random.nextInt(height - 2) + 1);
 
-        return pirate;
+            if(checkPosition(pirate)){
+                pirates.add(pirate);
+            }
+            else{
+                i--;
+            }
+        }
+        return pirates;
+    }
+    //verifica se o objeto esta dentro da prisao ou se esta coincidente com as paredes da mesma
+    public boolean checkPosition (Components component){
+
+        for (int i=-1; i<3; i++){
+            if (component.getPosition().getX()==Princess.getPosition().getX()-2 && component.getPosition().getY()==Princess.getPosition().getY()+i){
+                return false;
+            }
+            if (component.getPosition().getX()==Princess.getPosition().getX()-1 && component.getPosition().getY()==Princess.getPosition().getY()+i){
+                return false;
+            }
+            if (component.getPosition().getX()==Princess.getPosition().getX() && component.getPosition().getY()==Princess.getPosition().getY()+i){
+                return false;
+            }
+            if (component.getPosition().getX()==Princess.getPosition().getX()+1 && component.getPosition().getY()==Princess.getPosition().getY()+i){
+                return false;
+            }
+            if (component.getPosition().getX()==Princess.getPosition().getX()+2 && component.getPosition().getY()==Princess.getPosition().getY()+i){
+                return false;
+            }
+        }
+        return true;
     }
 }
