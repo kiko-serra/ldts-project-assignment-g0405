@@ -18,7 +18,6 @@ public class test_Components {
 
         assertEquals(20,borders.getPosition().getX());
         assertEquals(10,borders.getPosition().getY());
-
     }
 
     @Test
