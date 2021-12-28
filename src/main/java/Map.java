@@ -23,7 +23,7 @@ public class Map {
         this.height = height;
 
         this.Jack = new Jack_The_Sparrow(20, 10);
-        this.Princess = new Princess(20, 3);
+        this.Princess = new Princess(20, 2);
 
         this.borders = createBorders();
         this.biscuits = createBiscuits();
@@ -73,7 +73,6 @@ public class Map {
         List<Borders> prison = new ArrayList<>();
 
         for (int c = Princess.getPosition().getX()-2; c <= Princess.getPosition().getX()+2; c++) {
-            prison.add(new Borders(c, Princess.getPosition().getY()-2));
             prison.add(new Borders(c, Princess.getPosition().getY()+2));
         }
 
