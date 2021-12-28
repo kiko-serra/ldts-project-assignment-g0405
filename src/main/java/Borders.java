@@ -20,6 +20,7 @@ public class Borders extends Components implements Characters{
 
     public void draw(TextGraphics graphics) {
         graphics.setBackgroundColor(TextColor.Factory.fromString("#B33F40"));
+        graphics.setForegroundColor(TextColor.Factory.fromString("#B33F40"));
         graphics.putString(new TerminalPosition(position.getX(), position.getY()), "I");
     }
 }

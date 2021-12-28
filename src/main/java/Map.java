@@ -17,17 +17,19 @@ public class Map {
     private List<Borders> borders;
     private List<Biscuits> biscuits;
     private List<Borders> prison;
+    private List<Pirate> pirate;
 
     public Map(int width, int height) {
         this.width = width;
         this.height = height;
 
         this.Jack = new Jack_The_Sparrow(20, 10);
-        this.Princess = new Princess(20, 3);
+        this.Princess = new Princess(20, 2);
 
         this.borders = createBorders();
         this.biscuits = createBiscuits();
         this.prison = createPrison();
+        this.pirate = createPirate();
     }
 
     public void draw(TextGraphics graphics) {
@@ -40,6 +42,7 @@ public class Map {
             for (Borders border : borders) border.draw(graphics);
             for (Biscuits biscuit : biscuits) biscuit.draw(graphics);
             for (Borders border : prison) border.draw(graphics);
+            for (Pirate pirate : pirate) pirate.draw(graphics);
     }
 
     private List<Borders> createBorders() {
@@ -73,7 +76,6 @@ public class Map {
         List<Borders> prison = new ArrayList<>();
 
         for (int c = Princess.getPosition().getX()-2; c <= Princess.getPosition().getX()+2; c++) {
-            prison.add(new Borders(c, Princess.getPosition().getY()-2));
             prison.add(new Borders(c, Princess.getPosition().getY()+2));
         }
 
@@ -83,5 +85,15 @@ public class Map {
         }
 
         return prison;
+    }
+    private List<Pirate> createPirate(){
+        Random random = new Random();
+        List<Pirate> pirate = new ArrayList<>();
+
+        for (int i = 0; i < 5; i++) {
+            pirate.add(new Pirate(random.nextInt(width - 2) + 1, random.nextInt(height - 2) + 1));
+        }
+
+        return pirate;
     }
 }
