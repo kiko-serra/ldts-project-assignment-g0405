@@ -13,6 +13,7 @@ public class Biscuits extends Components implements Characters{
 
     public void draw(TextGraphics graphics) {
         graphics.setBackgroundColor(TextColor.Factory.fromString("#171717"));
+        graphics.setForegroundColor(TextColor.Factory.fromString("#ffff00"));
         graphics.putString(new TerminalPosition(position.getX(), position.getY()), "O");
     }
 }
