@@ -18,7 +18,6 @@ public class test_Components {
 
         assertEquals(20,borders.getPosition().getX());
         assertEquals(10,borders.getPosition().getY());
-
     }
 
     @Test
@@ -27,5 +26,19 @@ public class test_Components {
 
         assertEquals(10,jack.getPosition().getX());
         assertEquals(20,jack.getPosition().getY());
+    }
+
+    @Test
+    public void test_princess(){
+        Princess princess = new Princess(15,20);
+        assertEquals(15,princess.getPosition().getX());
+        assertEquals(20,princess.getPosition().getY());
+
+    }
+
+    @Test
+    public void test_map(){
+        Map map = new Map(20,20);
+        //waiting for public access on current implementations
     }
 }
