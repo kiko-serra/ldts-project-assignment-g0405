@@ -70,7 +70,7 @@ public class Map {
 
         for (int i = 0; i < 5; i++) {
             biscuit = new Biscuits(random.nextInt(width - 2) + 1, random.nextInt(height - 2) + 1);
-            if(checkPosition(biscuit)){
+            if(checkPositionPrison(biscuit)){
                 biscuits.add(biscuit);
             }
             else{
@@ -103,7 +103,7 @@ public class Map {
         for (int i = 0; i < 5; i++) {
             pirate = new Pirates(random.nextInt(width - 2) + 1, random.nextInt(height - 2) + 1);
 
-            if(checkPosition(pirate)){
+            if(checkPositionPrison(pirate)){
                 pirates.add(pirate);
             }
             else{
@@ -113,7 +113,7 @@ public class Map {
         return pirates;
     }
     //verifica se o objeto esta dentro da prisao ou se esta coincidente com as paredes da mesma
-    public boolean checkPosition (Components component){
+    public boolean checkPositionPrison (Components component){
 
         for (int i=-1; i<3; i++){
             if (component.getPosition().getX()==Princess.getPosition().getX()-2 && component.getPosition().getY()==Princess.getPosition().getY()+i){
@@ -133,7 +133,7 @@ public class Map {
             }
         }
         return true;
-    } //problema: como nos queremos apenas somar um valor a posicao do pirata e nao queremos estar sempre a fazer setPosition temos que ver como fazer isso
+    }
     public void movePirate(){
         for (Pirates pirate : pirates){
             pirate.move(pirate.getPosition());
@@ -141,9 +141,23 @@ public class Map {
         }
     }
     public void keyStrokes (KeyStroke press){
-        if (press.getKeyType() == KeyType.ArrowUp) movePirate();
-        if (press.getKeyType() == KeyType.ArrowDown) movePirate();
-        if (press.getKeyType() == KeyType.ArrowRight) movePirate();
-        if (press.getKeyType() == KeyType.ArrowLeft) movePirate();
+        switch(press.getKeyType()){
+            case ArrowUp:
+                //moveJack
+                break;
+            case ArrowDown:
+
+                break;
+            case ArrowRight:
+
+                break;
+            case ArrowLeft:
+
+                break;
+        }
     }
+
+//    public boolean canPirateMove (Position position){
+//        if (position.getX()==0)
+//    }
 }
