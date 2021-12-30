@@ -2,6 +2,8 @@ import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
+import com.googlecode.lanterna.input.KeyStroke;
+import com.googlecode.lanterna.input.KeyType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +19,7 @@ public class Map {
     private List<Borders> borders;
     private List<Biscuits> biscuits;
     private List<Borders> prison;
-    private List<Pirate> pirate;
+    private List<Pirates> pirates;
 
     public Map(int width, int height) {
         this.width = width;
@@ -29,7 +31,7 @@ public class Map {
         this.borders = createBorders();
         this.biscuits = createBiscuits();
         this.prison = createPrison();
-        this.pirate = createPirate();
+        this.pirates = createPirates();
     }
 
     public void draw(TextGraphics graphics) {
@@ -42,7 +44,7 @@ public class Map {
             for (Borders border : borders) border.draw(graphics);
             for (Biscuits biscuit : biscuits) biscuit.draw(graphics);
             for (Borders border : prison) border.draw(graphics);
-            for (Pirate pirate : pirate) pirate.draw(graphics);
+            for (Pirates pirate : pirates) pirate.draw(graphics);
     }
 
     private List<Borders> createBorders() {
@@ -93,13 +95,13 @@ public class Map {
 
         return prison;
     }
-    private List<Pirate> createPirate(){
+    private List<Pirates> createPirates(){
         Random random = new Random();
-        List<Pirate> pirates = new ArrayList<>();
-        Pirate pirate;
+        List<Pirates> pirates = new ArrayList<>();
+        Pirates pirate;
 
         for (int i = 0; i < 5; i++) {
-            pirate = new Pirate(random.nextInt(width - 2) + 1, random.nextInt(height - 2) + 1);
+            pirate = new Pirates(random.nextInt(width - 2) + 1, random.nextInt(height - 2) + 1);
 
             if(checkPosition(pirate)){
                 pirates.add(pirate);
@@ -131,5 +133,17 @@ public class Map {
             }
         }
         return true;
+    } //problema: como nos queremos apenas somar um valor a posicao do pirata e nao queremos estar sempre a fazer setPosition temos que ver como fazer isso
+    public void movePirate(){
+        for (Pirates pirate : pirates){
+            pirate.move(pirate.getPosition());
+
+        }
+    }
+    public void keyStrokes (KeyStroke press){
+        if (press.getKeyType() == KeyType.ArrowUp) movePirate();
+        if (press.getKeyType() == KeyType.ArrowDown) movePirate();
+        if (press.getKeyType() == KeyType.ArrowRight) movePirate();
+        if (press.getKeyType() == KeyType.ArrowLeft) movePirate();
     }
 }

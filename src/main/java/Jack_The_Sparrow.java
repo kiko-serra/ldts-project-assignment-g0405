@@ -11,12 +11,14 @@ public class Jack_The_Sparrow extends Components implements Characters{
         this.position = super.getPosition();
     }
 
-    public Position getPosition() {
-        return this.position;
-    }
 
     public void draw(TextGraphics graphics) {
         graphics.setBackgroundColor(TextColor.Factory.fromString("#171717"));
         graphics.putString(new TerminalPosition(position.getX(), position.getY()), "X");
     }
+
+    public void move(Position position) {
+
+    }
+
 }
