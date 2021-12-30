@@ -1,5 +1,7 @@
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextCharacter;
+import com.googlecode.lanterna.input.KeyStroke;
+import com.googlecode.lanterna.input.KeyType;
 import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
@@ -22,5 +24,19 @@ public class Game {
         screen.clear();
         map.draw(screen.newTextGraphics());
         screen.refresh();
+    }
+    public void run() throws IOException {
+        while (true) {
+            draw();
+            KeyStroke press = screen.readInput();
+            if (press.getKeyType() == KeyType.Character && press.getCharacter() == 'q')
+                screen.close();
+            if (press.getKeyType() == KeyType.EOF)
+                break;
+            keyStrokes(press);
+        }
+    }
+    private void keyStrokes(KeyStroke press){
+        map.keyStrokes(press);
     }
 }
