@@ -31,9 +31,19 @@ public class test_Components {
     @Test
     public void test_princess(){
         Princess princess = new Princess(15,20);
+
+
         assertEquals(15,princess.getPosition().getX());
         assertEquals(20,princess.getPosition().getY());
 
+    }
+
+    @Test
+    public void test_pirate(){
+        Pirates pirates = new Pirates(10,20);
+
+        assertEquals(10,pirates.getPosition().getX());
+        assertEquals(20,pirates.getPosition().getY());
     }
 
     @Test
