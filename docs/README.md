@@ -1,4 +1,4 @@
-##LDTS_04_05 - Cross the Map
+## LDTS_04_05 - Cross the Map
 
 
 Our game consists in a text-based version of the Crossy Road game with some SuperMario combinations and some new characters.
