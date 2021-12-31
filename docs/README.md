@@ -11,6 +11,16 @@ Each biscuit that Jack catches makes his score go up, but these are not necessar
 
 
 This project was developed by _André Costa_ (https://github.com/)(up2019@fe.up.pt) and _Francisco Serra_ (https://github.com/kiko-serra)(up202007723@fe.up.pt) and _Válter Castro_ (https://github.com/ValterCastro)() for LPDTS 2021⁄22.
+## Index
+* Something
+  * bla bla
+  * bla
+
+
+
+
+
+
 
 ### IMPLEMENTED FEATURES
 
@@ -93,7 +103,6 @@ A way to improve the code would be to move the `isPlatformSegmentSolid()` method
 
 > In this section describe how the work regarding the project was divided between the students. In the event that members of the group do not agree on a work distribution, the group should send an email to the teacher explaining the disagreement.
 
-**Example**:
-
-- John Doe: 40%
-- Jane Doe: 60%
+- André Costa: 
+- Francisco Serra: 
+- Válter Castro
