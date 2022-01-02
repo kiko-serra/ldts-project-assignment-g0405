@@ -24,8 +24,8 @@ public class Map {
         this.width = width;
         this.height = height;
 
-        this.Jack = new Jack_The_Sparrow(20, 10);
-        this.Princess = new Princess(20, 2);
+        this.Jack = new Jack_The_Sparrow(width/2, height-2);
+        this.Princess = new Princess(width/2, 2);
 
         this.borders = createBorders();
         this.biscuits = createBiscuits();
@@ -100,7 +100,7 @@ public class Map {
         List<Pirates> pirates = new ArrayList<>();
         Pirates pirate;
 
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 8; i++) {
             pirate = new Pirates(random.nextInt(width - 2) + 1, random.nextInt(height - 2) + 1);
 
             if(checkPositionPrison(pirate)){
@@ -154,6 +154,7 @@ public class Map {
     public void movePirate(){
         for (Pirates pirate : pirates){
             pirate.move();
+            pirate.canIMove(pirate, width);
         }
     }
 
