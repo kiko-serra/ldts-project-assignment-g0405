@@ -10,7 +10,7 @@ The main character is Jack the Sparrow who is trying to free his Princess, and f
 Each biscuit that Jack catches makes his score go up, but these are not necessary to release the Princess.
 
 
-This project was developed by _André Costa_ (https://github.com/AndreCosta201905916)(up201905016@fe.up.pt) and _Francisco Serra_ (https://github.com/kiko-serra)(up202007723@fe.up.pt) and _Válter Castro_ (https://github.com/ValterCastro)(up201706546@fe.up.pt) for LPDTS 2021⁄22.
+This project was developed by _André Costa_ (https://github.com/AndreCosta201905916)(up201905016@fe.up.pt) and _Francisco Serra_ (https://github.com/kiko-serra)(up202007723@fe.up.pt) and _Válter Castro_ (https://github.com/ValterCastro)(up201706546@fe.up.pt) for LDTS 2021⁄22.
 ## Index
 * Something
   * bla bla
