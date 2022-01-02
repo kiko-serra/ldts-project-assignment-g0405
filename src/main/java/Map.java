@@ -3,6 +3,7 @@ import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
+import com.googlecode.lanterna.input.KeyType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,8 +29,8 @@ public class Map {
         this.Princess = new Princess(width/2, 2);
 
         this.borders = createBorders();
-        this.biscuits = createBiscuits();
         this.prison = createPrison();
+        this.biscuits = createBiscuits();
         this.pirates = createPirates();
     }
 
@@ -69,7 +70,7 @@ public class Map {
 
         for (int i = 0; i < 5; i++) {
             biscuit = new Biscuits(random.nextInt(width - 2) + 1, random.nextInt(height - 2) + 1);
-            if(checkPositionPrison(biscuit)){
+            if(checkPosition(biscuit, biscuits)){
                 biscuits.add(biscuit);
             }
             else{
@@ -103,18 +104,25 @@ public class Map {
         for (int i = 0; i < 8; i++) {
             pirate = new Pirates(random.nextInt(width - 2) + 1, random.nextInt(height - 2) + 1);
 
-            if(checkPositionPrison(pirate)){
+            if(checkPosition(pirate, biscuits)){
+                for(Pirates p : pirates){
+                    if(p.getPosition().equals(pirate.getPosition())){
+                        i--;
+                        continue;
+                    }
+                }
                 pirates.add(pirate);
             }
             else{
                 i--;
             }
+
         }
         return pirates;
     }
 
     //verifica se o objeto esta dentro da prisao ou se esta coincidente com as paredes da mesma
-    public boolean checkPositionPrison (Components component){
+    public boolean checkPosition (Components component, List<Biscuits> biscuits){
 
         for (int i=-1; i<3; i++){
             if (component.getPosition().getX()==Princess.getPosition().getX()-2 && component.getPosition().getY()==Princess.getPosition().getY()+i){
@@ -133,22 +141,32 @@ public class Map {
                 return false;
             }
         }
+
+        if(component.getPosition().equals(Jack.getPosition())) return false;
+
+        for(Biscuits biscuit : biscuits){
+            if(component.getPosition().getX() == biscuit.getPosition().getX() && component.getPosition().getY() == biscuit.getPosition().getY()) return false;
+        }
+
         return true;
     }
 
     public void keyStrokes (KeyStroke press){
         Jack.setJackDirection(press.getKeyType());
-        moveJack();
+        moveJack(press.getKeyType());
         movePirate();
     }
 
-    public void moveJack(){
-        //canJackMove();
+    public void moveJack(KeyType press){
         Jack.move();
-    }
-
-    public boolean canJackMove(){
-        return true;
+        if(Jack.canJackMove(borders, prison)){
+            switch (press) {
+                case ArrowUp -> Jack.setPosition(Jack.getPosition().moveDown());
+                case ArrowDown -> Jack.setPosition(Jack.getPosition().moveUp());
+                case ArrowRight -> Jack.setPosition(Jack.getPosition().moveLeft());
+                case ArrowLeft -> Jack.setPosition(Jack.getPosition().moveRight());
+            }
+        }
     }
 
     public void movePirate(){
@@ -157,8 +175,4 @@ public class Map {
             pirate.canIMove(pirate, width);
         }
     }
-
-//    public boolean canPirateMove (Position position){
-//        if (position.getX()==0)
-//    }
 }

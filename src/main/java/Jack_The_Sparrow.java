@@ -3,6 +3,8 @@ import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyType;
 
+import java.util.List;
+
 public class Jack_The_Sparrow extends Components implements Characters{
     private Position position;
     private KeyType direction;
@@ -28,6 +30,23 @@ public class Jack_The_Sparrow extends Components implements Characters{
             case ArrowDown -> setPosition(position.moveDown());
             case ArrowRight -> setPosition(position.moveRight());
             case ArrowLeft -> setPosition(position.moveLeft());
+            default -> System.out.println("Try the arrow's keys");
         }
+    }
+
+    public boolean canJackMove(List<Borders> borders, List<Borders> prison){
+        for(Borders border : borders){
+            if(border.getPosition().getX() == getPosition().getX() && border.getPosition().getY() == getPosition().getY()){
+                return true;
+            }
+        }
+
+        for(Borders p : prison){
+            if(p.getPosition().getX() == getPosition().getX() && p.getPosition().getY() == getPosition().getY()){
+                return true;
+            }
+        }
+
+        return false;
     }
 }
