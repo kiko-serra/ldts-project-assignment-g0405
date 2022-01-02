@@ -3,7 +3,6 @@ import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
-import com.googlecode.lanterna.input.KeyType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -95,6 +94,7 @@ public class Map {
 
         return prison;
     }
+
     private List<Pirates> createPirates(){
         Random random = new Random();
         List<Pirates> pirates = new ArrayList<>();
@@ -112,6 +112,7 @@ public class Map {
         }
         return pirates;
     }
+
     //verifica se o objeto esta dentro da prisao ou se esta coincidente com as paredes da mesma
     public boolean checkPositionPrison (Components component){
 
@@ -134,26 +135,25 @@ public class Map {
         }
         return true;
     }
+
+    public void keyStrokes (KeyStroke press){
+        Jack.setJackDirection(press.getKeyType());
+        moveJack();
+        movePirate();
+    }
+
+    public void moveJack(){
+        //canJackMove();
+        Jack.move();
+    }
+
+    public boolean canJackMove(){
+        return true;
+    }
+
     public void movePirate(){
         for (Pirates pirate : pirates){
-            pirate.move(pirate.getPosition());
-
-        }
-    }
-    public void keyStrokes (KeyStroke press){
-        switch(press.getKeyType()){
-            case ArrowUp:
-                //moveJack
-                break;
-            case ArrowDown:
-
-                break;
-            case ArrowRight:
-
-                break;
-            case ArrowLeft:
-
-                break;
+            pirate.move();
         }
     }
 

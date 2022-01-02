@@ -1,5 +1,4 @@
 import com.googlecode.lanterna.TerminalSize;
-import com.googlecode.lanterna.TextCharacter;
 import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.input.KeyType;
 import com.googlecode.lanterna.screen.TerminalScreen;
@@ -33,10 +32,7 @@ public class Game {
                 screen.close();
             if (press.getKeyType() == KeyType.EOF)
                 break;
-            keyStrokes(press);
+            map.keyStrokes(press);
         }
-    }
-    private void keyStrokes(KeyStroke press){
-        map.keyStrokes(press);
     }
 }

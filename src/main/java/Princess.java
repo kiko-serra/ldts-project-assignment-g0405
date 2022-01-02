@@ -15,7 +15,7 @@ public class Princess extends Components implements Characters{
         graphics.putString(new TerminalPosition(position.getX(), position.getY()), "A");
     }
 
-    public void move(Position position) {
+    public void move() {
 
     }
 }
