@@ -172,7 +172,7 @@ public class Map {
     public void movePirate(){
         for (Pirates pirate : pirates){
             pirate.move();
-            pirate.canIMove(pirate, width);
+            pirate.canPirateMove(pirate, width);
         }
     }
 }
