@@ -33,4 +33,12 @@ public class Position {
     public Position moveRight() {
         return new Position(getX() + 1, getY());
     }
+
+    public boolean equals(Position pos) {
+        if (this == pos) return true;
+        if (pos == null) return false;
+        if (getClass() != pos.getClass()) return false;
+
+        return x == pos.getX() && y == pos.getY();
+    }
 }

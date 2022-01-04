@@ -20,6 +20,7 @@ public class Map {
     private List<Biscuits> biscuits;
     private List<Borders> prison;
     private List<Pirates> pirates;
+    private Key key;
 
     public Map(int width, int height) {
         this.width = width;
@@ -32,8 +33,8 @@ public class Map {
         this.prison = createPrison();
         this.biscuits = createBiscuits();
         this.pirates = createPirates();
+        this.key = createKey();
     }
-
     public void draw(TextGraphics graphics) {
             graphics.setBackgroundColor(TextColor.Factory.fromString("#171717"));
             graphics.fillRectangle(new TerminalPosition(0, 0), new TerminalSize(width, height), ' ');
@@ -45,8 +46,8 @@ public class Map {
             for (Biscuits biscuit : biscuits) biscuit.draw(graphics);
             for (Borders border : prison) border.draw(graphics);
             for (Pirates pirate : pirates) pirate.draw(graphics);
+            key.draw(graphics);
     }
-
     private List<Borders> createBorders() {
         List<Borders> borders = new ArrayList<>();
 
@@ -62,7 +63,6 @@ public class Map {
 
         return borders;
     }
-
     private List<Biscuits> createBiscuits(){
         Random random = new Random();
         List<Biscuits> biscuits = new ArrayList<>();
@@ -77,10 +77,8 @@ public class Map {
                 i--;
             }
         }
-
         return biscuits;
     }
-
     private List<Borders> createPrison() {
         List<Borders> prison = new ArrayList<>();
 
@@ -95,7 +93,17 @@ public class Map {
 
         return prison;
     }
-
+    private Key createKey(){
+        Key k;
+        while (true){
+            Random random = new Random();
+            k = new Key(random.nextInt(width -2)+1, random.nextInt(height -2)+1);
+            if(checkPosition(k, biscuits)){
+                break;
+            }
+        }
+        return k;
+    }
     private List<Pirates> createPirates(){
         Random random = new Random();
         List<Pirates> pirates = new ArrayList<>();
@@ -116,49 +124,33 @@ public class Map {
             else{
                 i--;
             }
-
         }
         return pirates;
     }
-
     //verifica se o objeto esta dentro da prisao ou se esta coincidente com as paredes da mesma
     public boolean checkPosition (Components component, List<Biscuits> biscuits){
-
         for (int i=-1; i<3; i++){
-            if (component.getPosition().getX()==Princess.getPosition().getX()-2 && component.getPosition().getY()==Princess.getPosition().getY()+i){
-                return false;
-            }
-            if (component.getPosition().getX()==Princess.getPosition().getX()-1 && component.getPosition().getY()==Princess.getPosition().getY()+i){
-                return false;
-            }
-            if (component.getPosition().getX()==Princess.getPosition().getX() && component.getPosition().getY()==Princess.getPosition().getY()+i){
-                return false;
-            }
-            if (component.getPosition().getX()==Princess.getPosition().getX()+1 && component.getPosition().getY()==Princess.getPosition().getY()+i){
-                return false;
-            }
-            if (component.getPosition().getX()==Princess.getPosition().getX()+2 && component.getPosition().getY()==Princess.getPosition().getY()+i){
-                return false;
-            }
+            if (component.getPosition().getX()==Princess.getPosition().getX()-2 && component.getPosition().getY()==Princess.getPosition().getY()+i) return false;
+            if (component.getPosition().getX()==Princess.getPosition().getX()-1 && component.getPosition().getY()==Princess.getPosition().getY()+i) return false;
+            if (component.getPosition().getX()==Princess.getPosition().getX() && component.getPosition().getY()==Princess.getPosition().getY()+i) return false;
+            if (component.getPosition().getX()==Princess.getPosition().getX()+1 && component.getPosition().getY()==Princess.getPosition().getY()+i) return false;
+            if (component.getPosition().getX()==Princess.getPosition().getX()+2 && component.getPosition().getY()==Princess.getPosition().getY()+i) return false;
         }
-
         if(component.getPosition().equals(Jack.getPosition())) return false;
 
         for(Biscuits biscuit : biscuits){
-            if(component.getPosition().getX() == biscuit.getPosition().getX() && component.getPosition().getY() == biscuit.getPosition().getY()) return false;
+            if(component.getPosition().equals(biscuit.getPosition())) return false;
         }
-
         return true;
     }
-
     public void keyStrokes (KeyStroke press){
         Jack.setJackDirection(press.getKeyType());
         moveJack(press.getKeyType());
-        movePirate();
     }
-
     public void moveJack(KeyType press){
         Jack.move();
+        eatBiscuits();
+        collectKey();
         if(Jack.canJackMove(borders, prison)){
             switch (press) {
                 case ArrowUp -> Jack.setPosition(Jack.getPosition().moveDown());
@@ -168,11 +160,39 @@ public class Map {
             }
         }
     }
-
-    public void movePirate(){
+    public boolean movePirate(){
         for (Pirates pirate : pirates){
             pirate.move();
             pirate.canPirateMove(pirate, width);
+        }
+        checkJackColision();
+        return Jack.checkIfDead();
+    }
+    private void eatBiscuits (){
+        for (Biscuits biscuit: biscuits){
+            if (Jack.getPosition().equals(biscuit.getPosition())){
+                biscuits.remove(biscuit);
+                Jack.setPoints();
+                break;
+            }
+        }
+    }
+    private void checkJackColision (){
+        for (Pirates pirate: pirates){
+            if (Jack.getPosition().equals(pirate.getPosition())){
+                Jack.setLives();
+                System.out.println(Jack.lives);
+            }
+        }
+    }
+    private void collectKey(){
+        if (Jack.getPosition().equals(key.getPosition())){
+            for (Borders border: prison){
+                if ((border.getPosition().getX() == Princess.getPosition().getX()) && (border.getPosition().getY() == (Princess.getPosition().getY() + 2))){
+                    prison.remove(border);
+                    break;
+                }
+            }
         }
     }
 }

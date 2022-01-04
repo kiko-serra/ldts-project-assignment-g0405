@@ -6,10 +6,32 @@ import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
 
 import java.io.IOException;
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class Game {
     private final TerminalScreen screen;
     private Map map = new Map(40, 20);
 
+    class Aux extends TimerTask
+    {
+        public void run()
+        {
+            if(map.movePirate()) {
+                try{
+                    screen.close();
+                }
+                catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            try {
+                draw();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
     public Game(int width, int height) throws IOException {
         Terminal terminal = new DefaultTerminalFactory().setInitialTerminalSize(new TerminalSize(width, height)).createTerminal();
         screen = new TerminalScreen(terminal);
@@ -17,6 +39,10 @@ public class Game {
         screen.setCursorPosition(null);   // we don't need a cursor
         screen.startScreen();             // screens must be started
         screen.doResizeIfNecessary();     // resize screen if necessary
+
+        Timer timer = new Timer();
+        TimerTask moving = new Aux();
+        timer.scheduleAtFixedRate(moving, 100, 100);
 
     }
     public void draw() throws IOException {

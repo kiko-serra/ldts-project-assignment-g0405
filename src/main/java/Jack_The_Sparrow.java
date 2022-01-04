@@ -8,10 +8,13 @@ import java.util.List;
 public class Jack_The_Sparrow extends Components implements Characters{
     private Position position;
     private KeyType direction;
+    public int lives;
+    public int points;
 
     public Jack_The_Sparrow(int x, int y){
         super(x, y);
-
+        this.lives=3;
+        this.points=0;
         this.position = super.getPosition();
     }
 
@@ -30,7 +33,6 @@ public class Jack_The_Sparrow extends Components implements Characters{
             case ArrowDown -> setPosition(position.moveDown());
             case ArrowRight -> setPosition(position.moveRight());
             case ArrowLeft -> setPosition(position.moveLeft());
-            default -> System.out.println("Try the arrow's keys");
         }
     }
 
@@ -40,13 +42,23 @@ public class Jack_The_Sparrow extends Components implements Characters{
                 return true;
             }
         }
-
         for(Borders p : prison){
             if(p.getPosition().getX() == getPosition().getX() && p.getPosition().getY() == getPosition().getY()){
                 return true;
             }
         }
-
+        return false;
+    }
+    public void setLives(){
+        this.lives--;
+    }
+    public void setPoints(){
+        this.points++;
+    }
+    public boolean checkIfDead(){
+        if (this.lives == 0){
+            return true;
+        }
         return false;
     }
 }

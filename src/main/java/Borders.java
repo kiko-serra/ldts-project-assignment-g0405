@@ -11,7 +11,6 @@ public class Borders extends Components{
     }
 
     public void draw(TextGraphics graphics) {
-        graphics.setBackgroundColor(TextColor.Factory.fromString("#B33F40"));
         graphics.setForegroundColor(TextColor.Factory.fromString("#B33F40"));
         graphics.putString(new TerminalPosition(position.getX(), position.getY()), "I");
     }
