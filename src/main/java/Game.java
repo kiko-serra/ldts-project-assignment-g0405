@@ -32,6 +32,7 @@ public class Game {
             }
         }
     }
+
     public Game(int width, int height) throws IOException {
         Terminal terminal = new DefaultTerminalFactory().setInitialTerminalSize(new TerminalSize(width, height)).createTerminal();
         screen = new TerminalScreen(terminal);
@@ -45,11 +46,13 @@ public class Game {
         timer.scheduleAtFixedRate(moving, 100, 100);
 
     }
+
     public void draw() throws IOException {
         screen.clear();
         map.draw(screen.newTextGraphics());
         screen.refresh();
     }
+
     public void run() throws IOException {
         while (true) {
             draw();
