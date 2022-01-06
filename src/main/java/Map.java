@@ -148,9 +148,10 @@ public class Map {
         moveJack(press.getKeyType());
     }
     public void moveJack(KeyType press){
-        Jack.move();
+        //Jack.move();
         eatBiscuits();
         collectKey();
+     /*
         if(Jack.canJackMove(borders, prison)){
             switch (press) {
                 case ArrowUp -> Jack.setPosition(Jack.getPosition().moveDown());
@@ -158,7 +159,11 @@ public class Map {
                 case ArrowRight -> Jack.setPosition(Jack.getPosition().moveLeft());
                 case ArrowLeft -> Jack.setPosition(Jack.getPosition().moveRight());
             }
+
+
         }
+    */
+
     }
     public boolean movePirate(){
         for (Pirates pirate : pirates){
