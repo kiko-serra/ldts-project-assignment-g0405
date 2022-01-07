@@ -163,8 +163,6 @@ public class Map {
                 case ArrowRight -> Jack.setPosition(Jack.getPosition().moveLeft());
                 case ArrowLeft -> Jack.setPosition(Jack.getPosition().moveRight());
             }
-
-
         }
 
     }
