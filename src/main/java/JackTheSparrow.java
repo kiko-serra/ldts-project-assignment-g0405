@@ -5,13 +5,13 @@ import com.googlecode.lanterna.input.KeyType;
 
 import java.util.List;
 
-public class Jack_The_Sparrow extends Components implements Characters{
+public class JackTheSparrow extends Components implements Characters{
     private Position position;
     private KeyType direction;
     public int lives;
     public int points;
 
-    public Jack_The_Sparrow(int x, int y){
+    public JackTheSparrow(int x, int y){
         super(x, y);
         this.lives=3;
         this.points=0;
@@ -49,12 +49,23 @@ public class Jack_The_Sparrow extends Components implements Characters{
         }
         return false;
     }
+
     public void setLives(){
         this.lives--;
     }
+
     public void setPoints(){
         this.points++;
     }
+
+    public KeyType getDirection(){
+        return direction;
+    }
+
+    public int getPoints(){
+        return points;
+    }
+
     public boolean checkIfDead(){
         if (this.lives == 0){
             return true;

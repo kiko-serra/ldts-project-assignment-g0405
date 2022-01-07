@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="test_Components" tests="4" skipped="0" failures="0" errors="0" timestamp="2021-12-30T14:58:57" hostname="LAPTOP-T1FUMB4N" time="0.025">
+<testsuite name="test_Components" tests="6" skipped="0" failures="0" errors="0" timestamp="2022-01-07T16:42:22" hostname="LAPTOP-T1FUMB4N" time="0.032">
   <properties/>
-  <testcase name="test_borders()" classname="test_Components" time="0.02"/>
-  <testcase name="test_map()" classname="test_Components" time="0.003"/>
-  <testcase name="test_jack_the_sparrow()" classname="test_Components" time="0.0"/>
-  <testcase name="test_princess()" classname="test_Components" time="0.0"/>
+  <testcase name="test_pirates()" classname="test_Components" time="0.021"/>
+  <testcase name="test_borders()" classname="test_Components" time="0.001"/>
+  <testcase name="test_key()" classname="test_Components" time="0.001"/>
+  <testcase name="test_biscuits()" classname="test_Components" time="0.002"/>
+  <testcase name="test_jack_the_sparrow()" classname="test_Components" time="0.005"/>
+  <testcase name="test_princess()" classname="test_Components" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
