@@ -13,8 +13,8 @@ public class Map {
     private int width;
     private int height;
 
-    Jack_The_Sparrow Jack;
-    Princess Princess;
+    JackTheSparrow jack;
+    Princess princess;
 
     private List<Borders> borders;
     private List<Biscuits> biscuits;
@@ -26,8 +26,8 @@ public class Map {
         this.width = width;
         this.height = height;
 
-        this.Jack = new Jack_The_Sparrow(width/2, height-2);
-        this.Princess = new Princess(width/2, 2);
+        this.jack = new JackTheSparrow(width/2, height-2);
+        this.princess = new Princess(width/2, 2);
 
         this.borders = createBorders();
         this.prison = createPrison();
@@ -40,8 +40,8 @@ public class Map {
             graphics.setBackgroundColor(TextColor.Factory.fromString("#171717"));
             graphics.fillRectangle(new TerminalPosition(0, 0), new TerminalSize(width, height), ' ');
 
-            Jack.draw(graphics);
-            Princess.draw(graphics);
+            jack.draw(graphics);
+            princess.draw(graphics);
 
             for (Borders border : borders) border.draw(graphics);
             for (Biscuits biscuit : biscuits) biscuit.draw(graphics);
@@ -86,13 +86,13 @@ public class Map {
     private List<Borders> createPrison() {
         List<Borders> prison = new ArrayList<>();
 
-        for (int c = Princess.getPosition().getX()-2; c <= Princess.getPosition().getX()+2; c++) {
-            prison.add(new Borders(c, Princess.getPosition().getY()+2));
+        for (int c = princess.getPosition().getX()-2; c <= princess.getPosition().getX()+2; c++) {
+            prison.add(new Borders(c, princess.getPosition().getY()+2));
         }
 
-        for (int r = Princess.getPosition().getY()-1; r <= Princess.getPosition().getY()+1; r++) {
-            prison.add(new Borders(Princess.getPosition().getX()-2, r));
-            prison.add(new Borders(Princess.getPosition().getX()+2, r));
+        for (int r = princess.getPosition().getY()-1; r <= princess.getPosition().getY()+1; r++) {
+            prison.add(new Borders(princess.getPosition().getX()-2, r));
+            prison.add(new Borders(princess.getPosition().getX()+2, r));
         }
 
         return prison;
@@ -132,14 +132,19 @@ public class Map {
 
     //verifica se o objeto esta dentro da prisao ou se esta coincidente com as paredes da mesma
     private boolean checkPosition (Components component, List<Biscuits> biscuits){
+        int xComponent = component.getPosition().getX();
+        int yComponent = component.getPosition().getY();
+        int xPrincess = princess.getPosition().getX();
+        int yPrincess = princess.getPosition().getY();
+
         for (int i=-1; i<3; i++){
-            if (component.getPosition().getX()==Princess.getPosition().getX()-2 && component.getPosition().getY()==Princess.getPosition().getY()+i) return false;
-            if (component.getPosition().getX()==Princess.getPosition().getX()-1 && component.getPosition().getY()==Princess.getPosition().getY()+i) return false;
-            if (component.getPosition().getX()==Princess.getPosition().getX() && component.getPosition().getY()==Princess.getPosition().getY()+i) return false;
-            if (component.getPosition().getX()==Princess.getPosition().getX()+1 && component.getPosition().getY()==Princess.getPosition().getY()+i) return false;
-            if (component.getPosition().getX()==Princess.getPosition().getX()+2 && component.getPosition().getY()==Princess.getPosition().getY()+i) return false;
+            if (xComponent== xPrincess-2 && yComponent== yPrincess+i) return false;
+            if (xComponent== xPrincess-1 && yComponent== yPrincess+i) return false;
+            if (xComponent== xPrincess && yComponent== yPrincess+i) return false;
+            if (xComponent== xPrincess+1 && yComponent== yPrincess+i) return false;
+            if (xComponent== xPrincess+2 && yComponent== yPrincess+i) return false;
         }
-        if(component.getPosition().equals(Jack.getPosition())) return false;
+        if(component.getPosition().equals(jack.getPosition())) return false;
 
         for(Biscuits biscuit : biscuits){
             if(component.getPosition().equals(biscuit.getPosition())) return false;
@@ -148,20 +153,20 @@ public class Map {
     }
 
     public void keyStrokes (KeyStroke press){
-        Jack.setJackDirection(press.getKeyType());
+        jack.setJackDirection(press.getKeyType());
         moveJack(press.getKeyType());
     }
     private void moveJack(KeyType press){
-        Jack.move();
+        jack.move();
         eatBiscuits();
         if(key != null) collectKey();
         this.openExit();
-        if(Jack.canJackMove(borders, prison)){
+        if(jack.canJackMove(borders, prison)){
             switch (press) {
-                case ArrowUp -> Jack.setPosition(Jack.getPosition().moveDown());
-                case ArrowDown -> Jack.setPosition(Jack.getPosition().moveUp());
-                case ArrowRight -> Jack.setPosition(Jack.getPosition().moveLeft());
-                case ArrowLeft -> Jack.setPosition(Jack.getPosition().moveRight());
+                case ArrowUp -> jack.setPosition(jack.getPosition().moveDown());
+                case ArrowDown -> jack.setPosition(jack.getPosition().moveUp());
+                case ArrowRight -> jack.setPosition(jack.getPosition().moveLeft());
+                case ArrowLeft -> jack.setPosition(jack.getPosition().moveRight());
             }
         }
 
@@ -173,14 +178,14 @@ public class Map {
             pirate.canPirateMove(pirate, width);
         }
         checkJackColision();
-        return Jack.checkIfDead();
+        return jack.checkIfDead();
     }
 
     private void eatBiscuits (){
         for (Biscuits biscuit: biscuits){
-            if (Jack.getPosition().equals(biscuit.getPosition())){
+            if (jack.getPosition().equals(biscuit.getPosition())){
                 biscuits.remove(biscuit);
-                Jack.setPoints();
+                jack.setPoints();
                 break;
             }
         }
@@ -188,18 +193,18 @@ public class Map {
 
     private void checkJackColision (){
         for (Pirates pirate: pirates){
-            if (Jack.getPosition().equals(pirate.getPosition())){
-                Jack.setLives();
-                System.out.println(Jack.lives);
+            if (jack.getPosition().equals(pirate.getPosition())){
+                jack.setLives();
+                System.out.println(jack.lives);
             }
         }
     }
 
     private void collectKey(){
-        if (Jack.getPosition().equals(key.getPosition())){
+        if (jack.getPosition().equals(key.getPosition())){
             key = null;
             for (Borders border: prison){
-                if ((border.getPosition().getX() == Princess.getPosition().getX()) && (border.getPosition().getY() == (Princess.getPosition().getY() + 2))){
+                if ((border.getPosition().getX() == princess.getPosition().getX()) && (border.getPosition().getY() == (princess.getPosition().getY() + 2))){
                     prison.remove(border);
                     break;
                 }
@@ -208,7 +213,7 @@ public class Map {
     }
 
     private void openExit(){
-        if(Jack.getPosition().getX() == Princess.getPosition().getX() && Jack.getPosition().getY() == Princess.getPosition().getY()+1){
+        if(jack.getPosition().getX() == princess.getPosition().getX() && jack.getPosition().getY() == princess.getPosition().getY()+1){
             for(Borders border: borders){
                 if(border.getPosition().getX() == (width/2) && border.getPosition().getY() == height-1){
                     borders.remove(border);
@@ -218,3 +223,5 @@ public class Map {
         }
     }
 }
+
+// função para comparar X e Y com incrementos
