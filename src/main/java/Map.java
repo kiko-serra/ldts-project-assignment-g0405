@@ -156,6 +156,7 @@ public class Map {
         jack.setJackDirection(press.getKeyType());
         moveJack(press.getKeyType());
     }
+
     private void moveJack(KeyType press){
         jack.move();
         eatBiscuits();
