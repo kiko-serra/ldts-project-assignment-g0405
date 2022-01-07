@@ -10,16 +10,16 @@ import java.util.List;
 import java.util.Random;
 
 public class Map {
-    private int width;
-    private int height;
+    private final int width;
+    private final int height;
 
     JackTheSparrow jack;
     Princess princess;
 
-    private List<Borders> borders;
-    private List<Biscuits> biscuits;
-    private List<Borders> prison;
-    private List<Pirates> pirates;
+    private final List<Borders> borders;
+    private final List<Biscuits> biscuits;
+    private final List<Borders> prison;
+    private final List<Pirates> pirates;
     private Key key;
 
     public Map(int width, int height) {
@@ -112,7 +112,7 @@ public class Map {
         List<Pirates> pirates = new ArrayList<>();
         Pirates pirate;
 
-        for (int i = 0; i < 8; i++) {
+        for (int i = 0; i < 80; i++) {
             pirate = new Pirates(random.nextInt(width - 2) + 1, random.nextInt(height - 3) + 1);
 
             if(checkPosition(pirate, biscuits)){
@@ -132,17 +132,12 @@ public class Map {
 
     //verifica se o objeto esta dentro da prisao ou se esta coincidente com as paredes da mesma
     private boolean checkPosition (Components component, List<Biscuits> biscuits){
-        int xComponent = component.getPosition().getX();
-        int yComponent = component.getPosition().getY();
-        int xPrincess = princess.getPosition().getX();
-        int yPrincess = princess.getPosition().getY();
-
         for (int i=-1; i<3; i++){
-            if (xComponent== xPrincess-2 && yComponent== yPrincess+i) return false;
-            if (xComponent== xPrincess-1 && yComponent== yPrincess+i) return false;
-            if (xComponent== xPrincess && yComponent== yPrincess+i) return false;
-            if (xComponent== xPrincess+1 && yComponent== yPrincess+i) return false;
-            if (xComponent== xPrincess+2 && yComponent== yPrincess+i) return false;
+            if (comparePositions(component.getPosition(), princess.getPosition(), -2, i)) return false;
+            if (comparePositions(component.getPosition(), princess.getPosition(), -1, i)) return false;
+            if (comparePositions(component.getPosition(), princess.getPosition(), 0, i)) return false;
+            if (comparePositions(component.getPosition(), princess.getPosition(), +1, i)) return false;
+            if (comparePositions(component.getPosition(), princess.getPosition(), +2, i)) return false;
         }
         if(component.getPosition().equals(jack.getPosition())) return false;
 
@@ -205,7 +200,7 @@ public class Map {
         if (jack.getPosition().equals(key.getPosition())){
             key = null;
             for (Borders border: prison){
-                if ((border.getPosition().getX() == princess.getPosition().getX()) && (border.getPosition().getY() == (princess.getPosition().getY() + 2))){
+                if (comparePositions(border.getPosition(), princess.getPosition(), 0, 1)){
                     prison.remove(border);
                     break;
                 }
@@ -214,7 +209,7 @@ public class Map {
     }
 
     private void openExit(){
-        if(jack.getPosition().getX() == princess.getPosition().getX() && jack.getPosition().getY() == princess.getPosition().getY()+1){
+        if(comparePositions(jack.getPosition(), princess.getPosition(), 0, 1)){
             for(Borders border: borders){
                 if(border.getPosition().getX() == (width/2) && border.getPosition().getY() == height-1){
                     borders.remove(border);
@@ -223,6 +218,11 @@ public class Map {
             }
         }
     }
-}
 
-// função para comparar X e Y com incrementos
+    private boolean comparePositions(Position pos1, Position pos2, int increX, int increY){
+        int x = pos2.getX() + increX;
+        int y = pos2.getY() + increY;
+        Position posAux = new Position(x, y);
+        return pos1.equals(posAux);
+    }
+}
