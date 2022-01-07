@@ -151,20 +151,11 @@ public class Map {
         Jack.setJackDirection(press.getKeyType());
         moveJack(press.getKeyType());
     }
-<<<<<<< HEAD
-
     private void moveJack(KeyType press){
         Jack.move();
         eatBiscuits();
         if(key != null) collectKey();
         this.openExit();
-=======
-    public void moveJack(KeyType press){
-        //Jack.move();
-        eatBiscuits();
-        collectKey();
-     /*
->>>>>>> testing_v
         if(Jack.canJackMove(borders, prison)){
             switch (press) {
                 case ArrowUp -> Jack.setPosition(Jack.getPosition().moveDown());
@@ -175,7 +166,6 @@ public class Map {
 
 
         }
-    */
 
     }
 

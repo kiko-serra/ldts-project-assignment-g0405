@@ -27,9 +27,6 @@ public class Jack_The_Sparrow extends Components implements Characters{
         this.direction = press;
     }
 
-
-
-    /*
     public void move() {
         switch (direction) {
             case ArrowUp -> setPosition(position.moveUp());
@@ -38,7 +35,6 @@ public class Jack_The_Sparrow extends Components implements Characters{
             case ArrowLeft -> setPosition(position.moveLeft());
         }
     }
-     */
 
     public boolean canJackMove(List<Borders> borders, List<Borders> prison){
         for(Borders border : borders){
@@ -53,6 +49,7 @@ public class Jack_The_Sparrow extends Components implements Characters{
         }
         return false;
     }
+    
     public void setLives(){
         this.lives--;
     }
