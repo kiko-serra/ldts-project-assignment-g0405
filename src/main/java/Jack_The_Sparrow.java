@@ -49,7 +49,7 @@ public class Jack_The_Sparrow extends Components implements Characters{
         }
         return false;
     }
-    
+
     public void setLives(){
         this.lives--;
     }
