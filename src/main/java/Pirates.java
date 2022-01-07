@@ -41,5 +41,9 @@ public class Pirates extends Components implements Characters{
 
         if ((pirate.getPosition().getX()==width-2 || (pirate.getPosition().getX()==(width/2)-3 && pirate.getPosition().getY()<=4))&& pirate.state==0) setState(1);
     }
+
+    public int getState(){
+        return state;
+    }
 }
 
