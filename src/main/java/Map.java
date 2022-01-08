@@ -21,6 +21,7 @@ public class Map {
     private List<Borders> prison;
     private List<Pirates> pirates;
     private Key key;
+    private Exit exit;
 
     public Map(int width, int height) {
         this.width = width;
@@ -34,6 +35,7 @@ public class Map {
         this.biscuits = createBiscuits();
         this.pirates = createPirates();
         this.key = createKey();
+        this.exit = null;
     }
 
     public void draw(TextGraphics graphics) {
@@ -212,6 +214,7 @@ public class Map {
         if(comparePositions(jack.getPosition(), princess.getPosition(), 0, 1)){
             for(Borders border: borders){
                 if(border.getPosition().getX() == (width/2) && border.getPosition().getY() == height-1){
+                    this.exit = new Exit(border.getPosition().getX(), border.getPosition().getY());
                     borders.remove(border);
                     break;
                 }
