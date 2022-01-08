@@ -160,10 +160,18 @@ public class Map {
         jack.move();
         if(jack.canJackMove(borders, prison)){
             switch (press) {
-                case ArrowUp -> jack.setPosition(jack.getPosition().moveDown());
-                case ArrowDown -> jack.setPosition(jack.getPosition().moveUp());
-                case ArrowRight -> jack.setPosition(jack.getPosition().moveLeft());
-                case ArrowLeft -> jack.setPosition(jack.getPosition().moveRight());
+                case ArrowUp:
+                    jack.setPosition(jack.getPosition().moveDown());
+                    break;
+                case ArrowDown:
+                    jack.setPosition(jack.getPosition().moveUp());
+                    break;
+                case ArrowRight:
+                    jack.setPosition(jack.getPosition().moveLeft());
+                    break;
+                case ArrowLeft:
+                    jack.setPosition(jack.getPosition().moveRight());
+                    break;
             }
         }
 

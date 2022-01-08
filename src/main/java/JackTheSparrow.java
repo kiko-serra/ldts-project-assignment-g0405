@@ -29,10 +29,18 @@ public class JackTheSparrow extends Components implements Characters{
 
     public void move() {
         switch (direction) {
-            case ArrowUp -> this.setPosition(position.moveUp());
-            case ArrowDown -> this.setPosition(position.moveDown());
-            case ArrowRight -> this.setPosition(position.moveRight());
-            case ArrowLeft -> this.setPosition(position.moveLeft());
+            case ArrowUp:
+                this.setPosition(this.getPosition().moveUp());
+                break;
+            case ArrowDown:
+                this.setPosition(this.getPosition().moveDown());
+                break;
+            case ArrowRight:
+                this.setPosition(this.getPosition().moveRight());
+                break;
+            case ArrowLeft:
+                this.setPosition(this.getPosition().moveLeft());
+                break;
         }
     }
 

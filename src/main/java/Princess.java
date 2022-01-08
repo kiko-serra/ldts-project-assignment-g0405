@@ -9,6 +9,7 @@ public class Princess extends Components implements Characters{
     public Princess(int x, int y) {
         super(x, y);
         this.position = super.getPosition();
+        this.jackPosition = new Position(0, 0);
     }
 
     public void draw(TextGraphics graphics) {
