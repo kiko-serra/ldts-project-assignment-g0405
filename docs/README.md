@@ -3,18 +3,21 @@
 
 Our game consists in a text-based version of the Crossy Road game with some SuperMario combinations and some new characters.
 
-For the player to finish each level with the hightest score, it needs to catch all the biscuits and the special key to open the prision door where the Princess is being kept.
-
 The main character is Jack the Sparrow who is trying to free his Princess, and for that he needs to avoid the Pirates and collect the special key.
 
-Each biscuit that Jack catches makes his score go up, but these are not necessary to release the Princess.
+For the player to win the game with the highest score, it needs to catch all the biscuits, which represents the score, and the special key to open the prison door where the Princess is being kept.
+
+After rescuing the Princess is opened and Jack needs to leave the map through that door.
+
+Each biscuit that Jack catches makes his score go up, but these are not necessary to release the Princess and finish the game.
 
 
 This project was developed by _André Costa_ (https://github.com/AndreCosta201905916) (up201905016@fe.up.pt) and _Francisco Serra_ (https://github.com/kiko-serra) (up202007723@fe.up.pt) and _Válter Castro_ (https://github.com/ValterCastro) (up201706546@fe.up.pt) for LDTS 2021⁄22.
 ## Index
-* Something
-  * bla bla
-  * bla
+* [Implemented Features] (#implemented-features)
+  * [Jack the Sparrow] (#jack-the-sparrow)
+  * [Pirates] (#pirates)
+  * [Princess] (#princess)
 
 
 
@@ -26,10 +29,11 @@ This project was developed by _André Costa_ (https://github.com/AndreCosta20190
 
 > This section should contain a list of implemented features and their descriptions. In the end of the section, include two or three screenshots that illustrate the most important features.
 
-**Examples**:
+#### Jack the Sparrow
 
-- **Jumping** - The game character will jump when the space bar key is pressed.
-- **Getting hidden coins** - When the game character hits a platform from below (by jumping beneath it) it will smash that segment of the platform and will get any coins that may exist hidden there.
+- **Movement** - The game character will move according to the direction of the arrow key pressed.
+  Collisions are implemented so that each time Jack gets hit by one of the pirates he loses a life, and he can´t walk through the borders.
+- **Getting biscuits** - When the Jack hits a biscuit from below (by jumping beneath it) it will smash that segment of the platform and will get any coins that may exist hidden there.
 
 ### PLANNED FEATURES
 
