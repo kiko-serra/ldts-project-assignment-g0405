@@ -1,0 +1,7 @@
+.idea/
+.gradle/
+out/
+build/
+*.iml
+.gradle
+.gradle/7.1/executionHistory/executionHistory.lock
