@@ -174,15 +174,14 @@ public class Map {
                     break;
             }
         }
+        else if(this.exit != null) movePrincess();
 
         eatBiscuits();
         if(this.key != null) collectKey();
-        if(this.exit != null) movePrincess();
         this.openExit();
     }
 
     private void movePrincess(){
-        System.out.println("hello");
         princess.move();
     }
 
