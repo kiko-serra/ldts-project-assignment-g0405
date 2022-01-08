@@ -240,8 +240,10 @@ public class Map {
         return pos1.equals(posAux);
     }
 
-    private boolean checkJackOnExitDoor(){
-        return comparePositions(this.jack.getPosition(), this.exit.getPosition(), 0, 0);
+    public boolean checkJackOnExitDoor(){
+        if(this.exit != null)
+            return comparePositions(this.jack.getPosition(), this.exit.getPosition(), 0, 0);
+        else return false;
     }
 
     public List<Borders> getBorders(){

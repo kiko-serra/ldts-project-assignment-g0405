@@ -58,7 +58,7 @@ public class Game {
         while (true) {
             draw();
             KeyStroke press = screen.readInput();
-            if (press.getKeyType() == KeyType.Character && press.getCharacter() == 'q'){
+            if ((press.getKeyType() == KeyType.Character && press.getCharacter() == 'q') || map.checkJackOnExitDoor()){
                 timer.cancel();
                 timer.purge();
                 screen.close();
