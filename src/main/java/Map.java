@@ -156,9 +156,6 @@ public class Map {
 
     private void moveJack(KeyType press){
         jack.move();
-        eatBiscuits();
-        if(key != null) collectKey();
-        this.openExit();
         if(jack.canJackMove(borders, prison)){
             switch (press) {
                 case ArrowUp -> jack.setPosition(jack.getPosition().moveDown());
@@ -168,7 +165,12 @@ public class Map {
             }
         }
 
+        eatBiscuits();
+        if(key != null) collectKey();
+        this.openExit();
     }
+
+    private void movePrincess(){}
 
     public boolean movePirate(){
         for (Pirates pirate : pirates){
