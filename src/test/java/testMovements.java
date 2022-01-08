@@ -32,6 +32,7 @@ public class testMovements {
         pirates.setState(0);
         pirates.move();
         assertEquals(11, pirates.getPosition().getX());
+
         pirates.setState(1);
         pirates.move();
         assertEquals(10, pirates.getPosition().getX());
@@ -42,19 +43,31 @@ public class testMovements {
         pirates1.canPirateMove(30);
         assertEquals(0, pirates1.getState());
 
-        Pirates pirates4 = new Pirates(18, 4);
-        pirates4.setState(1);
-        pirates4.canPirateMove(30);
-        assertEquals(0, pirates4.getState());
-
-        Pirates pirates2 = new Pirates(28, 4);
-        pirates2.setState(0);
+        Pirates pirates2 = new Pirates(18, 4);
+        pirates2.setState(1);
         pirates2.canPirateMove(30);
-        assertEquals(1, pirates2.getState());
+        assertEquals(0, pirates2.getState());
 
         Pirates pirates3 = new Pirates(12, 4);
         pirates3.setState(0);
         pirates3.canPirateMove(30);
         assertEquals(1, pirates3.getState());
+
+        Pirates pirates4 = new Pirates(28, 4);
+        pirates4.setState(0);
+        pirates4.canPirateMove(30);
+        assertEquals(1, pirates4.getState());
     }
+
+    @Test
+    public void testMovePrincess(){
+        Princess princess = new Princess(10,20);
+
+        princess.setJackPosition(new Position(15,25));
+        princess.move();
+
+        assertEquals(15,princess.getPosition().getX());
+        assertEquals(25,princess.getPosition().getY());
+    }
+
 }
