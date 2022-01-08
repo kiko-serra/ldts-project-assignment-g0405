@@ -174,15 +174,11 @@ public class Map {
                     break;
             }
         }
-        else if(this.exit != null) movePrincess();
+        else if(this.exit != null) princess.move();;
 
         eatBiscuits();
         if(this.key != null) collectKey();
         this.openExit();
-    }
-
-    private void movePrincess(){
-        princess.move();
     }
 
     public boolean movePirate(){
