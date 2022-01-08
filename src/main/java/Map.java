@@ -188,7 +188,7 @@ public class Map {
     public boolean movePirate(){
         for (Pirates pirate : pirates){
             pirate.move();
-            pirate.canPirateMove(pirate, width);
+            pirate.canPirateMove( width);
         }
         checkJackColision();
         return jack.checkIfDead();
