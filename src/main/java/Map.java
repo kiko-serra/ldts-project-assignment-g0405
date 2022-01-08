@@ -23,8 +23,6 @@ public class Map {
     private Key key;
     private Exit exit;
 
-    private KeyStroke lastKeyPressed;
-
     public Map(int width, int height) {
         this.width = width;
         this.height = height;
@@ -152,9 +150,9 @@ public class Map {
     }
 
     public void keyStrokes (KeyStroke press){
+        princess.setJackPosition(jack.getPosition());
         jack.setJackDirection(press.getKeyType());
         moveJack(press.getKeyType());
-        this.lastKeyPressed = press;
     }
 
     private void moveJack(KeyType press){
@@ -175,7 +173,6 @@ public class Map {
     }
 
     private void movePrincess(){
-        //princess.setPrincessDirection(this.lastKeyPressed.getKeyType());
         princess.move();
     }
 
