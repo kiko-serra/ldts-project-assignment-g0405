@@ -16,10 +16,10 @@ public class Map {
     JackTheSparrow jack;
     Princess princess;
 
-    private final List<Borders> borders;
-    private final List<Biscuits> biscuits;
-    private final List<Borders> prison;
-    private final List<Pirates> pirates;
+    private List<Borders> borders;
+    private List<Biscuits> biscuits;
+    private List<Borders> prison;
+    private List<Pirates> pirates;
     private Key key;
 
     public Map(int width, int height) {
@@ -112,7 +112,7 @@ public class Map {
         List<Pirates> pirates = new ArrayList<>();
         Pirates pirate;
 
-        for (int i = 0; i < 80; i++) {
+        for (int i = 0; i < 8; i++) {
             pirate = new Pirates(random.nextInt(width - 2) + 1, random.nextInt(height - 3) + 1);
 
             if(checkPosition(pirate, biscuits)){
@@ -200,7 +200,7 @@ public class Map {
         if (jack.getPosition().equals(key.getPosition())){
             key = null;
             for (Borders border: prison){
-                if (comparePositions(border.getPosition(), princess.getPosition(), 0, 1)){
+                if (comparePositions(border.getPosition(), princess.getPosition(), 0, 2)){
                     prison.remove(border);
                     break;
                 }
