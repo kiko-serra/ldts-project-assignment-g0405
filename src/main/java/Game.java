@@ -12,6 +12,7 @@ import java.util.TimerTask;
 public class Game {
     private final TerminalScreen screen;
     private Map map = new Map(40, 20);
+    Timer timer;
 
     class Aux extends TimerTask
     {
@@ -41,7 +42,7 @@ public class Game {
         screen.startScreen();             // screens must be started
         screen.doResizeIfNecessary();     // resize screen if necessary
 
-        Timer timer = new Timer();
+        timer = new Timer();
         TimerTask moving = new Aux();
         timer.scheduleAtFixedRate(moving, 100, 100);
 
@@ -57,8 +58,11 @@ public class Game {
         while (true) {
             draw();
             KeyStroke press = screen.readInput();
-            if (press.getKeyType() == KeyType.Character && press.getCharacter() == 'q')
+            if (press.getKeyType() == KeyType.Character && press.getCharacter() == 'q'){
+                timer.cancel();
+                timer.purge();
                 screen.close();
+            }
             if (press.getKeyType() == KeyType.EOF)
                 break;
             map.keyStrokes(press);

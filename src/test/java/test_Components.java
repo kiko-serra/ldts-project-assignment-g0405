@@ -31,7 +31,7 @@ public class test_Components {
 
     @Test
     public void test_jack_the_sparrow() {
-        Jack_The_Sparrow jack = new Jack_The_Sparrow(10, 20);
+        JackTheSparrow jack = new JackTheSparrow(10, 20);
 
         assertEquals(10, jack.getPosition().getX());
         assertEquals(20, jack.getPosition().getY());
@@ -55,7 +55,7 @@ public class test_Components {
 
         assertEquals(1, jack.getPoints());
 
-        Jack_The_Sparrow jack1 = new Jack_The_Sparrow(15, 20);
+        JackTheSparrow jack1 = new JackTheSparrow(15, 20);
 
         jack1.setLives();
         assertEquals(false, jack1.checkIfDead());
