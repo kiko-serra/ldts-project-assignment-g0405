@@ -23,6 +23,8 @@ public class Map {
     private Key key;
     private Exit exit;
 
+    private KeyStroke lastKeyPressed;
+
     public Map(int width, int height) {
         this.width = width;
         this.height = height;
@@ -152,6 +154,7 @@ public class Map {
     public void keyStrokes (KeyStroke press){
         jack.setJackDirection(press.getKeyType());
         moveJack(press.getKeyType());
+        this.lastKeyPressed = press;
     }
 
     private void moveJack(KeyType press){
@@ -166,11 +169,15 @@ public class Map {
         }
 
         eatBiscuits();
-        if(key != null) collectKey();
+        if(this.key != null) collectKey();
         this.openExit();
+        if(this.exit != null) movePrincess();
     }
 
-    private void movePrincess(){}
+    private void movePrincess(){
+        //princess.setPrincessDirection(this.lastKeyPressed.getKeyType());
+        princess.move();
+    }
 
     public boolean movePirate(){
         for (Pirates pirate : pirates){
