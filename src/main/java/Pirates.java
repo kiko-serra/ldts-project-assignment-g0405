@@ -17,8 +17,10 @@ public class Pirates extends Components implements Characters{
     }
 
     public void setState(int state){
-        this.state=state;
+        if(state == 0 || state == 1)
+            this.state=state;
     }
+
     public void draw(TextGraphics graphics) {
         graphics.setForegroundColor(TextColor.Factory.fromString("#B00000"));
         graphics.enableModifiers(SGR.BOLD);
@@ -36,10 +38,14 @@ public class Pirates extends Components implements Characters{
                 break;
         }
     }
-    public void canPirateMove(Pirates pirate, int width){
-        if ((pirate.getPosition().getX()==1 || (pirate.getPosition().getX()==(width/2)+3 && pirate.getPosition().getY()<=4)) && pirate.state==1) setState(0);
 
-        if ((pirate.getPosition().getX()==width-2 || (pirate.getPosition().getX()==(width/2)-3 && pirate.getPosition().getY()<=4))&& pirate.state==0) setState(1);
+    public void canPirateMove(int width){
+        int x = this.getPosition().getX();
+        int y = this.getPosition().getY();
+
+        if ((x==1 || (x==(width/2)+3 && y<=4)) && this.state==1) setState(0);
+
+        if ((x==width-2 || (x==(width/2)-3 && y<=4))&& this.state==0) setState(1);
     }
 
     public int getState(){
