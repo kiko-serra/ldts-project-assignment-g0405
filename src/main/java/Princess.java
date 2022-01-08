@@ -25,4 +25,8 @@ public class Princess extends Components implements Characters{
         this.jackPosition.setX(pos.getX());
         this.jackPosition.setY(pos.getY());
     }
+
+    public Position getJackPosition(){
+        return jackPosition;
+    }
 }
