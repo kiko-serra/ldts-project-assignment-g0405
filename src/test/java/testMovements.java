@@ -60,6 +60,34 @@ public class testMovements {
     }
 
     @Test
+    public void testMovePosition(){
+        Position position = new Position(15,25);
+
+        assertEquals(15,position.getX());
+        assertEquals(25,position.getY());
+
+        position.setX(10);
+        position.setY(20);
+        assertEquals(10,position.getX());
+        assertEquals(20,position.getY());
+
+        Position position1 = position.moveUp();
+        assertEquals(19,position1.getY());
+
+        Position position2 = position.moveDown();
+        assertEquals(21,position2.getY());
+
+        Position position3 = position.moveLeft();
+        assertEquals(9,position3.getX());
+
+        Position position4 = position.moveRight();
+        assertEquals(11,position4.getX());
+
+        assertEquals(true, position.equals(new Position(10,20)));
+        assertEquals(false, position.equals(new Position(11,20)));
+    }
+
+    @Test
     public void testMovePrincess(){
         Princess princess = new Princess(10,20);
 
