@@ -174,21 +174,17 @@ public class Map {
                     break;
             }
         }
-        else if(this.exit != null) movePrincess();
+        else if(this.exit != null) princess.move();;
 
         eatBiscuits();
         if(this.key != null) collectKey();
         this.openExit();
     }
 
-    private void movePrincess(){
-        princess.move();
-    }
-
     public boolean movePirate(){
         for (Pirates pirate : pirates){
             pirate.move();
-            pirate.canPirateMove(pirate, width);
+            pirate.canPirateMove( width);
         }
         checkJackColision();
         return jack.checkIfDead();
