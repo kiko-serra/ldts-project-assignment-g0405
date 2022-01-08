@@ -8,7 +8,7 @@ public class Princess extends Components implements Characters{
 
     public Princess(int x, int y) {
         super(x, y);
-        this.position = getPosition();
+        this.position = super.getPosition();
     }
 
     public void draw(TextGraphics graphics) {
@@ -21,6 +21,7 @@ public class Princess extends Components implements Characters{
     }
 
     public void setJackPosition(Position pos){
-        this.jackPosition = pos;
+        this.jackPosition.setX(pos.getX());
+        this.jackPosition.setY(pos.getY());
     }
 }

@@ -29,10 +29,10 @@ public class JackTheSparrow extends Components implements Characters{
 
     public void move() {
         switch (direction) {
-            case ArrowUp -> setPosition(position.moveUp());
-            case ArrowDown -> setPosition(position.moveDown());
-            case ArrowRight -> setPosition(position.moveRight());
-            case ArrowLeft -> setPosition(position.moveLeft());
+            case ArrowUp -> this.setPosition(position.moveUp());
+            case ArrowDown -> this.setPosition(position.moveDown());
+            case ArrowRight -> this.setPosition(position.moveRight());
+            case ArrowLeft -> this.setPosition(position.moveLeft());
         }
     }
 
@@ -67,9 +67,6 @@ public class JackTheSparrow extends Components implements Characters{
     }
 
     public boolean checkIfDead(){
-        if (this.lives == 0){
-            return true;
-        }
-        return false;
+        return this.lives == 0;
     }
 }

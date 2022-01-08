@@ -156,6 +156,7 @@ public class Map {
     }
 
     private void moveJack(KeyType press){
+        princess.setJackPosition(jack.getPosition());
         jack.move();
         if(jack.canJackMove(borders, prison)){
             switch (press) {
@@ -168,11 +169,12 @@ public class Map {
 
         eatBiscuits();
         if(this.key != null) collectKey();
-        this.openExit();
         if(this.exit != null) movePrincess();
+        this.openExit();
     }
 
     private void movePrincess(){
+        System.out.println("hello");
         princess.move();
     }
 
