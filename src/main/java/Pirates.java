@@ -39,10 +39,13 @@ public class Pirates extends Components implements Characters{
         }
     }
 
-    public void canPirateMove(Pirates pirate, int width){
-        if ((pirate.getPosition().getX()==1 || (pirate.getPosition().getX()==(width/2)+3 && pirate.getPosition().getY()<=4)) && pirate.state==1) setState(0);
+    public void canPirateMove(int width){
+        int x = this.getPosition().getX();
+        int y = this.getPosition().getY();
 
-        if ((pirate.getPosition().getX()==width-2 || (pirate.getPosition().getX()==(width/2)-3 && pirate.getPosition().getY()<=4))&& pirate.state==0) setState(1);
+        if ((x==1 || (x==(width/2)+3 && y<=4)) && this.state==1) setState(0);
+
+        if ((x==width-2 || (x==(width/2)-3 && y<=4))&& this.state==0) setState(1);
     }
 
     public int getState(){
