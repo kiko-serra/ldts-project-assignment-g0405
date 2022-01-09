@@ -1,8 +1,11 @@
-.idea/
-.gradle/
+/.idea/
+/.gradle/
 out/
-build/
+/build/
 *.iml
-.gradle
+/gradle/
+gradlew
+gradlew.bat
 .gradle/7.1/executionHistory/executionHistory.lock
 .DS_Store
+/bin/
