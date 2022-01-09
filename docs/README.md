@@ -58,6 +58,14 @@ This project was developed by _André Costa_ (https://github.com/AndreCosta20190
 
 - **Removing lives** - Any Pirate that hits Jack removes one of the three lives he has.
 
+### Princess
+
+- **Following Jack** - When Jack enters the prison, the Princess will start following until they leave the map.
+<p align="center">
+    <img width=550 src="images/openExit&RescuePrincess.com-gif-maker.gif">
+</p>
+
+- **Removing lives** - Any Pirate that hits Jack removes one of the three lives he has.
 ## PLANNED FEATURES
 
 - **Different Pirates** - We will make three kinds of Pirates, each one with different speeds and the bigger one will leave bombs behind.
