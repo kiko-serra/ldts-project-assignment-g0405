@@ -29,17 +29,21 @@ This project was developed by _André Costa_ (https://github.com/AndreCosta20190
 <p align="center">
     <img width="550" src="images/jackMoves.gif">
 </p>
+
 - **Getting biscuits** - When Jack hits a biscuit his score goes up by one biscuit until he reaches the maximum score.
 <p align="center">
     <img width=550 src="images/catchCoockie.com-gif-maker.gif">
 </p>
+
 - **Catching key** - For Jack to release his beloved Princess he needs to catch the key to open the prison door.
 <p align="center">
     <img width=550 src="images/catchCoin&OpenPrison.com-gif-maker.gif">
 </p>
+
 <p align="center">
     <img width=550 src="images/openExit&RescuePrincess.com-gif-maker.gif">
 </p>
+
 - **Lives** - Collisions are implemented so that each time Jack gets hit by one of the pirates he loses a life. When the game starts Jack has 3 lives, and if he loses them all he dies.
 <p align="center">
     <img width=550 src="images/dieToPirates.com-gif-maker.gif">
@@ -51,6 +55,7 @@ This project was developed by _André Costa_ (https://github.com/AndreCosta20190
 <p align="center">
     <img width=550 src="images/pirateMoves.com-gif-maker.gif">
 </p>
+
 - **Removing lives** - Any Pirate that hits Jack removes one of the three lives he has.
 
 ## PLANNED FEATURES
@@ -59,7 +64,7 @@ This project was developed by _André Costa_ (https://github.com/AndreCosta20190
 - **Menu** - There will be a menu when you open the game with some buttons.
 - **Personalized Font** - We'll create a new font to have our characters and some objects printed on the game.
 - **Game Over** - After you die there will be a message on the screen saying that you've died and if you want to restart playing.
-- **Lives abd score** - On the lower portion of the game will have the amount of lives remaining and how many biscuits you have caught.
+- **Lives and score** - On the lower portion of the game will have the amount of lives remaining and how many biscuits you have caught.
 
 
 ### TESTING
