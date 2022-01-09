@@ -204,7 +204,6 @@ public class Map {
         for (Pirates pirate: pirates){
             if (jack.getPosition().equals(pirate.getPosition())){
                 jack.setLives();
-                System.out.println(jack.lives);
             }
         }
     }
