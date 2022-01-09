@@ -67,14 +67,13 @@ This project was developed by _André Costa_ (https://github.com/AndreCosta20190
 - **Lives and score** - On the lower portion of the game will have the amount of lives remaining and how many biscuits you have caught.
 
 
-### TESTING
+## TESTING
 
-- Screenshot of coverage report.
+### Coverage Report
 <p align="center">
     <img width=550 src="images/intermediateReportCoverage.png">
 </p>
 
-- Link to mutation testing report.
 
 ### SELF-EVALUATION
 
