@@ -35,6 +35,8 @@ public class testMap {
                 }
                 return true;
             }
+
+            
         }
 
         MapStub map = new MapStub(40,40);
