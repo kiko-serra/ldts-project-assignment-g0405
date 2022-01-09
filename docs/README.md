@@ -71,7 +71,7 @@ This project was developed by _André Costa_ (https://github.com/AndreCosta20190
 
 - Screenshot of coverage report.
 <p align="center">
-    <img width=550 src="images/intermidiateReportCoverage.png">
+    <img width=550 src="images/intermediateReportCoverage.png">
 </p>
 
 - Link to mutation testing report.
