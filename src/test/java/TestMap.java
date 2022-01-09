@@ -3,7 +3,7 @@ import org.junit.jupiter.api.Test;
 import java.util.BitSet;
 import java.util.List;
 
-public class testMap {
+public class TestMap {
     @Test
     public void testMap(){
 

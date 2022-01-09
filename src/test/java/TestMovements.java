@@ -2,7 +2,7 @@ import com.googlecode.lanterna.input.KeyType;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class testMovements {
+public class TestMovements {
 
     @Test
     public void testMoveJackTheSparrow(){
