@@ -37,7 +37,6 @@ public class testMap {
             }
         }
 
-
         MapStub map = new MapStub(40,40);
         List<Borders> borders = map.getBorders();
         List<Biscuits> biscuits = map.getBiscuits();
@@ -46,7 +45,5 @@ public class testMap {
         JackTheSparrow jack = map.getJack();
         Key key = map.getKey();
         Exit exit = map.getExit();
-
-
     }
 }
