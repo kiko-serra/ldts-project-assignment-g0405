@@ -74,9 +74,10 @@ This project was developed by _André Costa_ (https://github.com/AndreCosta20190
     <img width=550 src="images/intermediateReportCoverage.png">
 </p>
 
-
+<!---
 ### SELF-EVALUATION
 
 - André Costa: 
 - Francisco Serra: 
 - Válter Castro:
+ -->
