@@ -30,6 +30,40 @@ public class testComponents {
     }
 
     @Test
+    public void test_jack_the_sparrow() {
+        JackTheSparrow jack = new JackTheSparrow(10, 20);
+
+        assertEquals(10, jack.getPosition().getX());
+        assertEquals(20, jack.getPosition().getY());
+
+        jack.setJackDirection(KeyType.ArrowDown);
+        assertEquals(KeyType.ArrowDown, jack.getDirection());
+        jack.setJackDirection(KeyType.ArrowUp);
+        assertEquals(KeyType.ArrowUp, jack.getDirection());
+        jack.setJackDirection(KeyType.ArrowLeft);
+        assertEquals(KeyType.ArrowLeft, jack.getDirection());
+        jack.setJackDirection(KeyType.ArrowRight);
+        assertEquals(KeyType.ArrowRight, jack.getDirection());
+
+        jack.setLives();
+        jack.setLives();
+        jack.setLives();
+
+        assertEquals(true, jack.checkIfDead());
+
+        jack.setPoints();
+
+        assertEquals(1, jack.getPoints());
+
+        JackTheSparrow jack1 = new JackTheSparrow(15, 20);
+
+        jack1.setLives();
+        assertEquals(false, jack1.checkIfDead());
+
+        assertEquals(0, jack1.getPoints());
+    }
+
+    @Test
     public void testExit(){
         Exit exit = new Exit(10,20);
 
