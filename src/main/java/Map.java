@@ -244,36 +244,4 @@ public class Map {
             return comparePositions(this.jack.getPosition(), this.exit.getPosition(), 0, 0);
         else return false;
     }
-
-    public List<Borders> getBorders(){
-        return borders;
-    }
-
-    public List<Biscuits> getBiscuits(){
-        return biscuits;
-    }
-
-    public List<Borders> getPrison(){
-        return prison;
-    }
-
-    public List<Pirates> getPirates(){
-        return pirates;
-    }
-
-    public Exit getExit(){
-        return exit;
-    }
-
-    public Key getKey(){
-        return key;
-    }
-
-    public JackTheSparrow getJack(){
-        return jack;
-    }
-
-    public Princess getPrincess(){
-        return princess;
-    }
 }
