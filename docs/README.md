@@ -20,28 +20,40 @@ This project was developed by _André Costa_ (https://github.com/AndreCosta20190
   * [Princess](#princess)
 
 
+## IMPLEMENTED FEATURES
 
 
-
-
-
-### IMPLEMENTED FEATURES
-
-> This section should contain a list of implemented features and their descriptions. In the end of the section, include two or three screenshots that illustrate the most important features.
-
-#### Jack the Sparrow
+### Jack the Sparrow
 
 - **Movement** - The game character will move according to the direction of the arrow key pressed, and he can´t walk through the borders.
+<p align="center">
+    <img width=550 src="images/jackMoves.gif">
+</p>
 - **Getting biscuits** - When Jack hits a biscuit his score goes up by one biscuit until he reaches the maximum score.
+<p align="center">
+    <img width=550 src="images/catchCoockie.com-gif-maker.gif">
+</p>
 - **Catching key** - For Jack to release his beloved Princess he needs to catch the key to open the prison door.
-- **Lives** - Collisions are implemented so that each time Jack gets hit by one of the pirates he loses a life. When the game starts Jack has 3 lives.
+<p align="center">
+    <img width=550 src="images/catchCoin&OpenPrison.com-gif-maker.gif">
+</p>
+<p align="center">
+    <img width=550 src="images/openExit&RescuePrincess.com-gif-maker.gif">
+</p>
+- **Lives** - Collisions are implemented so that each time Jack gets hit by one of the pirates he loses a life. When the game starts Jack has 3 lives, and if he loses them all he dies.
+<p align="center">
+    <img width=550 src="images/dieToPirates.com-gif-maker.gif">
+</p>
 
-#### Pirates
+### Pirates
 
 - **Movement** - Each pirate moves independently horizontally and when they hit a border their direction changes.
+<p align="center">
+    <img width=550 src="images/pirateMoves.com-gif-maker.gif">
+</p>
 - **Removing lives** - Any Pirate that hits Jack removes one of the three lives he has.
 
-### PLANNED FEATURES
+## PLANNED FEATURES
 
 > This section is similar to the previous one but should list the features that are not yet implemented. Instead of screenshots you should include GUI mock-ups for the planned features.
 - **Different Pirates** - We will make three kinds of Pirates, each one with different speeds and the bigger one will leave bombs behind.
@@ -51,7 +63,7 @@ This project was developed by _André Costa_ (https://github.com/AndreCosta20190
 - **Lives abd score** - On the lower portion of the game will have the amount of lives remaining and how many biscuits you have caught.
 
 
-### DESIGN
+## DESIGN
 
 > This section should be organized in different subsections, each describing a different design problem that you had to solve during the project. Each subsection should be organized in four different parts:
 
@@ -117,8 +129,6 @@ A way to improve the code would be to move the `isPlatformSegmentSolid()` method
 
 ### SELF-EVALUATION
 
-> In this section describe how the work regarding the project was divided between the students. In the event that members of the group do not agree on a work distribution, the group should send an email to the teacher explaining the disagreement.
-
 - André Costa: 
 - Francisco Serra: 
-- Válter Castro
+- Válter Castro:
