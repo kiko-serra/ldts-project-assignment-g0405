@@ -244,4 +244,8 @@ public class Map {
             return comparePositions(this.jack.getPosition(), this.exit.getPosition(), 0, 0);
         else return false;
     }
+
+    public JackTheSparrow getJack(){
+        return this.jack;
+    }
 }
