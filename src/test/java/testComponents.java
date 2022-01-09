@@ -93,7 +93,5 @@ public class testComponents {
 
         assertEquals(20, princess.getJackPosition().getX());
         assertEquals(25, princess.getJackPosition().getY());
-
     }
-
 }
