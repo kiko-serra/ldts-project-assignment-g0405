@@ -16,11 +16,12 @@ public class Map {
     JackTheSparrow jack;
     Princess princess;
 
-    private final List<Borders> borders;
-    private final List<Biscuits> biscuits;
-    private final List<Borders> prison;
-    private final List<Pirates> pirates;
+    private List<Borders> borders;
+    private List<Biscuits> biscuits;
+    private List<Borders> prison;
+    private List<Pirates> pirates;
     private Key key;
+    private Exit exit;
 
     public Map(int width, int height) {
         this.width = width;
@@ -34,6 +35,7 @@ public class Map {
         this.biscuits = createBiscuits();
         this.pirates = createPirates();
         this.key = createKey();
+        this.exit = null;
     }
 
     public void draw(TextGraphics graphics) {
@@ -112,7 +114,7 @@ public class Map {
         List<Pirates> pirates = new ArrayList<>();
         Pirates pirate;
 
-        for (int i = 0; i < 80; i++) {
+        for (int i = 0; i < 8; i++) {
             pirate = new Pirates(random.nextInt(width - 2) + 1, random.nextInt(height - 3) + 1);
 
             if(checkPosition(pirate, biscuits)){
@@ -148,30 +150,41 @@ public class Map {
     }
 
     public void keyStrokes (KeyStroke press){
+        princess.setJackPosition(jack.getPosition());
         jack.setJackDirection(press.getKeyType());
         moveJack(press.getKeyType());
     }
 
     private void moveJack(KeyType press){
+        princess.setJackPosition(jack.getPosition());
         jack.move();
-        eatBiscuits();
-        if(key != null) collectKey();
-        this.openExit();
         if(jack.canJackMove(borders, prison)){
             switch (press) {
-                case ArrowUp -> jack.setPosition(jack.getPosition().moveDown());
-                case ArrowDown -> jack.setPosition(jack.getPosition().moveUp());
-                case ArrowRight -> jack.setPosition(jack.getPosition().moveLeft());
-                case ArrowLeft -> jack.setPosition(jack.getPosition().moveRight());
+                case ArrowUp:
+                    jack.setPosition(jack.getPosition().moveDown());
+                    break;
+                case ArrowDown:
+                    jack.setPosition(jack.getPosition().moveUp());
+                    break;
+                case ArrowRight:
+                    jack.setPosition(jack.getPosition().moveLeft());
+                    break;
+                case ArrowLeft:
+                    jack.setPosition(jack.getPosition().moveRight());
+                    break;
             }
         }
+        else if(this.exit != null) princess.move();;
 
+        eatBiscuits();
+        if(this.key != null) collectKey();
+        this.openExit();
     }
 
     public boolean movePirate(){
         for (Pirates pirate : pirates){
             pirate.move();
-            pirate.canPirateMove(pirate, width);
+            pirate.canPirateMove( width);
         }
         checkJackColision();
         return jack.checkIfDead();
@@ -200,7 +213,7 @@ public class Map {
         if (jack.getPosition().equals(key.getPosition())){
             key = null;
             for (Borders border: prison){
-                if (comparePositions(border.getPosition(), princess.getPosition(), 0, 1)){
+                if (comparePositions(border.getPosition(), princess.getPosition(), 0, 2)){
                     prison.remove(border);
                     break;
                 }
@@ -212,6 +225,7 @@ public class Map {
         if(comparePositions(jack.getPosition(), princess.getPosition(), 0, 1)){
             for(Borders border: borders){
                 if(border.getPosition().getX() == (width/2) && border.getPosition().getY() == height-1){
+                    this.exit = new Exit(border.getPosition().getX(), border.getPosition().getY());
                     borders.remove(border);
                     break;
                 }
