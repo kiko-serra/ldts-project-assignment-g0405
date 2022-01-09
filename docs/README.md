@@ -70,6 +70,10 @@ This project was developed by _André Costa_ (https://github.com/AndreCosta20190
 ### TESTING
 
 - Screenshot of coverage report.
+<p align="center">
+    <img width=550 src="images/intermidiateReportCoverage.png">
+</p>
+
 - Link to mutation testing report.
 
 ### SELF-EVALUATION
