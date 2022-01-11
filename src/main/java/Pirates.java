@@ -9,11 +9,13 @@ import java.util.Random;
 public class Pirates extends Components implements Characters{
     private int state;
     private Position position;
+    private int speed;
 
     public Pirates(int x, int y) {
         super(x, y);
         this.position = super.getPosition();
         this.state= new Random().nextInt(2);
+        this.state=0;
     }
 
     public void setState(int state){
@@ -50,6 +52,12 @@ public class Pirates extends Components implements Characters{
 
     public int getState(){
         return state;
+    }
+
+    public int getSpeed(){return speed;}
+
+    public void setSpeed(int speed){
+        this.speed=speed;
     }
 }
 
