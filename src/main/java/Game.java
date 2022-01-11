@@ -10,15 +10,18 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class Game {
-    private final int width = 40;
-    private final int height = 20;
+    private final int width;
+    private final int height;
     private final TerminalScreen screen;
-    public Map map = new Map(width, height);
-    Timer timer;
-    private final Menu menu;
+    public Map map;
 
-    class Aux extends TimerTask
-    {
+    private final Menu menu;
+    private int menuChoice;
+
+    Timer timer;
+    TimerTask moving;
+
+    class Aux extends TimerTask {
         public void run()
         {
             if(map.movePirate()) {
@@ -38,6 +41,9 @@ public class Game {
     }
 
     public Game(int width, int height) throws IOException {
+        this.width = width;
+        this.height = height;
+
         Terminal terminal = new DefaultTerminalFactory().setInitialTerminalSize(new TerminalSize(width, height)).createTerminal();
         screen = new TerminalScreen(terminal);
 
@@ -45,27 +51,41 @@ public class Game {
         screen.startScreen();             // screens must be started
         screen.doResizeIfNecessary();     // resize screen if necessary
 
+        map = new Map(width, height);
+
         timer = new Timer();
-        TimerTask moving = new Aux();
-        timer.scheduleAtFixedRate(moving, 100, 100);
+        moving = new Aux();
+
 
         menu = new Menu(this);
-
+        this.menuChoice = -1;
     }
 
     public void draw() throws IOException {
         screen.clear();
-        menu.draw(screen.newTextGraphics());
+        map.draw(screen.newTextGraphics());
         screen.refresh();
     }
 
     public void run() throws IOException {
-        menu.menuRun(screen);
+        setMenuChoice(menu.menuRun(screen));
+        timer.scheduleAtFixedRate(moving, 100, 100);
 
+        if (this.menuChoice == 0) newGame();
+        //else if(this.menuChoice == 1) instructions();
+        else if(this.menuChoice == 2) {
+            timer.cancel();
+            timer.purge();
+            screen.close();
+        }
+    }
+
+    private void newGame() throws IOException {
         while (true) {
             draw();
+
             KeyStroke press = screen.readInput();
-            if ((press.getKeyType() == KeyType.Character && press.getCharacter() == 'q') || map.checkJackOnExitDoor() || map.getJack().checkIfDead()){
+            if ((press.getKeyType() == KeyType.Character && press.getCharacter() == 'q') || map.checkJackOnExitDoor() || map.getJack().checkIfDead()) {
                 timer.cancel();
                 timer.purge();
                 screen.close();
@@ -83,5 +103,7 @@ public class Game {
     public int getWidth(){ return this.width; }
 
     public int getHeight(){ return this.height; }
+
+    private void setMenuChoice(int menuChoice){ this.menuChoice = menuChoice; }
 
 }

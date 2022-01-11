@@ -12,13 +12,16 @@ import java.util.List;
 public class Menu {
     private final Game game;
     private final List<Button> buttons;
+    private int selector;
 
     public Menu(Game game){
         this.game = game;
 
-        this.buttons = Arrays.asList(new Button(game.getWidth(), "NEW GAME", "#ffff00", 5),
-                                     new Button(game.getWidth(), "INSTRUCTIONS", "#FFFFFF", 10),
-                                     new Button(game.getWidth(), "QUIT GAME", "#FFFFFF", 15));
+        this.buttons = Arrays.asList(new Button(game.getWidth(), "NEW GAME", "#ffff00", 4),
+                                     new Button(game.getWidth(), "INSTRUCTIONS", "#FFFFFF", 9),
+                                     new Button(game.getWidth(), "QUIT GAME", "#FFFFFF", 14));
+
+        this.selector = 0;
     }
 
     public void draw(TextGraphics graphics){
@@ -29,12 +32,33 @@ public class Menu {
         }
     }
 
-    public void menuRun(TerminalScreen screen) throws IOException {
-        while (true) {
+    public int menuRun(TerminalScreen screen) throws IOException {
+        int helper_guy = 0;
+        do {
+            screen.clear();
+            draw(screen.newTextGraphics());
+            screen.refresh();
+
+            buttons.get(this.selector).changeColor("#ffffff");
+
             KeyStroke press = screen.readInput();
-            /*if (){
-            }*/
-            break;
-        }
+            switch (press.getKeyType()) {
+                case ArrowUp:
+                    if (this.selector != 0) setSelector(-1);
+                    break;
+                case ArrowDown:
+                    if (this.selector != 2) setSelector(1);
+                    break;
+                case Enter:
+                    helper_guy = -1;
+                    break;
+            }
+
+            buttons.get(this.selector).changeColor("#ffff00");
+        } while (helper_guy != -1);
+
+        return this.selector;
     }
+
+    private void setSelector(int incre){ this.selector += incre; }
 }
