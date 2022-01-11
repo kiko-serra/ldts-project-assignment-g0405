@@ -10,9 +10,12 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class Game {
+    private final int width = 40;
+    private final int height = 20;
     private final TerminalScreen screen;
-    private Map map = new Map(40, 20);
+    public Map map = new Map(width, height);
     Timer timer;
+    private final Menu menu;
 
     class Aux extends TimerTask
     {
@@ -46,15 +49,19 @@ public class Game {
         TimerTask moving = new Aux();
         timer.scheduleAtFixedRate(moving, 100, 100);
 
+        menu = new Menu(this);
+
     }
 
     public void draw() throws IOException {
         screen.clear();
-        map.draw(screen.newTextGraphics());
+        menu.draw(screen.newTextGraphics());
         screen.refresh();
     }
 
     public void run() throws IOException {
+        menu.menuRun(screen);
+
         while (true) {
             draw();
             KeyStroke press = screen.readInput();
@@ -63,9 +70,18 @@ public class Game {
                 timer.purge();
                 screen.close();
             }
-            if (press.getKeyType() == KeyType.EOF)
+            if (press.getKeyType() == KeyType.EOF) {
+                timer.cancel();
+                timer.purge();
+                screen.close();
                 break;
+            }
             map.keyStrokes(press);
         }
     }
+
+    public int getWidth(){ return this.width; }
+
+    public int getHeight(){ return this.height; }
+
 }
