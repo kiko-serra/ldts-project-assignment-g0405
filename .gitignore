@@ -1,10 +1,16 @@
-.idea/
-.gradle/
-out/
-build/
+### Gradle ###
 gradle/
-*.iml
+.gradle/
 gradlew
 gradlew.bat
-.gradle/7.1/executionHistory/executionHistory.lock
-**.DS_Store
+
+### Gradle Patch ###
+**/build/
+
+# IntelliJ
+out/
+.idea/
+*.iml
+
+# Other things
+*.DS_Store
