@@ -77,7 +77,9 @@ public class Game {
             timer.scheduleAtFixedRate(moving, 100, 100);
             newGame();
         }
-        else if(this.menuChoice == 1) instructions();
+        else if(this.menuChoice == 1) {
+            instructions();
+        }
         else if(this.menuChoice == 2) {
             timer.cancel();
             timer.purge();
@@ -90,25 +92,26 @@ public class Game {
             draw();
 
             KeyStroke press = screen.readInput();
-            if ((press.getKeyType() == KeyType.Character && press.getCharacter() == 'q') || map.checkJackOnExitDoor() || map.getJack().checkIfDead()) {
-                timer.cancel();
-                timer.purge();
-                screen.close();
-            }
-            if (press.getKeyType() == KeyType.EOF) {
+            if ((press.getKeyType() == KeyType.Character && press.getCharacter() == 'q')
+                    || map.checkJackOnExitDoor() || map.getJack().checkIfDead() || press.getKeyType() == KeyType.EOF) {
                 timer.cancel();
                 timer.purge();
                 screen.close();
                 break;
             }
+
             map.keyStrokes(press);
         }
     }
 
     private void instructions() throws IOException {
-        screen.clear();
-        instruction.draw(screen.newTextGraphics());
-        screen.refresh();
+        int helperGuy = instruction.run(screen);
+        if(helperGuy == -1){
+            timer.cancel();
+            timer.purge();
+            screen.close();
+        }
+        else if(helperGuy == 1) run();
     }
 
     public int getWidth(){ return this.width; }
