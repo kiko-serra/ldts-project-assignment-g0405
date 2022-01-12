@@ -21,8 +21,4 @@ public class Button {
     }
 
     public void changeColor(String color){ this.color = color; }
-
-    public void setActive(Boolean active){ this.active = active; }
-
-    public boolean getActive(){ return this.active; }
 }

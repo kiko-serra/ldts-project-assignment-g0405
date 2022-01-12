@@ -18,6 +18,8 @@ public class Game {
     private final Menu menu;
     private int menuChoice;
 
+    private final Instructions instruction;
+
     Timer timer;
     TimerTask moving;
 
@@ -56,9 +58,10 @@ public class Game {
         timer = new Timer();
         moving = new Aux();
 
-
         menu = new Menu(this);
         this.menuChoice = -1;
+
+        instruction = new Instructions(this);
     }
 
     public void draw() throws IOException {
@@ -69,10 +72,12 @@ public class Game {
 
     public void run() throws IOException {
         setMenuChoice(menu.menuRun(screen));
-        timer.scheduleAtFixedRate(moving, 100, 100);
 
-        if (this.menuChoice == 0) newGame();
-        //else if(this.menuChoice == 1) instructions();
+        if (this.menuChoice == 0) {
+            timer.scheduleAtFixedRate(moving, 100, 100);
+            newGame();
+        }
+        else if(this.menuChoice == 1) instructions();
         else if(this.menuChoice == 2) {
             timer.cancel();
             timer.purge();
@@ -98,6 +103,12 @@ public class Game {
             }
             map.keyStrokes(press);
         }
+    }
+
+    private void instructions() throws IOException {
+        screen.clear();
+        instruction.draw(screen.newTextGraphics());
+        screen.refresh();
     }
 
     public int getWidth(){ return this.width; }

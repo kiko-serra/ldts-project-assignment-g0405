@@ -52,6 +52,9 @@ public class Menu {
                 case Enter:
                     helper_guy = -1;
                     break;
+                case EOF:
+                    screen.close();
+                    return 2;
             }
 
             buttons.get(this.selector).changeColor("#ffff00");
