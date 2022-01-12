@@ -18,6 +18,7 @@ public class Game {
     {
         public void run()
         {
+            //pirates only move if Jack is alive
             if(map.movePirate()) {
                 try{
                     screen.close();

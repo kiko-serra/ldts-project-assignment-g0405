@@ -10,12 +10,15 @@ public class Pirates extends Components implements Characters{
     private int state;
     private Position position;
     private int speed;
+    private String charecter;
 
     public Pirates(int x, int y) {
         super(x, y);
         this.position = super.getPosition();
         this.state= new Random().nextInt(2);
         this.state=0;
+        this.speed= new Random().nextInt(3);
+        this.charecter = " ";
     }
 
     public void setState(int state){
@@ -26,17 +29,20 @@ public class Pirates extends Components implements Characters{
     public void draw(TextGraphics graphics) {
         graphics.setForegroundColor(TextColor.Factory.fromString("#B00000"));
         graphics.enableModifiers(SGR.BOLD);
-        graphics.putString(new TerminalPosition(position.getX(), position.getY()), "P");
+        graphics.putString(new TerminalPosition(position.getX(), position.getY()), charecter);
     }
 
     public void move() {
         switch (state) {
             case 0:
                 setPosition(position.moveRight());
+                this.charecter = "P";
                 break;
 
             case 1:
                 setPosition(position.moveLeft());
+                //this.charecter = "ꟼ";
+                this.charecter = "ᕋ";
                 break;
         }
     }
