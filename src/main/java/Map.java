@@ -23,6 +23,7 @@ public class Map {
     private Key key;
     private Exit exit;
     private List<Lives> lives;
+    private Points points;
 
     public Map(int width, int height) {
         this.width = width;
@@ -39,6 +40,7 @@ public class Map {
         this.exit = null;
 
         this.lives = createLives();
+        this.points = new Points(width - 1, height, "Points: ");
     }
 
     public void draw(TextGraphics graphics) {
@@ -54,6 +56,8 @@ public class Map {
             for (Pirates pirate : pirates) pirate.draw(graphics);
             if(key != null) key.draw(graphics);
             for (Lives life : lives) life.draw(graphics);
+
+            points.draw(graphics);
     }
 
     private List<Borders> createBorders() {
@@ -211,6 +215,7 @@ public class Map {
             if (jack.getPosition().equals(biscuit.getPosition())){
                 biscuits.remove(biscuit);
                 jack.setPoints();
+                points.setPoints();
                 break;
             }
         }
