@@ -22,6 +22,7 @@ public class Game {
     private int menuChoice;
 
     private final Instructions instruction;
+    private final EndGameMsg endGameMsg;
 
     Timer timer;
     TimerTask moving;
@@ -83,6 +84,7 @@ public class Game {
         if (this.menuChoice == 0) {
             timer.scheduleAtFixedRate(moving, 100, 100);
             newGame();
+            System.out.println("hello");
         }
         else if(this.menuChoice == 1) {
             instructions();
@@ -99,16 +101,29 @@ public class Game {
             draw();
 
             KeyStroke press = screen.readInput();
-            if ((press.getKeyType() == KeyType.Character && press.getCharacter() == 'q')
-                    || map.checkJackOnExitDoor() || map.getJack().checkIfDead() || press.getKeyType() == KeyType.EOF) {
+            if ((press.getKeyType() == KeyType.Character && press.getCharacter() == 'q') || press.getKeyType() == KeyType.EOF) {
                 timer.cancel();
                 timer.purge();
                 screen.close();
                 break;
             }
+            else if(map.checkJackOnExitDoor()){
+                endGame("Victory!");
+                break;
+            }
+            else if(map.getJack().checkIfDead()){
+                endGame("Game Over!");
+                break;
+            }
 
             map.keyStrokes(press);
         }
+    }
+
+    private void endGame(String msg){
+        timer.cancel();
+        timer.purge();
+        endGameMsg = new EndGameMsg(this, msg);
     }
 
     private void instructions() throws IOException {
