@@ -22,7 +22,6 @@ public class Game {
     private int menuChoice;
 
     private final Instructions instruction;
-    private final EndGameMsg endGameMsg;
 
     Timer timer;
     TimerTask moving;
@@ -32,7 +31,7 @@ public class Game {
         {
             if(map.movePirate()) {
                 try{
-                    screen.close();
+                    endGame("Game Over!");
                 }
                 catch (IOException e) {
                     e.printStackTrace();
@@ -84,7 +83,6 @@ public class Game {
         if (this.menuChoice == 0) {
             timer.scheduleAtFixedRate(moving, 100, 100);
             newGame();
-            System.out.println("hello");
         }
         else if(this.menuChoice == 1) {
             instructions();
@@ -111,19 +109,17 @@ public class Game {
                 endGame("Victory!");
                 break;
             }
-            else if(map.getJack().checkIfDead()){
-                endGame("Game Over!");
-                break;
-            }
 
             map.keyStrokes(press);
         }
     }
 
-    private void endGame(String msg){
+    private void endGame(String msg) throws IOException {
         timer.cancel();
         timer.purge();
-        endGameMsg = new EndGameMsg(this, msg);
+        screen.clear();
+        new EndGameMsg(this, msg).run(screen);
+        screen.close();
     }
 
     private void instructions() throws IOException {

@@ -17,9 +17,9 @@ public class EndGameMsg {
         this.game = game;
         this.msg = msg;
 
-        position = new Position((game.getWidth()/2 - msg.length()/2)-1, game.getHeight()/2 - 1);
+        position = new Position((game.getWidth()/2 - msg.length()/2), game.getHeight()/2 - 1);
 
-        button = new Button(game.getWidth(), "GO BACK", "#ffff00", 25);
+        this.button = new Button(game.getWidth(), "Quit Game", "#ffff00", 14);
     }
 
     public void draw(TextGraphics graphics){
@@ -27,14 +27,13 @@ public class EndGameMsg {
         graphics.fillRectangle(new TerminalPosition(0, 0), new TerminalSize(game.getWidth(), game.getHeight()), ' ');
 
         graphics.putString(new TerminalPosition(position.getX(), position.getY()), msg);
+
         button.draw(graphics);
     }
 
-    public int run(TerminalScreen screen) throws IOException {
+    public void run(TerminalScreen screen) throws IOException {
         int helper_guy = 0;
-        int res = 0;
 
-        screen.clear();
         draw(screen.newTextGraphics());
         screen.refresh();
 
@@ -42,16 +41,10 @@ public class EndGameMsg {
             KeyStroke press = screen.readInput();
             switch (press.getKeyType()) {
                 case Enter:
-                    res = 1;
-                    helper_guy = -1;
-                    break;
                 case EOF:
-                    res = -1;
-                    screen.close();
+                    helper_guy = -1;
                     break;
             }
         } while (helper_guy != -1);
-
-        return res;
     }
 }

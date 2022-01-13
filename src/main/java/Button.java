@@ -5,12 +5,10 @@ public class Button {
     private final String text;
     private final Position position;
     private String color;
-    private boolean active;
 
     public Button( int width, String text, String color, int height) {
         this.text = text;
         this.color = color;
-        this.active = false;
 
         this.position = new Position(width/2 - text.length()/2, height);
     }
