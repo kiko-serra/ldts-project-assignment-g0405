@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="TestMovements" tests="4" skipped="0" failures="0" errors="0" timestamp="2022-01-09T11:48:21" hostname="LAPTOP-T1FUMB4N" time="0.005">
+<testsuite name="TestMovements" tests="4" skipped="0" failures="0" errors="0" timestamp="2022-01-13T14:51:41" hostname="LAPTOP-T1FUMB4N" time="0.005">
   <properties/>
   <testcase name="testMovePirates()" classname="TestMovements" time="0.0"/>
   <testcase name="testMoveJackTheSparrow()" classname="TestMovements" time="0.001"/>
-  <testcase name="testMovePrincess()" classname="TestMovements" time="0.001"/>
+  <testcase name="testMovePrincess()" classname="TestMovements" time="0.0"/>
   <testcase name="testMovePosition()" classname="TestMovements" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>

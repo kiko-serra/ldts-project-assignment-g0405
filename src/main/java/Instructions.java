@@ -12,13 +12,11 @@ public class Instructions {
 
     public Instructions(Game game){
         position = new Position(2, 2);
-        text = """
-                For the player to win the game with the highest score, 
-                it needs to catch all the biscuits, which represents the score, 
-                and the special key to open the prison door where the Princess is being kept.
-
-                After rescuing the Princess is opened and Jack needs to leave the map through that door.
-                """;
+        text = " For the player to win the game with the highest score, " +
+                "it needs to catch all the biscuits, which represents the score, " +
+                "and the special key to open the prison door where the Princess is being kept." +
+                "\n" +
+                "After rescuing the Princess is opened and Jack needs to leave the map through that door.";
         button = new Button(game.getWidth(), "GO BACK", "#ffff00", 25);
     }
 
