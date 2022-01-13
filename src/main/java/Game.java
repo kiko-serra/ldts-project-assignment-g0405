@@ -4,7 +4,10 @@ import com.googlecode.lanterna.input.KeyType;
 import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
+import com.googlecode.lanterna.terminal.swing.AWTTerminalFontConfiguration;
+import com.googlecode.lanterna.terminal.swing.SwingTerminalFontConfiguration;
 
+import java.awt.*;
 import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -46,7 +49,11 @@ public class Game {
         this.width = width;
         this.height = height;
 
-        Terminal terminal = new DefaultTerminalFactory().setInitialTerminalSize(new TerminalSize(width, height+1)).createTerminal();
+        Font font = new Font("WenQuanYi Zen Hei Mono", Font.BOLD, 20);
+        AWTTerminalFontConfiguration cfg = new SwingTerminalFontConfiguration(true, AWTTerminalFontConfiguration.BoldMode.NOTHING, font);
+        TerminalSize terminalSize = new TerminalSize(width, height+1);
+        DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory().setInitialTerminalSize(terminalSize).setTerminalEmulatorFontConfiguration(cfg);
+        Terminal terminal = terminalFactory.createTerminal();
         screen = new TerminalScreen(terminal);
 
         screen.setCursorPosition(null);   // we don't need a cursor
