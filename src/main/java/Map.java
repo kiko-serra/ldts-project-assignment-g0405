@@ -49,15 +49,14 @@ public class Map {
 
             jack.draw(graphics);
             princess.draw(graphics);
+            for (Lives life : lives) life.draw(graphics);
+            points.draw(graphics);
 
             for (Borders border : borders) border.draw(graphics);
             for (Biscuits biscuit : biscuits) biscuit.draw(graphics);
             for (Borders border : prison) border.draw(graphics);
             for (Pirates pirate : pirates) pirate.draw(graphics);
             if(key != null) key.draw(graphics);
-            for (Lives life : lives) life.draw(graphics);
-
-            points.draw(graphics);
     }
 
     private List<Borders> createBorders() {
