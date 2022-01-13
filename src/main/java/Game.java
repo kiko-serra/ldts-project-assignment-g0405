@@ -46,7 +46,7 @@ public class Game {
         this.width = width;
         this.height = height;
 
-        Terminal terminal = new DefaultTerminalFactory().setInitialTerminalSize(new TerminalSize(width, height)).createTerminal();
+        Terminal terminal = new DefaultTerminalFactory().setInitialTerminalSize(new TerminalSize(width, height+1)).createTerminal();
         screen = new TerminalScreen(terminal);
 
         screen.setCursorPosition(null);   // we don't need a cursor
