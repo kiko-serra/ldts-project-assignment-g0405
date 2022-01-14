@@ -22,6 +22,8 @@ public class Map {
     private List<Pirates> pirates;
     private Key key;
     private Exit exit;
+    private List<Lives> lives;
+    private Points points;
 
     public Map(int width, int height) {
         this.width = width;
@@ -36,6 +38,9 @@ public class Map {
         this.pirates = createPirates();
         this.key = createKey();
         this.exit = null;
+
+        this.lives = createLives();
+        this.points = new Points(width - 1, height, "Points: ");
     }
 
     public void draw(TextGraphics graphics) {
@@ -44,6 +49,8 @@ public class Map {
 
             jack.draw(graphics);
             princess.draw(graphics);
+            for (Lives life : lives) life.draw(graphics);
+            points.draw(graphics);
 
             for (Borders border : borders) border.draw(graphics);
             for (Biscuits biscuit : biscuits) biscuit.draw(graphics);
@@ -132,6 +139,18 @@ public class Map {
         return pirates;
     }
 
+    private List<Lives> createLives(){
+        int k = 0;
+        List<Lives> l = new ArrayList<>();
+
+        for(int i = 0; i < 3; i++){
+            l.add(new Lives(1 + k, height));
+            k += 2;
+        }
+
+        return l;
+    }
+
     //verifica se o objeto esta dentro da prisao ou se esta coincidente com as paredes da mesma
     private boolean checkPosition (Components component, List<Biscuits> biscuits){
         for (int i=-1; i<3; i++){
@@ -174,7 +193,7 @@ public class Map {
                     break;
             }
         }
-        else if(this.exit != null) princess.move();;
+        else if(this.exit != null) princess.move();
 
         eatBiscuits();
         if(this.key != null) collectKey();
@@ -195,6 +214,7 @@ public class Map {
             if (jack.getPosition().equals(biscuit.getPosition())){
                 biscuits.remove(biscuit);
                 jack.setPoints();
+                points.setPoints();
                 break;
             }
         }
@@ -204,6 +224,7 @@ public class Map {
         for (Pirates pirate: pirates){
             if (jack.getPosition().equals(pirate.getPosition())){
                 jack.setLives();
+                lives.remove(lives.get(lives.size()-1));
             }
         }
     }
