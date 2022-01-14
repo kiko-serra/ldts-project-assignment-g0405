@@ -53,11 +53,11 @@ public class Game {
         Font font = new Font("WenQuanYi Zen Hei Mono", Font.BOLD, 20);
         AWTTerminalFontConfiguration cfg = new SwingTerminalFontConfiguration(true, AWTTerminalFontConfiguration.BoldMode.NOTHING, font);
         TerminalSize terminalSize = new TerminalSize(width, height+1);
-        DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory().
-                setInitialTerminalSize(terminalSize)
-                .setTerminalEmulatorFontConfiguration(cfg).
-                setForceAWTOverSwing(true).
-                setTerminalEmulatorTitle("Crossy Map");
+        DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory()
+                .setInitialTerminalSize(terminalSize)
+                .setTerminalEmulatorFontConfiguration(cfg)
+                .setForceAWTOverSwing(true)
+                .setTerminalEmulatorTitle("Crossy Map");
 
         Terminal terminal = terminalFactory.createTerminal();
         ((AWTTerminalFrame)terminal).setResizable(false);
