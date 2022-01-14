@@ -5,6 +5,7 @@ import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
 import com.googlecode.lanterna.terminal.swing.AWTTerminalFontConfiguration;
+import com.googlecode.lanterna.terminal.swing.AWTTerminalFrame;
 import com.googlecode.lanterna.terminal.swing.SwingTerminalFontConfiguration;
 
 import java.awt.*;
@@ -99,8 +100,14 @@ public class Game {
         Font font = new Font("Courier", Font.BOLD, 20);
         AWTTerminalFontConfiguration cfg = new SwingTerminalFontConfiguration(true, AWTTerminalFontConfiguration.BoldMode.NOTHING, font);
         TerminalSize terminalSize = new TerminalSize(width, height+1);
-        DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory().setInitialTerminalSize(terminalSize).setTerminalEmulatorFontConfiguration(cfg);
+        DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory()
+                .setInitialTerminalSize(terminalSize)
+                .setTerminalEmulatorFontConfiguration(cfg)
+                .setForceAWTOverSwing(true)
+                .setTerminalEmulatorTitle("Cross the Map");
+
         Terminal terminal = terminalFactory.createTerminal();
+        ((AWTTerminalFrame)terminal).setResizable(false);
         screen = new TerminalScreen(terminal);
 
         screen.setCursorPosition(null);   // we don't need a cursor
