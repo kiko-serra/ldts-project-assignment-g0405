@@ -23,10 +23,56 @@ public class Game {
 
     private final Instructions instruction;
 
-    Timer timer;
-    TimerTask moving;
+    Timer timer1;
+    TimerTask moving1;
+
+    Timer timer2;
+    TimerTask moving2;
+
+    Timer timer3;
+    TimerTask moving3;
 
     class Aux extends TimerTask {
+        public void run()
+        {
+            //pirates only move if Jack is alive
+            if(map.movePirate()) {
+                try{
+                    endGame("Game Over!");
+                }
+                catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            try {
+                draw();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    class Aux2 extends TimerTask {
+        public void run()
+        {
+            //pirates only move if Jack is alive
+            if(map.movePirate()) {
+                try{
+                    endGame("Game Over!");
+                }
+                catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            try {
+                draw();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    class Aux3 extends TimerTask {
         public void run()
         {
             //pirates only move if Jack is alive
@@ -50,7 +96,7 @@ public class Game {
         this.width = width;
         this.height = height;
 
-        Font font = new Font("WenQuanYi Zen Hei Mono", Font.BOLD, 20);
+        Font font = new Font("Courier", Font.BOLD, 20);
         AWTTerminalFontConfiguration cfg = new SwingTerminalFontConfiguration(true, AWTTerminalFontConfiguration.BoldMode.NOTHING, font);
         TerminalSize terminalSize = new TerminalSize(width, height+1);
         DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory().setInitialTerminalSize(terminalSize).setTerminalEmulatorFontConfiguration(cfg);
@@ -63,8 +109,14 @@ public class Game {
 
         map = new Map(width, height);
 
-        timer = new Timer();
-        moving = new Aux();
+        timer1 = new Timer();
+        moving1 = new Aux();
+
+        timer2 = new Timer();
+        moving2 = new Aux2();
+
+        timer3 = new Timer();
+        moving3 = new Aux3();
 
         menu = new Menu(this);
         this.menuChoice = -1;
@@ -82,15 +134,15 @@ public class Game {
         setMenuChoice(menu.menuRun(screen));
 
         if (this.menuChoice == 0) {
-            timer.scheduleAtFixedRate(moving, 100, 100);
+            timer1.scheduleAtFixedRate(moving1, 100, 100);
             newGame();
         }
         else if(this.menuChoice == 1) {
             instructions();
         }
         else if(this.menuChoice == 2) {
-            timer.cancel();
-            timer.purge();
+            timer1.cancel();
+            timer1.purge();
             screen.close();
         }
     }
@@ -101,8 +153,8 @@ public class Game {
 
             KeyStroke press = screen.readInput();
             if ((press.getKeyType() == KeyType.Character && press.getCharacter() == 'q') || press.getKeyType() == KeyType.EOF) {
-                timer.cancel();
-                timer.purge();
+                timer1.cancel();
+                timer1.purge();
                 screen.close();
                 break;
             }
@@ -116,8 +168,8 @@ public class Game {
     }
 
     private void endGame(String msg) throws IOException {
-        timer.cancel();
-        timer.purge();
+        timer1.cancel();
+        timer1.purge();
         screen.clear();
         new EndGameMsg(this, msg).run(screen);
         screen.close();
@@ -126,8 +178,8 @@ public class Game {
     private void instructions() throws IOException {
         int helperGuy = instruction.run(screen);
         if(helperGuy == -1){
-            timer.cancel();
-            timer.purge();
+            timer1.cancel();
+            timer1.purge();
             screen.close();
         }
         else if(helperGuy == 1) run();
