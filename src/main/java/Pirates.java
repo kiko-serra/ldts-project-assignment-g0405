@@ -9,7 +9,7 @@ import java.util.Random;
 public class Pirates extends Components implements Characters{
     private int state;
     private Position position;
-    private int speed;
+    private final int size;
     private String charecter;
 
     public Pirates(int x, int y) {
@@ -17,7 +17,7 @@ public class Pirates extends Components implements Characters{
         this.position = super.getPosition();
         this.state= new Random().nextInt(2);
         this.state=0;
-        this.speed= new Random().nextInt(3);
+        this.size= new Random().nextInt(3);
         this.charecter = " ";
     }
 
@@ -60,10 +60,7 @@ public class Pirates extends Components implements Characters{
         return state;
     }
 
-    public int getSpeed(){return speed;}
+    public int getSize(){return size;}
 
-    public void setSpeed(int speed){
-        this.speed=speed;
-    }
 }
 

@@ -57,7 +57,7 @@ public class Game {
         public void run()
         {
             //pirates only move if Jack is alive
-            if(map.movePirate()) {
+            if(map.movePirate2()) {
                 try{
                     endGame("Game Over!");
                 }
@@ -77,7 +77,8 @@ public class Game {
         public void run()
         {
             //pirates only move if Jack is alive
-            if(map.movePirate()) {
+            //map.movepirate(map.getpiratebig)
+            if(map.movePirate3()) {
                 try{
                     endGame("Game Over!");
                 }
@@ -100,6 +101,7 @@ public class Game {
         Font font = new Font("Courier", Font.BOLD, 20);
         AWTTerminalFontConfiguration cfg = new SwingTerminalFontConfiguration(true, AWTTerminalFontConfiguration.BoldMode.NOTHING, font);
         TerminalSize terminalSize = new TerminalSize(width, height+1);
+
         DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory()
                 .setInitialTerminalSize(terminalSize)
                 .setTerminalEmulatorFontConfiguration(cfg)
@@ -141,7 +143,9 @@ public class Game {
         setMenuChoice(menu.menuRun(screen));
 
         if (this.menuChoice == 0) {
-            timer1.scheduleAtFixedRate(moving1, 100, 100);
+            timer1.scheduleAtFixedRate(moving1, 500, 500);
+            timer2.scheduleAtFixedRate(moving2, 250, 250);
+            timer3.scheduleAtFixedRate(moving3, 100, 100);
             newGame();
         }
         else if(this.menuChoice == 1) {
@@ -150,6 +154,13 @@ public class Game {
         else if(this.menuChoice == 2) {
             timer1.cancel();
             timer1.purge();
+
+            timer2.cancel();
+            timer2.purge();
+
+            timer3.cancel();
+            timer3.purge();
+
             screen.close();
         }
     }
@@ -162,6 +173,14 @@ public class Game {
             if ((press.getKeyType() == KeyType.Character && press.getCharacter() == 'q') || press.getKeyType() == KeyType.EOF) {
                 timer1.cancel();
                 timer1.purge();
+
+                timer2.cancel();
+                timer2.purge();
+
+                timer3.cancel();
+                timer3.purge();
+
+
                 screen.close();
                 break;
             }
@@ -177,6 +196,13 @@ public class Game {
     private void endGame(String msg) throws IOException {
         timer1.cancel();
         timer1.purge();
+
+        timer2.cancel();
+        timer2.purge();
+
+        timer3.cancel();
+        timer3.purge();
+
         screen.clear();
         new EndGameMsg(this, msg).run(screen);
         screen.close();
@@ -187,6 +213,10 @@ public class Game {
         if(helperGuy == -1){
             timer1.cancel();
             timer1.purge();
+            timer2.cancel();
+            timer2.purge();
+            timer3.cancel();
+            timer3.purge();
             screen.close();
         }
         else if(helperGuy == 1) run();
