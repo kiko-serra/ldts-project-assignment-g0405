@@ -185,7 +185,6 @@ public class Game {
                 timer3.cancel();
                 timer3.purge();
 
-
                 screen.close();
                 break;
             }
@@ -219,10 +218,13 @@ public class Game {
         if(helperGuy == -1){
             timer1.cancel();
             timer1.purge();
+
             timer2.cancel();
             timer2.purge();
+
             timer3.cancel();
             timer3.purge();
+
             screen.close();
         }
         else if(helperGuy == 1) run();
