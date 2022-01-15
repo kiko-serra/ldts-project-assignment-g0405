@@ -33,6 +33,8 @@ public class Game {
     Timer timer3;
     TimerTask moving3;
 
+    private boolean gameIsOver = false;
+
     class Aux extends TimerTask {
         public void run()
         {
@@ -80,7 +82,9 @@ public class Game {
             //map.movepirate(map.getpiratebig)
             if(map.movePirate(map.getPiratesBig())) {
                 try{
+                    setGameIsOver();
                     endGame("Game Over!");
+                    return;
                 }
                 catch (IOException e) {
                     e.printStackTrace();
@@ -167,6 +171,7 @@ public class Game {
 
     private void newGame() throws IOException {
         while (true) {
+            if(gameIsOver) break;
             draw();
 
             KeyStroke press = screen.readInput();
@@ -210,6 +215,7 @@ public class Game {
 
     private void instructions() throws IOException {
         int helperGuy = instruction.run(screen);
+
         if(helperGuy == -1){
             timer1.cancel();
             timer1.purge();
@@ -228,4 +234,5 @@ public class Game {
 
     private void setMenuChoice(int menuChoice){ this.menuChoice = menuChoice; }
 
+    private void setGameIsOver(){ gameIsOver = true; }
 }

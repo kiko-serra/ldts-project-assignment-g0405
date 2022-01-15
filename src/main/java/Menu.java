@@ -17,16 +17,18 @@ public class Menu {
     public Menu(Game game){
         this.game = game;
 
+
         this.buttons = Arrays.asList(new Button(game.getWidth(), "NEW GAME", "#ffff00", (game.getHeight()/2)-5),
                                      new Button(game.getWidth(), "INSTRUCTIONS", "#FFFFFF", game.getHeight()/2),
                                      new Button(game.getWidth(), "QUIT GAME", "#FFFFFF", (game.getHeight()/2)+5));
+
 
         this.selector = 0;
     }
 
     public void draw(TextGraphics graphics){
         graphics.setBackgroundColor(TextColor.Factory.fromString("#171717"));
-        graphics.fillRectangle(new TerminalPosition(0, 0), new TerminalSize(game.getWidth(), game.getHeight()), ' ');
+        graphics.fillRectangle(new TerminalPosition(0, 0), new TerminalSize(game.getWidth(), game.getHeight()+1), ' ');
         for(Button button: buttons){
             button.draw(graphics);
         }

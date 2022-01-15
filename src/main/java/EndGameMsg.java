@@ -24,7 +24,7 @@ public class EndGameMsg {
 
     public void draw(TextGraphics graphics){
         graphics.setBackgroundColor(TextColor.Factory.fromString("#171717"));
-        graphics.fillRectangle(new TerminalPosition(0, 0), new TerminalSize(game.getWidth(), game.getHeight()), ' ');
+        graphics.fillRectangle(new TerminalPosition(0, 0), new TerminalSize(game.getWidth(), game.getHeight()+1), ' ');
 
         graphics.putString(new TerminalPosition(position.getX(), position.getY()), msg);
 
@@ -34,9 +34,11 @@ public class EndGameMsg {
     public void run(TerminalScreen screen) throws IOException {
         int helper_guy = 0;
 
+        screen.clear();
         draw(screen.newTextGraphics());
         screen.refresh();
 
+        System.out.println("ola");
         do {
             KeyStroke press = screen.readInput();
             switch (press.getKeyType()) {
