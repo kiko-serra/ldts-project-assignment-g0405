@@ -124,7 +124,7 @@ public class Map {
         Random random = new Random();
         Pirates pirate;
 
-        for (int i = 0; i < 8; i++) {
+        for (int i = 0; i < 11; i++) {
             pirate = new Pirates(random.nextInt(width - 2) + 1, random.nextInt(height - 3) + 1);
             if(checkPosition(pirate, biscuits)){
                 switch (pirate.getSize()){
@@ -206,26 +206,8 @@ public class Map {
         this.openExit();
     }
 
-    public boolean movePirate(){
-        for (Pirates pirate : piratesSmall){
-            pirate.move();
-            pirate.canPirateMove(width);
-        }
-        checkJackColision();
-        return jack.checkIfDead();
-    }
-
-    public boolean movePirate2(){
-        for (Pirates pirate : piratesMedium){
-            pirate.move();
-            pirate.canPirateMove(width);
-        }
-        checkJackColision();
-        return jack.checkIfDead();
-    }
-
-    public boolean movePirate3(){
-        for (Pirates pirate : piratesBig){
+    public boolean movePirate(List<Pirates> pirates){
+        for (Pirates pirate : pirates){
             pirate.move();
             pirate.canPirateMove(width);
         }
@@ -304,5 +286,17 @@ public class Map {
 
     public JackTheSparrow getJack(){
         return this.jack;
+    }
+
+    public List<Pirates> getPiratesSmall(){
+        return piratesSmall;
+    }
+
+    public List<Pirates> getPiratesMedium(){
+        return piratesMedium;
+    }
+
+    public List<Pirates> getPiratesBig(){
+        return piratesBig;
     }
 }

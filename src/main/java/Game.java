@@ -37,7 +37,7 @@ public class Game {
         public void run()
         {
             //pirates only move if Jack is alive
-            if(map.movePirate()) {
+            if(map.movePirate(map.getPiratesSmall())) {
                 try{
                     endGame("Game Over!");
                 }
@@ -57,7 +57,7 @@ public class Game {
         public void run()
         {
             //pirates only move if Jack is alive
-            if(map.movePirate2()) {
+            if(map.movePirate(map.getPiratesMedium())) {
                 try{
                     endGame("Game Over!");
                 }
@@ -78,7 +78,7 @@ public class Game {
         {
             //pirates only move if Jack is alive
             //map.movepirate(map.getpiratebig)
-            if(map.movePirate3()) {
+            if(map.movePirate(map.getPiratesBig())) {
                 try{
                     endGame("Game Over!");
                 }
