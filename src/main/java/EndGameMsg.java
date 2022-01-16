@@ -38,7 +38,6 @@ public class EndGameMsg {
         draw(screen.newTextGraphics());
         screen.refresh();
 
-        System.out.println("ola");
         do {
             KeyStroke press = screen.readInput();
             switch (press.getKeyType()) {

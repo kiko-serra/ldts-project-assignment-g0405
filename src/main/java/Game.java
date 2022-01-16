@@ -27,11 +27,7 @@ public class Game {
 
     Timer timer1;
     TimerTask moving1;
-
-    Timer timer2;
     TimerTask moving2;
-
-    Timer timer3;
     TimerTask moving3;
 
     private boolean gameIsOver = false;
@@ -43,49 +39,6 @@ public class Game {
             if(map.movePirate(map.getPiratesSmall())) {
                 try{
                     endGame("GAME OVER!");
-                }
-                catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-            try {
-                draw();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-    class Aux2 extends TimerTask {
-        public void run()
-        {
-            //pirates only move if Jack is alive
-            if(map.movePirate(map.getPiratesMedium())) {
-                try{
-                    endGame("GAME OVER!");
-                }
-                catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-            try {
-                draw();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-    class Aux3 extends TimerTask {
-        public void run()
-        {
-            //pirates only move if Jack is alive
-            //map.movepirate(map.getpiratebig)
-            if(map.movePirate(map.getPiratesBig())) {
-                try{
-                    setGameIsOver();
-                    endGame("GAME OVER!");
-                    return;
                 }
                 catch (IOException e) {
                     e.printStackTrace();
@@ -111,12 +64,8 @@ public class Game {
 
         timer1 = new Timer();
         moving1 = new Aux();
-
-        timer2 = new Timer();
-        moving2 = new Aux2();
-
-        timer3 = new Timer();
-        moving3 = new Aux3();
+        moving2 = new Aux();
+        moving3 = new Aux();
 
         menu = new Menu(this);
         this.menuChoice = -1;
@@ -156,9 +105,9 @@ public class Game {
         setMenuChoice(menu.menuRun(screen));
 
         if (this.menuChoice == 0) {
-            timer1.scheduleAtFixedRate(moving1, 500, 100);
-            timer2.scheduleAtFixedRate(moving2, 250, 250);
-            timer3.scheduleAtFixedRate(moving3, 100, 500);
+            timer1.scheduleAtFixedRate(moving1, 0, 100);
+            timer1.scheduleAtFixedRate(moving2, 0, 250);
+            timer1.scheduleAtFixedRate(moving3, 0, 500);
             newGame();
         }
         else if(this.menuChoice == 1) {
@@ -167,13 +116,6 @@ public class Game {
         else if(this.menuChoice == 2) {
             timer1.cancel();
             timer1.purge();
-
-            timer2.cancel();
-            timer2.purge();
-
-            timer3.cancel();
-            timer3.purge();
-
             screen.close();
         }
     }
@@ -187,13 +129,6 @@ public class Game {
             if ((press.getKeyType() == KeyType.Character && press.getCharacter() == 'q') || press.getKeyType() == KeyType.EOF) {
                 timer1.cancel();
                 timer1.purge();
-
-                timer2.cancel();
-                timer2.purge();
-
-                timer3.cancel();
-                timer3.purge();
-
                 screen.close();
                 break;
             }
@@ -209,13 +144,6 @@ public class Game {
     private void endGame(String msg) throws IOException {
         timer1.cancel();
         timer1.purge();
-
-        timer2.cancel();
-        timer2.purge();
-
-        timer3.cancel();
-        timer3.purge();
-
         screen.clear();
         new EndGameMsg(this, msg).run(screen);
         screen.close();
@@ -227,13 +155,6 @@ public class Game {
         if(helperGuy == -1){
             timer1.cancel();
             timer1.purge();
-
-            timer2.cancel();
-            timer2.purge();
-
-            timer3.cancel();
-            timer3.purge();
-
             screen.close();
         }
         else if(helperGuy == 1) run();
