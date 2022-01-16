@@ -51,8 +51,8 @@ public class Map {
 
             jack.draw(graphics);
             princess.draw(graphics);
-            for (Lives life : lives) life.draw(graphics);
             points.draw(graphics);
+            for (Lives life : lives) life.draw(graphics);
 
             for (Borders border : borders) border.draw(graphics);
             for (Biscuits biscuit : biscuits) biscuit.draw(graphics);

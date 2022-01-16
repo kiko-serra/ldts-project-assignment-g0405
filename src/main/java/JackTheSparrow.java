@@ -10,17 +10,19 @@ public class JackTheSparrow extends Components implements Characters{
     private KeyType direction;
     public int lives;
     public int points;
+    private String icon;
 
     public JackTheSparrow(int x, int y){
         super(x, y);
         this.lives=3;
         this.points=0;
         this.position = super.getPosition();
+        this.icon = "j";
     }
 
     public void draw(TextGraphics graphics) {
         graphics.setBackgroundColor(TextColor.Factory.fromString("#171717"));
-        graphics.putString(new TerminalPosition(position.getX(), position.getY()), "X");
+        graphics.putString(new TerminalPosition(position.getX(), position.getY()), icon);
     }
 
     public void setJackDirection(KeyType press){
@@ -37,9 +39,11 @@ public class JackTheSparrow extends Components implements Characters{
                 break;
             case ArrowRight:
                 this.setPosition(this.getPosition().moveRight());
+                this.icon="j";
                 break;
             case ArrowLeft:
                 this.setPosition(this.getPosition().moveLeft());
+                this.icon="i";
                 break;
         }
     }
