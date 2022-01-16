@@ -6,7 +6,6 @@ import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
 import com.googlecode.lanterna.terminal.swing.AWTTerminalFontConfiguration;
 import com.googlecode.lanterna.terminal.swing.AWTTerminalFrame;
-import com.googlecode.lanterna.terminal.swing.SwingTerminalFontConfiguration;
 
 import java.awt.*;
 import java.io.File;
@@ -25,10 +24,8 @@ public class Game {
 
     private final Instructions instruction;
 
-    Timer timer1;
-    TimerTask moving1;
-    TimerTask moving2;
-    TimerTask moving3;
+    Timer timer;
+    TimerTask moving;
 
     private boolean gameIsOver = false;
 
@@ -36,8 +33,9 @@ public class Game {
         public void run()
         {
             //pirates only move if Jack is alive
-            if(map.movePirate(map.getPiratesSmall())) {
+            if(map.movePirate()) {
                 try{
+                    setGameIsOver();
                     endGame("GAME OVER!");
                 }
                 catch (IOException e) {
@@ -62,10 +60,8 @@ public class Game {
         this.screen = createScreen(terminal);
         map = new Map(width, height);
 
-        timer1 = new Timer();
-        moving1 = new Aux();
-        moving2 = new Aux();
-        moving3 = new Aux();
+        timer = new Timer();
+        moving = new Aux();
 
         menu = new Menu(this);
         this.menuChoice = -1;
@@ -105,17 +101,15 @@ public class Game {
         setMenuChoice(menu.menuRun(screen));
 
         if (this.menuChoice == 0) {
-            timer1.scheduleAtFixedRate(moving1, 0, 100);
-            timer1.scheduleAtFixedRate(moving2, 0, 250);
-            timer1.scheduleAtFixedRate(moving3, 0, 500);
+            timer.scheduleAtFixedRate(moving, 0, 250);
             newGame();
         }
         else if(this.menuChoice == 1) {
             instructions();
         }
         else if(this.menuChoice == 2) {
-            timer1.cancel();
-            timer1.purge();
+            timer.cancel();
+            timer.purge();
             screen.close();
         }
     }
@@ -127,8 +121,8 @@ public class Game {
 
             KeyStroke press = screen.readInput();
             if ((press.getKeyType() == KeyType.Character && press.getCharacter() == 'q') || press.getKeyType() == KeyType.EOF) {
-                timer1.cancel();
-                timer1.purge();
+                timer.cancel();
+                timer.purge();
                 screen.close();
                 break;
             }
@@ -142,8 +136,8 @@ public class Game {
     }
 
     private void endGame(String msg) throws IOException {
-        timer1.cancel();
-        timer1.purge();
+        timer.cancel();
+        timer.purge();
         screen.clear();
         new EndGameMsg(this, msg).run(screen);
         screen.close();
@@ -153,8 +147,8 @@ public class Game {
         int helperGuy = instruction.run(screen);
 
         if(helperGuy == -1){
-            timer1.cancel();
-            timer1.purge();
+            timer.cancel();
+            timer.purge();
             screen.close();
         }
         else if(helperGuy == 1) run();

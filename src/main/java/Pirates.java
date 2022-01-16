@@ -15,9 +15,8 @@ public class Pirates extends Components implements Characters{
     public Pirates(int x, int y) {
         super(x, y);
         this.position = super.getPosition();
-        //this.state= new Random().nextInt(2);
         this.state=0;
-        this.size= new Random().nextInt(3);
+        this.size= new Random().nextInt(2);
         this.icon = " ";
     }
 
