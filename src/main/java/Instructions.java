@@ -23,7 +23,7 @@ public class Instructions {
 
         drawText(new Position(2,4),"1.MOVE WITH ARROWS", graphics);
         drawText(new Position(2,6), "2.ESCAPE PIRATES", graphics);
-        drawText(new Position(2,8),"3.CATCH COINS", graphics);
+        drawText(new Position(2,8),"3.CATCH BISCUITS", graphics);
         drawText(new Position(2,10),"4.COLLECT KEY", graphics);
         drawText(new Position(2,12),"5.SAVE PRINCESS", graphics);
         drawText(new Position(2,14), "6.EXIT THE MAP TO WIN", graphics);
