@@ -10,7 +10,6 @@ public class Biscuits extends Components{
         this.position = super.getPosition();
     }
 
-
     public void draw(TextGraphics graphics) {
         graphics.setBackgroundColor(TextColor.Factory.fromString("#171717"));
         graphics.setForegroundColor(TextColor.Factory.fromString("#ffff00"));

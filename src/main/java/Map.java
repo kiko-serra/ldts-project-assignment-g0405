@@ -26,6 +26,7 @@ public class Map {
     private Exit exit;
     private List<Lives> lives;
     private Points points;
+    private List<Bombs> bombs;
 
     public Map(int width, int height) {
         this.width = width;
@@ -43,6 +44,8 @@ public class Map {
 
         this.lives = createLives();
         this.points = new Points(width - 1, height, "POINTS: ");
+
+        this.bombs = createBombs();
     }
 
     public void draw(TextGraphics graphics) {
@@ -293,6 +296,24 @@ public class Map {
         if(this.exit != null)
             return comparePositions(this.jack.getPosition(), this.exit.getPosition(), 0, 0);
         else return false;
+    }
+
+    private List<Bombs> createBombs(){
+        Random random = new Random();
+
+        List<Bombs> bombs = new ArrayList<>();
+        Bombs bomb;
+
+        for (int i = 0; i < 5; i++) {
+            bomb = new Bombs(random.nextInt(width - 2) + 1, random.nextInt(height - 2) + 1);
+            if(checkPosition(bomb, biscuits)){
+                bombs.add(bomb);
+            }
+            else{
+                i--;
+            }
+        }
+        return bombs;
     }
 
     public JackTheSparrow getJack(){
