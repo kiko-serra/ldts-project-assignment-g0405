@@ -14,7 +14,7 @@ public class Princess extends Components implements Characters{
 
     public void draw(TextGraphics graphics) {
         graphics.setBackgroundColor(TextColor.Factory.fromString("#171717"));
-        graphics.putString(new TerminalPosition(position.getX(), position.getY()), "A");
+        graphics.putString(new TerminalPosition(position.getX(), position.getY()), "f");
     }
 
     public void move() {

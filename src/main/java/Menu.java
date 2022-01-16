@@ -17,9 +17,11 @@ public class Menu {
     public Menu(Game game){
         this.game = game;
 
-        this.buttons = Arrays.asList(new Button(game.getWidth(), "NEW GAME", "#ffff00", 5),
-                                     new Button(game.getWidth(), "INSTRUCTIONS", "#FFFFFF", 10),
-                                     new Button(game.getWidth(), "QUIT GAME", "#FFFFFF", 15));
+
+        this.buttons = Arrays.asList(new Button(game.getWidth(), "NEW GAME", "#ffff00", (game.getHeight()/2)-5),
+                                     new Button(game.getWidth(), "INSTRUCTIONS", "#FFFFFF", game.getHeight()/2),
+                                     new Button(game.getWidth(), "QUIT GAME", "#FFFFFF", (game.getHeight()/2)+5));
+
 
         this.selector = 0;
     }

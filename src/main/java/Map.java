@@ -19,7 +19,8 @@ public class Map {
     private List<Borders> borders;
     private List<Biscuits> biscuits;
     private List<Borders> prison;
-    private List<Pirates> pirates;
+    private List<Pirates> piratesSmall = new ArrayList<>();
+    private List<Pirates> piratesBig = new ArrayList<>();
     private Key key;
     private Exit exit;
     private List<Lives> lives;
@@ -35,12 +36,12 @@ public class Map {
         this.borders = createBorders();
         this.prison = createPrison();
         this.biscuits = createBiscuits();
-        this.pirates = createPirates();
+        createPirates();
         this.key = createKey();
         this.exit = null;
 
         this.lives = createLives();
-        this.points = new Points(width - 1, height, "Points: ");
+        this.points = new Points(width - 1, height, "POINTS: ");
     }
 
     public void draw(TextGraphics graphics) {
@@ -49,13 +50,14 @@ public class Map {
 
             jack.draw(graphics);
             princess.draw(graphics);
-            for (Lives life : lives) life.draw(graphics);
             points.draw(graphics);
+            for (Lives life : lives) life.draw(graphics);
 
             for (Borders border : borders) border.draw(graphics);
             for (Biscuits biscuit : biscuits) biscuit.draw(graphics);
             for (Borders border : prison) border.draw(graphics);
-            for (Pirates pirate : pirates) pirate.draw(graphics);
+            for (Pirates pirate : piratesSmall) pirate.draw(graphics);
+            for (Pirates pirate : piratesBig) pirate.draw(graphics);
             if(key != null) key.draw(graphics);
     }
 
@@ -116,27 +118,26 @@ public class Map {
         return k;
     }
 
-    private List<Pirates> createPirates(){
+    private void createPirates(){
         Random random = new Random();
-        List<Pirates> pirates = new ArrayList<>();
         Pirates pirate;
 
-        for (int i = 0; i < 8; i++) {
+        for (int i = 0; i < 11; i++) {
             pirate = new Pirates(random.nextInt(width - 2) + 1, random.nextInt(height - 3) + 1);
-
             if(checkPosition(pirate, biscuits)){
-                for(Pirates p : pirates){
-                    if(p.getPosition().equals(pirate.getPosition())){
-                        i--;
-                    }
+                switch (pirate.getSize()){
+                    case 0:
+                        piratesSmall.add(pirate);
+                        break;
+                    case 1:
+                        piratesBig.add(pirate);
+                        break;
                 }
-                pirates.add(pirate);
             }
             else{
                 i--;
             }
         }
-        return pirates;
     }
 
     private List<Lives> createLives(){
@@ -201,12 +202,18 @@ public class Map {
     }
 
     public boolean movePirate(){
-        for (Pirates pirate : pirates){
-            pirate.move();
-            pirate.canPirateMove( width);
-        }
+        moveP(piratesSmall);
+        moveP(piratesBig);
+
         checkJackColision();
         return jack.checkIfDead();
+    }
+
+    private void moveP(List<Pirates> pirates){
+        for (Pirates pirate : pirates){
+            pirate.move();
+            pirate.canPirateMove(width);
+        }
     }
 
     private void eatBiscuits (){
@@ -221,10 +228,16 @@ public class Map {
     }
 
     private void checkJackColision (){
+        checkP(piratesSmall);
+        checkP(piratesBig);
+    }
+
+    private void checkP(List<Pirates> pirates){
         for (Pirates pirate: pirates){
             if (jack.getPosition().equals(pirate.getPosition())){
                 jack.setLives();
                 lives.remove(lives.get(lives.size()-1));
+                break;
             }
         }
     }
