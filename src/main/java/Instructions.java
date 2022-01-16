@@ -1,6 +1,4 @@
-import com.googlecode.lanterna.TerminalPosition;
-import com.googlecode.lanterna.TerminalSize;
-import com.googlecode.lanterna.TerminalTextUtils;
+import com.googlecode.lanterna.SGR;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
@@ -9,29 +7,41 @@ import com.googlecode.lanterna.screen.TerminalScreen;
 import java.io.IOException;
 
 public class Instructions {
-    private final Game game;
-    private final Position position;
-    private final String text;
     private final Button button;
+    private final Game game;
+    private final String text;
 
     public Instructions(Game game){
         this.game = game;
-        position = new Position(2, 2);
-        text = " For the player to win the game with the highest score, " +
-                "it needs to catch all the biscuits, which represents the score, " +
-                "and the special key to open the prison door where the Princess is being kept." +
-                "\n" +
-                "After rescuing the Princess is opened and Jack needs to leave the map through that door.";
+        this.text = "INSTRUCTIONS";
 
-        TerminalTextUtils util;
-        button = new Button(game.getWidth(), "GO BACK", "#ffff00", 25);
+        button = new Button(game.getWidth(), "GO BACK", "#ffff00", 18);
     }
 
     public void draw(TextGraphics graphics){
-        graphics.setBackgroundColor(TextColor.Factory.fromString("#171717"));
-        graphics.fillRectangle(new TerminalPosition(0, 0), new TerminalSize(game.getWidth(), game.getHeight()+1), ' ');
-        graphics.putString(position.getX(),position.getY(),text);
+        drawText(new Position(game.getWidth()/2-text.length()/2, 1),text, graphics);
+
+        drawText(new Position(2,4),"1.MOVE WITH ARROWS", graphics);
+        drawText(new Position(2,6), "2.ESCAPE PIRATES", graphics);
+        drawText(new Position(2,8),"3.CATCH COINS", graphics);
+        drawText(new Position(2,10),"4.COLLECT KEY", graphics);
+        drawText(new Position(2,12),"5.SAVE PRINCESS", graphics);
+        drawText(new Position(2,14), "6.EXIT THE MAP TO WIN", graphics);
+        drawText(new Position(2,16),"7.HAVE FUN ", graphics);
+
         button.draw(graphics);
+    }
+
+    private void drawText(Position position, String text, TextGraphics graphics) {
+        graphics.setBackgroundColor(TextColor.Factory.fromString("#000000"));
+        drawText1(graphics, position, text);
+    }
+
+
+    private void drawText1(TextGraphics textGraphics, Position position, String text) {
+        textGraphics.setForegroundColor(TextColor.Factory.fromString("#FFFFFF"));
+        textGraphics.enableModifiers(SGR.BOLD);
+        textGraphics.putString(position.getX(),position.getY(),text);
     }
 
     public int run(TerminalScreen screen) throws IOException {
