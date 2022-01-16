@@ -37,6 +37,7 @@ public class Game {
                 try{
                     setGameIsOver();
                     endGame("GAME OVER!");
+                    return;
                 }
                 catch (IOException e) {
                     e.printStackTrace();
@@ -116,11 +117,11 @@ public class Game {
 
     private void newGame() throws IOException {
         while (true) {
-            if(gameIsOver) break;
             draw();
 
             KeyStroke press = screen.readInput();
-            if ((press.getKeyType() == KeyType.Character && press.getCharacter() == 'q') || press.getKeyType() == KeyType.EOF) {
+
+            if ((press.getKeyType() == KeyType.Character && press.getCharacter() == 'q') || press.getKeyType() == KeyType.EOF || gameIsOver) {
                 timer.cancel();
                 timer.purge();
                 screen.close();
