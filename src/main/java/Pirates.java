@@ -36,13 +36,12 @@ public class Pirates extends Components implements Characters{
         switch (state) {
             case 0:
                 setPosition(position.moveRight());
-                this.icon = "P";
+                this.icon = "p";
                 break;
 
             case 1:
                 setPosition(position.moveLeft());
-                //this.icon = "ꟼ";
-                this.icon = "s";
+                this.icon = "q";
                 break;
         }
     }

@@ -11,6 +11,6 @@ public class Key extends Components{
     }
     public void draw(TextGraphics graphics) {
         graphics.setForegroundColor(TextColor.Factory.fromString("#ffffff"));
-        graphics.putString(new TerminalPosition(position.getX(), position.getY()), "C");
+        graphics.putString(new TerminalPosition(position.getX(), position.getY()), "k");
     }
 }

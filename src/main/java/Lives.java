@@ -10,7 +10,7 @@ public class Lives {
     }
 
     public void draw(TextGraphics graphics){
-        graphics.setBackgroundColor(TextColor.Factory.fromString("#171717"));
-        graphics.putString(new TerminalPosition(position.getX(), position.getY()), "a");
+        graphics.setForegroundColor(TextColor.Factory.fromString("#B00000"));
+        graphics.putString(new TerminalPosition(position.getX(), position.getY()), "h");
     }
 }
