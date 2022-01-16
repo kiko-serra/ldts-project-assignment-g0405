@@ -38,7 +38,7 @@ public class EndGameMsg {
         draw(screen.newTextGraphics());
         screen.refresh();
 
-        do {
+        while (helper_guy != -1){
             KeyStroke press = screen.readInput();
             switch (press.getKeyType()) {
                 case Enter:
@@ -46,6 +46,6 @@ public class EndGameMsg {
                     helper_guy = -1;
                     break;
             }
-        } while (helper_guy != -1);
+        }
     }
 }

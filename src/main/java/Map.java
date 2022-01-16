@@ -20,7 +20,6 @@ public class Map {
     private List<Biscuits> biscuits;
     private List<Borders> prison;
     private List<Pirates> piratesSmall = new ArrayList<>();
-    private List<Pirates> piratesMedium = new ArrayList<>();
     private List<Pirates> piratesBig = new ArrayList<>();
     private Key key;
     private Exit exit;
@@ -61,7 +60,6 @@ public class Map {
             for (Biscuits biscuit : biscuits) biscuit.draw(graphics);
             for (Borders border : prison) border.draw(graphics);
             for (Pirates pirate : piratesSmall) pirate.draw(graphics);
-            for (Pirates pirate : piratesMedium) pirate.draw(graphics);
             for (Pirates pirate : piratesBig) pirate.draw(graphics);
             if(key != null) key.draw(graphics);
     }
@@ -135,9 +133,6 @@ public class Map {
                         piratesSmall.add(pirate);
                         break;
                     case 1:
-                        piratesMedium.add(pirate);
-                        break;
-                    case 2:
                         piratesBig.add(pirate);
                         break;
                 }
@@ -209,13 +204,19 @@ public class Map {
         this.openExit();
     }
 
-    public boolean movePirate(List<Pirates> pirates){
+    public boolean movePirate(){
+        moveP(piratesSmall);
+        moveP(piratesBig);
+
+        checkJackColision();
+        return jack.checkIfDead();
+    }
+
+    private void moveP(List<Pirates> pirates){
         for (Pirates pirate : pirates){
             pirate.move();
             pirate.canPirateMove(width);
         }
-        checkJackColision();
-        return jack.checkIfDead();
     }
 
     private void eatBiscuits (){
@@ -230,32 +231,15 @@ public class Map {
     }
 
     private void checkJackColision (){
-        for (Pirates pirate1: piratesSmall){
-            //System.out.println(jack.getPosition());
-            //System.out.println(pirate1.getPosition());
-            if (jack.getPosition().equals(pirate1.getPosition())){
-                System.out.println(jack.lives);
+        checkP(piratesSmall);
+        checkP(piratesBig);
+    }
+
+    private void checkP(List<Pirates> pirates){
+        for (Pirates pirate: pirates){
+            if (jack.getPosition().equals(pirate.getPosition())){
                 jack.setLives();
                 lives.remove(lives.get(lives.size()-1));
-                System.out.println("ola");
-                break;
-            }
-        }
-        for (Pirates pirate2: piratesMedium){
-            if (jack.getPosition().equals(pirate2.getPosition())){
-                System.out.println(jack.lives);
-                jack.setLives();
-                lives.remove(lives.get(lives.size()-1));
-                System.out.println("ola2");
-                break;
-            }
-        }
-        for (Pirates pirate3: piratesBig){
-            if (jack.getPosition().equals(pirate3.getPosition())){
-                System.out.println(jack.lives);
-                jack.setLives();
-                lives.remove(lives.get(lives.size()-1));
-                System.out.println("ola3");
                 break;
             }
         }
@@ -318,17 +302,5 @@ public class Map {
 
     public JackTheSparrow getJack(){
         return this.jack;
-    }
-
-    public List<Pirates> getPiratesSmall(){
-        return piratesSmall;
-    }
-
-    public List<Pirates> getPiratesMedium(){
-        return piratesMedium;
-    }
-
-    public List<Pirates> getPiratesBig(){
-        return piratesBig;
     }
 }
