@@ -19,7 +19,7 @@ public class EndGameMsg {
 
         position = new Position((game.getWidth()/2 - msg.length()/2), game.getHeight()/2 - 1);
 
-        this.button = new Button(game.getWidth(), "Quit Game", "#ffff00", 14);
+        this.button = new Button(game.getWidth(), "QUIT GAME", "#ffff00", 14);
     }
 
     public void draw(TextGraphics graphics){

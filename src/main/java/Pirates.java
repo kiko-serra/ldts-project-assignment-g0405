@@ -42,7 +42,7 @@ public class Pirates extends Components implements Characters{
             case 1:
                 setPosition(position.moveLeft());
                 //this.icon = "ꟼ";
-                this.icon = "ᕋ";
+                this.icon = "s";
                 break;
         }
     }
