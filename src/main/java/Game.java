@@ -6,7 +6,6 @@ import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
 import com.googlecode.lanterna.terminal.swing.AWTTerminalFontConfiguration;
 import com.googlecode.lanterna.terminal.swing.AWTTerminalFrame;
-import com.googlecode.lanterna.terminal.swing.SwingTerminalFontConfiguration;
 
 import java.awt.*;
 import java.io.File;
@@ -32,7 +31,7 @@ public class Game {
 
     private boolean gameIsOver = false;
 
-    class Aux extends TimerTask {
+    class ControlPirates extends TimerTask {
         public void run()
         {
             //pirates only move if Jack is alive
@@ -63,9 +62,9 @@ public class Game {
         map = new Map(width, height);
 
         timer1 = new Timer();
-        moving1 = new Aux();
-        moving2 = new Aux();
-        moving3 = new Aux();
+        moving1 = new ControlPirates();
+        moving2 = new ControlPirates();
+        moving3 = new ControlPirates();
 
         menu = new Menu(this);
         this.menuChoice = -1;
