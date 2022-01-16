@@ -18,6 +18,7 @@ public class Game {
     private final int height;
     private final TerminalScreen screen;
     public Map map;
+    private int countInputs;
 
     private final Menu menu;
     private int menuChoice;
@@ -134,6 +135,10 @@ public class Game {
             }
 
             map.keyStrokes(press);
+            countInputs=map.getKeyStrokes();
+            if (countInputs % 3 ==0){
+                map.disableBomb();
+            }
         }
     }
 
@@ -157,7 +162,7 @@ public class Game {
     }
 
     public AWTTerminalFontConfiguration loadFont() throws FontFormatException, IOException {
-        File fontFile = new File("src/main/resources/Courier-changed2.ttf");
+        File fontFile = new File("src/main/resources/Courier-changed3.ttf");
         Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
 
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();

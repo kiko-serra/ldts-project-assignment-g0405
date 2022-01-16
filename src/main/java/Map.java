@@ -12,6 +12,7 @@ import java.util.Random;
 public class Map {
     private final int width;
     private final int height;
+    private int count =0;
 
     JackTheSparrow jack;
     Princess princess;
@@ -19,8 +20,8 @@ public class Map {
     private List<Borders> borders;
     private List<Biscuits> biscuits;
     private List<Borders> prison;
-    private List<Pirates> piratesSmall = new ArrayList<>();
-    private List<Pirates> piratesBig = new ArrayList<>();
+    private List<Pirates> pirates = new ArrayList<>();
+    private List<Pirates> bombers = new ArrayList<>();
     private Key key;
     private Exit exit;
     private List<Lives> lives;
@@ -59,8 +60,9 @@ public class Map {
             for (Borders border : borders) border.draw(graphics);
             for (Biscuits biscuit : biscuits) biscuit.draw(graphics);
             for (Borders border : prison) border.draw(graphics);
-            for (Pirates pirate : piratesSmall) pirate.draw(graphics);
-            for (Pirates pirate : piratesBig) pirate.draw(graphics);
+            for (Pirates pirate : pirates) pirate.draw(graphics);
+            for (Pirates bomber : bombers) bomber.draw(graphics);
+            for (Bombs bomb : bombs) bomb.draw(graphics);
             if(key != null) key.draw(graphics);
     }
 
@@ -125,15 +127,15 @@ public class Map {
         Random random = new Random();
         Pirates pirate;
 
-        for (int i = 0; i < 11; i++) {
+        for (int i = 0; i < 13; i++) {
             pirate = new Pirates(random.nextInt(width - 2) + 1, random.nextInt(height - 3) + 1);
             if(checkPosition(pirate, biscuits)){
                 switch (pirate.getSize()){
                     case 0:
-                        piratesSmall.add(pirate);
+                        pirates.add(pirate);
                         break;
                     case 1:
-                        piratesBig.add(pirate);
+                        bombers.add(pirate);
                         break;
                 }
             }
@@ -176,6 +178,11 @@ public class Map {
         princess.setJackPosition(jack.getPosition());
         jack.setJackDirection(press.getKeyType());
         moveJack(press.getKeyType());
+        count++;
+    }
+
+    public int getKeyStrokes(){
+        return this.count;
     }
 
     private void moveJack(KeyType press){
@@ -205,8 +212,8 @@ public class Map {
     }
 
     public boolean movePirate(){
-        moveP(piratesSmall);
-        moveP(piratesBig);
+        moveP(pirates);
+        moveP(bombers);
 
         checkJackColision();
         return jack.checkIfDead();
@@ -231,8 +238,8 @@ public class Map {
     }
 
     private void checkJackColision (){
-        checkP(piratesSmall);
-        checkP(piratesBig);
+        checkP(pirates);
+        checkP(bombers);
     }
 
     private void checkP(List<Pirates> pirates){
@@ -284,17 +291,16 @@ public class Map {
 
     private List<Bombs> createBombs(){
         Random random = new Random();
-
+        Position bomber;
         List<Bombs> bombs = new ArrayList<>();
         Bombs bomb;
-
-        for (int i = 0; i < 5; i++) {
-            bomb = new Bombs(random.nextInt(width - 2) + 1, random.nextInt(height - 2) + 1);
-            if(checkPosition(bomb, biscuits)){
+        for (int j =0; j<bombers.size(); j++){
+            bomber = bombers.get(j).getPosition();
+            bomb = new Bombs(random.nextInt(width - 2) + 1, bomber.getY());
+            if (checkPosition(bomb, biscuits)){
                 bombs.add(bomb);
-            }
-            else{
-                i--;
+            } else {
+                j--;
             }
         }
         return bombs;
@@ -302,5 +308,9 @@ public class Map {
 
     public JackTheSparrow getJack(){
         return this.jack;
+    }
+
+    public void disableBomb() {
+
     }
 }
