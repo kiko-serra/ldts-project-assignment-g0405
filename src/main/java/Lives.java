@@ -11,6 +11,6 @@ public class Lives {
 
     public void draw(TextGraphics graphics){
         graphics.setBackgroundColor(TextColor.Factory.fromString("#171717"));
-        graphics.putString(new TerminalPosition(position.getX(), position.getY()), "V");
+        graphics.putString(new TerminalPosition(position.getX(), position.getY()), "a");
     }
 }

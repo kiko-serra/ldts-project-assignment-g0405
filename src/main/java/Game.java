@@ -9,6 +9,7 @@ import com.googlecode.lanterna.terminal.swing.AWTTerminalFrame;
 import com.googlecode.lanterna.terminal.swing.SwingTerminalFontConfiguration;
 
 import java.awt.*;
+import java.io.File;
 import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -41,7 +42,7 @@ public class Game {
             //pirates only move if Jack is alive
             if(map.movePirate(map.getPiratesSmall())) {
                 try{
-                    endGame("Game Over!");
+                    endGame("GAME OVER!");
                 }
                 catch (IOException e) {
                     e.printStackTrace();
@@ -61,7 +62,7 @@ public class Game {
             //pirates only move if Jack is alive
             if(map.movePirate(map.getPiratesMedium())) {
                 try{
-                    endGame("Game Over!");
+                    endGame("GAME OVER!");
                 }
                 catch (IOException e) {
                     e.printStackTrace();
@@ -83,7 +84,7 @@ public class Game {
             if(map.movePirate(map.getPiratesBig())) {
                 try{
                     setGameIsOver();
-                    endGame("Game Over!");
+                    endGame("GAME OVER!");
                     return;
                 }
                 catch (IOException e) {
@@ -98,28 +99,14 @@ public class Game {
         }
     }
 
-    public Game(int width, int height) throws IOException {
+    public Game(int width, int height) throws IOException, FontFormatException {
         this.width = width;
         this.height = height;
 
-        Font font = new Font("Courier", Font.BOLD, 20);
-        AWTTerminalFontConfiguration cfg = new SwingTerminalFontConfiguration(true, AWTTerminalFontConfiguration.BoldMode.NOTHING, font);
-        TerminalSize terminalSize = new TerminalSize(width, height+1);
+        AWTTerminalFontConfiguration font = loadFont();
+        Terminal terminal = createTerminal(width, height, font);
 
-        DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory()
-                .setInitialTerminalSize(terminalSize)
-                .setTerminalEmulatorFontConfiguration(cfg)
-                .setForceAWTOverSwing(true)
-                .setTerminalEmulatorTitle("Cross the Map");
-
-        Terminal terminal = terminalFactory.createTerminal();
-        ((AWTTerminalFrame)terminal).setResizable(false);
-        screen = new TerminalScreen(terminal);
-
-        screen.setCursorPosition(null);   // we don't need a cursor
-        screen.startScreen();             // screens must be started
-        screen.doResizeIfNecessary();     // resize screen if necessary
-
+        this.screen = createScreen(terminal);
         map = new Map(width, height);
 
         timer1 = new Timer();
@@ -135,6 +122,28 @@ public class Game {
         this.menuChoice = -1;
 
         instruction = new Instructions(this);
+    }
+
+    public TerminalScreen createScreen(Terminal terminal) throws IOException{
+        TerminalScreen terminalScreen = new TerminalScreen(terminal);
+
+        terminalScreen.setCursorPosition(null);   // we don't need a cursor
+        terminalScreen.startScreen();             // screens must be started
+        terminalScreen.doResizeIfNecessary();     // resize screen if necessary
+        return terminalScreen;
+    }
+
+    public Terminal createTerminal(int width, int height, AWTTerminalFontConfiguration font) throws IOException{
+        TerminalSize terminalSize = new TerminalSize(width, height+1);
+        DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory()
+                .setInitialTerminalSize(terminalSize)
+                .setTerminalEmulatorFontConfiguration(font)
+                .setForceAWTOverSwing(true)
+                .setTerminalEmulatorTitle("Cross the Map");
+
+        Terminal terminal = terminalFactory.createTerminal();
+        ((AWTTerminalFrame)terminal).setResizable(false);
+        return terminal;
     }
 
     public void draw() throws IOException {
@@ -189,7 +198,7 @@ public class Game {
                 break;
             }
             else if(map.checkJackOnExitDoor()){
-                endGame("Victory!");
+                endGame("VICTORY!");
                 break;
             }
 
@@ -228,6 +237,17 @@ public class Game {
             screen.close();
         }
         else if(helperGuy == 1) run();
+    }
+
+    public AWTTerminalFontConfiguration loadFont() throws FontFormatException, IOException {
+        File fontFile = new File("src/main/resources/Square-Regular4.ttf");
+        Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
+
+        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        ge.registerFont(font);
+
+        Font loadedFont = font.deriveFont(Font.PLAIN, 25);
+        return AWTTerminalFontConfiguration.newInstance(loadedFont);
     }
 
     public int getWidth(){ return this.width; }

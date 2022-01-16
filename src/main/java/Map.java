@@ -42,7 +42,7 @@ public class Map {
         this.exit = null;
 
         this.lives = createLives();
-        this.points = new Points(width - 1, height, "Points: ");
+        this.points = new Points(width - 1, height, "POINTS: ");
     }
 
     public void draw(TextGraphics graphics) {
