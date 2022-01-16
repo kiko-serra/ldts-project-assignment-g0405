@@ -147,9 +147,9 @@ public class Game {
         setMenuChoice(menu.menuRun(screen));
 
         if (this.menuChoice == 0) {
-            timer1.scheduleAtFixedRate(moving1, 500, 500);
+            timer1.scheduleAtFixedRate(moving1, 500, 100);
             timer2.scheduleAtFixedRate(moving2, 250, 250);
-            timer3.scheduleAtFixedRate(moving3, 100, 100);
+            timer3.scheduleAtFixedRate(moving3, 100, 500);
             newGame();
         }
         else if(this.menuChoice == 1) {

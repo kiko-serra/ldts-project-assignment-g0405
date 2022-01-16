@@ -227,26 +227,29 @@ public class Map {
     }
 
     private void checkJackColision (){
-        for (Pirates pirate: piratesSmall){
-            System.out.println(jack.getPosition());
-            System.out.println(pirate.getPosition());
-            if (jack.getPosition().equals(pirate.getPosition())){
+        for (Pirates pirate1: piratesSmall){
+            //System.out.println(jack.getPosition());
+            //System.out.println(pirate1.getPosition());
+            if (jack.getPosition().equals(pirate1.getPosition())){
+                System.out.println(jack.lives);
                 jack.setLives();
                 lives.remove(lives.get(lives.size()-1));
                 System.out.println("ola");
                 break;
             }
         }
-        for (Pirates pirate: piratesMedium){
-            if (jack.getPosition().equals(pirate.getPosition())){
+        for (Pirates pirate2: piratesMedium){
+            if (jack.getPosition().equals(pirate2.getPosition())){
+                System.out.println(jack.lives);
                 jack.setLives();
                 lives.remove(lives.get(lives.size()-1));
                 System.out.println("ola2");
                 break;
             }
         }
-        for (Pirates pirate: piratesBig){
-            if (jack.getPosition().equals(pirate.getPosition())){
+        for (Pirates pirate3: piratesBig){
+            if (jack.getPosition().equals(pirate3.getPosition())){
+                System.out.println(jack.lives);
                 jack.setLives();
                 lives.remove(lives.get(lives.size()-1));
                 System.out.println("ola3");
