@@ -2,6 +2,8 @@ import com.googlecode.lanterna.input.KeyType;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.*;
+
 
 public class TestComponents {
 
