@@ -20,13 +20,13 @@ public class Map {
     private List<Borders> borders;
     private List<Biscuits> biscuits;
     private List<Borders> prison;
-    private List<Pirates> pirates = new ArrayList<>();
-    private List<Pirates> bombers = new ArrayList<>();
+    private List<Pirates> pirates;
+    private List<Bombers> bombers;
     private Key key;
     private Exit exit;
     private List<Lives> lives;
     private Points points;
-    private List<Bombs> bombs;
+    private Bombs bomb;
 
     public Map(int width, int height) {
         this.width = width;
@@ -38,14 +38,14 @@ public class Map {
         this.borders = createBorders();
         this.prison = createPrison();
         this.biscuits = createBiscuits();
-        createPirates();
+        this.pirates = createPirates();
+        this.bombers = createBombers();
         this.key = createKey();
         this.exit = null;
+        this.bomb = null;
 
         this.lives = createLives();
         this.points = new Points(width - 1, height, "POINTS: ");
-
-        this.bombs = createBombs();
     }
 
     public void draw(TextGraphics graphics) {
@@ -60,10 +60,11 @@ public class Map {
             for (Borders border : borders) border.draw(graphics);
             for (Biscuits biscuit : biscuits) biscuit.draw(graphics);
             for (Borders border : prison) border.draw(graphics);
-            for (Pirates pirate : pirates) pirate.draw(graphics);
-            for (Pirates bomber : bombers) bomber.draw(graphics);
-            for (Bombs bomb : bombs) bomb.draw(graphics);
+
             if(key != null) key.draw(graphics);
+            if(bomb != null) bomb.draw(graphics);
+            for (Pirates pirate : pirates) pirate.draw(graphics);
+            for (Bombers bomber : bombers) bomber.draw(graphics);
     }
 
     private List<Borders> createBorders() {
@@ -123,26 +124,38 @@ public class Map {
         return k;
     }
 
-    private void createPirates(){
+    private List<Pirates> createPirates(){
         Random random = new Random();
+        List<Pirates> p = new ArrayList<>();
         Pirates pirate;
 
-        for (int i = 0; i < 13; i++) {
-            pirate = new Pirates(random.nextInt(width - 2) + 1, random.nextInt(height - 3) + 1);
+        for (int i = 0; i < 9; i++) {
+            pirate = new Pirates(random.nextInt(width - 2) + 1, random.nextInt(height - 3) + 1, "p", 'P');
             if(checkPosition(pirate, biscuits)){
-                switch (pirate.getSize()){
-                    case 0:
-                        pirates.add(pirate);
-                        break;
-                    case 1:
-                        bombers.add(pirate);
-                        break;
-                }
+                p.add(pirate);
             }
             else{
                 i--;
             }
         }
+        return p;
+    }
+
+    private List<Bombers> createBombers(){
+        Random random = new Random();
+        List<Bombers> b = new ArrayList<>();
+        Bombers bomber;
+
+        for (int i = 0; i < 3; i++) {
+            bomber = new Bombers(random.nextInt(width - 2) + 1, random.nextInt(height - 8) +5, "m", 'M', width);
+            if(checkPosition(bomber, biscuits)){
+                b.add(bomber);
+            }
+            else{
+                i--;
+            }
+        }
+        return b;
     }
 
     private List<Lives> createLives(){
@@ -211,19 +224,34 @@ public class Map {
         this.openExit();
     }
 
-    public boolean movePirate(){
-        moveP(pirates);
-        moveP(bombers);
+    public boolean moveEnemies(TextGraphics graphics){
+        for(Pirates pirate: pirates){
+            moveEnemy(pirate);
+            checkJackColision(pirate);
+        }
+        for(Bombers bomber: bombers){
+            moveEnemy(bomber);
+            checkJackColision(bomber);
+            if(bomber.checkBomb()){
+               bomb = new Bombs(bomber.getBombPosition().getX(), bomber.getBombPosition().getY(), "d");
+            }
+            if(bomb != null) bomber.setCounter(bomber.getCounter() + 1);
+            if(bomber.getCounter() == 10) {
+                bomb = new Bombs(bomber.getBombPosition().getX(), bomber.getBombPosition().getY(), "g");
+            }
+            if(bomber.getCounter() == 14){
+                bomb = null;
+                bomber.setCounter(0);
+                bomber.createOtherBombPosition();
+            }
+        }
 
-        checkJackColision();
         return jack.checkIfDead();
     }
 
-    private void moveP(List<Pirates> pirates){
-        for (Pirates pirate : pirates){
-            pirate.move();
-            pirate.canPirateMove(width);
-        }
+    private void moveEnemy(Enemies enemy){
+        enemy.move();
+        enemy.canEnemyMove(width);
     }
 
     private void eatBiscuits (){
@@ -237,18 +265,10 @@ public class Map {
         }
     }
 
-    private void checkJackColision (){
-        checkP(pirates);
-        checkP(bombers);
-    }
-
-    private void checkP(List<Pirates> pirates){
-        for (Pirates pirate: pirates){
-            if (jack.getPosition().equals(pirate.getPosition())){
-                jack.setLives();
-                lives.remove(lives.get(lives.size()-1));
-                break;
-            }
+    private void checkJackColision (Enemies enemy){
+        if (jack.getPosition().equals(enemy.getPosition())){
+            jack.setLives();
+            lives.remove(lives.get(lives.size()-1));
         }
     }
 
@@ -289,28 +309,7 @@ public class Map {
         else return false;
     }
 
-    private List<Bombs> createBombs(){
-        Random random = new Random();
-        Position bomber;
-        List<Bombs> bombs = new ArrayList<>();
-        Bombs bomb;
-        for (int j =0; j<bombers.size(); j++){
-            bomber = bombers.get(j).getPosition();
-            bomb = new Bombs(random.nextInt(width - 2) + 1, bomber.getY());
-            if (checkPosition(bomb, biscuits)){
-                bombs.add(bomb);
-            } else {
-                j--;
-            }
-        }
-        return bombs;
-    }
-
     public JackTheSparrow getJack(){
         return this.jack;
-    }
-
-    public void disableBomb() {
-
     }
 }

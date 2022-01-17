@@ -5,16 +5,18 @@ import com.googlecode.lanterna.graphics.TextGraphics;
 
 public class Bombs extends Components{
     private Position position;
+    private String icon;
 
-    public Bombs(int x, int y) {
+    public Bombs(int x, int y, String icon) {
         super(x, y);
+        this.icon = icon;
         this.position = super.getPosition();
     }
 
     public void draw(TextGraphics graphics) {
         graphics.setForegroundColor(TextColor.Factory.fromString("#48A14D"));
         graphics.enableModifiers(SGR.BOLD);
-        graphics.putString(new TerminalPosition(position.getX(), position.getY()), "d");
+        graphics.putString(new TerminalPosition(position.getX(), position.getY()), icon);
     }
 
 }

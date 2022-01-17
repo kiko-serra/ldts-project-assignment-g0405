@@ -34,7 +34,7 @@ public class Game {
         public void run()
         {
             //pirates only move if Jack is alive
-            if(map.movePirate()) {
+            if(map.moveEnemies(screen.newTextGraphics())) {
                 try{
                     setGameIsOver();
                     endGame("GAME OVER!");
@@ -135,10 +135,10 @@ public class Game {
             }
 
             map.keyStrokes(press);
-            countInputs=map.getKeyStrokes();
+            /*countInputs=map.getKeyStrokes();
             if (countInputs % 3 ==0){
-                map.disableBomb();
-            }
+
+            }*/
         }
     }
 
