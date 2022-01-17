@@ -2,36 +2,38 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TestBorders {
 
     Borders border;
+    Borders border1;
 
     @BeforeEach
     public void bordersConstructor(){
-        border = new Borders(10,20);
+        border = Mockito.mock(Borders.class);
+        border1 = new Borders(10,20);
     }
 
     @Test
     public void testBordersConstructor(){
 
-        assertEquals(10, border.getPosition().getX());
-        assertEquals(20, border.getPosition().getY());
+        assertEquals(10, border1.getPosition().getX());
+        assertEquals(20, border1.getPosition().getY());
 
     }
 
     @Test
     public void testBordersSetPosition(){
 
-        Borders border1 = new Borders(20, 10);
+        border.setPosition(border1.getPosition());
+        Mockito.verify(border).setPosition(border1.getPosition());
+
+        assertEquals(10, this.border1.getPosition().getX());
+        assertEquals(20, this.border1.getPosition().getY());
 
 
-        //Mockito.verify(border)
-        //border.setPosition(borders1.getPosition());
-
-        assertEquals(20, border.getPosition().getX());
-        assertEquals(10, border.getPosition().getY());
     }
 
 }
