@@ -14,6 +14,6 @@ public class Biscuits extends Components{
     public void draw(TextGraphics graphics) {
         graphics.setBackgroundColor(TextColor.Factory.fromString("#171717"));
         graphics.setForegroundColor(TextColor.Factory.fromString("#ffff00"));
-        graphics.putString(new TerminalPosition(position.getX(), position.getY()), "O");
+        graphics.putString(new TerminalPosition(position.getX(), position.getY()), "c");
     }
 }
