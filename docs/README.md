@@ -2,21 +2,21 @@
 
 Our game consists in a text-based version of the Crossy Road game with some SuperMario combinations and some new characters.
 
-The main character is Jack the Sparrow who is trying to free his Components.Princess, and for that he needs to avoid the Components.Pirates and collect the special key.
+The main character is Jack the Sparrow who is trying to free his Princess, and for that he needs to avoid the Pirates and collect the special key.
 
-For the player to win the game with the highest score, it needs to catch all the biscuits, which represents the score, and the special key to open the prison door where the Components.Princess is being kept.
+For the player to win the game with the highest score, it needs to catch all the biscuits, which represents the score, and the special key to open the prison door where the Princess is being kept.
 
-After rescuing the Components.Princess is opened and Jack needs to leave the map through that door.
+After rescuing the Princess is opened and Jack needs to leave the map through that door.
 
-Each biscuit that Jack catches makes his score go up, but these are not necessary to release the Components.Princess and finish the game.
+Each biscuit that Jack catches makes his score go up, but these are not necessary to release the Princess and finish the game.
 
 This project was developed by _André Costa_ (https://github.com/AndreCosta201905916) (up201905016@fe.up.pt) and _Francisco Serra_ (https://github.com/kiko-serra) (up202007723@fe.up.pt) and _Válter Castro_ (https://github.com/ValterCastro) (up201706546@fe.up.pt) for LDTS 2021⁄22.
 
 ## Index
 * [Implemented Features](#implemented-features)
   * [Jack the Sparrow](#jack-the-sparrow)
-  * [Components.Pirates](#pirates)
-  * [Components.Princess](#princess)
+  * [Pirates](#pirates)
+  * [Princess](#princess)
 * [Planned Features](#planned-features)
 * [Testing](#testing)
   * [Coverage Report](#coverage-report)
@@ -36,7 +36,7 @@ This project was developed by _André Costa_ (https://github.com/AndreCosta20190
     <img width=550 src="images/catchCoockie.com-gif-maker.gif">
 </p>
 
-- **Catching key** - For Jack to release his beloved Components.Princess he needs to catch the key to open the prison door.
+- **Catching key** - For Jack to release his beloved Princess he needs to catch the key to open the prison door.
 <p align="center">
     <img width=550 src="images/catchCoin&OpenPrison.com-gif-maker.gif">
 </p>
@@ -50,7 +50,7 @@ This project was developed by _André Costa_ (https://github.com/AndreCosta20190
     <img width=550 src="images/dieToPirates.com-gif-maker.gif">
 </p>
 
-### Components.Pirates
+### Pirates
 
 - **Movement** - Each pirate moves independently horizontally and when they hit a border their direction changes.
 <p align="center">
@@ -59,16 +59,16 @@ This project was developed by _André Costa_ (https://github.com/AndreCosta20190
 
 - **Removing lives** - Any Pirate that hits Jack removes one of the three lives he has.
 
-### Components.Princess
+### Princess
 
-- **Following Jack** - When Jack enters the prison, the Components.Princess will start following until they leave the map.
+- **Following Jack** - When Jack enters the prison, the Princess will start following until they leave the map.
 <p align="center">
     <img width=550 src="images/openExit&RescuePrincess.com-gif-maker.gif">
 </p>
 
 ## PLANNED FEATURES
 
-- **Different Components.Pirates** - We will make three kinds of Components.Pirates, each one with different speeds and the bigger one will leave bombs behind.
+- **Different Pirates** - We will make three kinds of Pirates, each one with different speeds and the bigger one will leave bombs behind.
 - **Menu** - There will be a menu when you open the game with some buttons.
 - **Personalized Font** - We'll create a new font to have our characters and some objects printed on the game.
 - **Game Over** - After you die there will be a message on the screen saying that you've died and if you want to restart playing.

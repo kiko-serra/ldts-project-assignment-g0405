@@ -1,6 +1,3 @@
-import Components.JackTheSparrow;
-import Components.Pirates;
-import Components.Princess;
 import com.googlecode.lanterna.input.KeyType;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;

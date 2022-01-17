@@ -1,5 +1,3 @@
-package Components;
-
 public abstract class Components {
     private Position position;
 

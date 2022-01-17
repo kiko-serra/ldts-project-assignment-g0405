@@ -1,4 +1,3 @@
-import Components.*;
 import com.googlecode.lanterna.input.KeyType;
 import org.junit.jupiter.api.Test;
 

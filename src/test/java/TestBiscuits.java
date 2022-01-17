@@ -1,6 +1,3 @@
-package TestComponents;
-import Components.Biscuits;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
