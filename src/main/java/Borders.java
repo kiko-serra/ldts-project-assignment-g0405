@@ -2,7 +2,7 @@ import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 
-public class Borders extends Components{
+public class Borders extends Components {
     private Position position;
 
     public Borders(int x, int y){
