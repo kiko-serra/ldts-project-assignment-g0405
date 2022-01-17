@@ -1,4 +1,8 @@
-public class Exit extends Components{
+package Components;
+
+import Components.Components;
+
+public class Exit extends Components {
     private Position position;
 
     public Exit(int x, int y){

@@ -1,8 +1,10 @@
+package Components;
+
 import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 
-public class Biscuits extends Components{
+public class Biscuits extends Components {
     private Position position;
 
     public Biscuits(int x, int y) {

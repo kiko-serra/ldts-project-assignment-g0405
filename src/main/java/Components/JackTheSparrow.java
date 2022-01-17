@@ -1,3 +1,6 @@
+package Components;
+
+import Components.Components;
 import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
@@ -5,7 +8,7 @@ import com.googlecode.lanterna.input.KeyType;
 
 import java.util.List;
 
-public class JackTheSparrow extends Components implements Characters{
+public class JackTheSparrow extends Components implements Characters {
     private Position position;
     private KeyType direction;
     public int lives;

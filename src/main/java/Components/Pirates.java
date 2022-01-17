@@ -1,3 +1,6 @@
+package Components;
+
+import Components.Components;
 import com.googlecode.lanterna.SGR;
 import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TextColor;
@@ -6,7 +9,7 @@ import com.googlecode.lanterna.graphics.TextGraphics;
 import java.util.Random;
 
 
-public class Pirates extends Components implements Characters{
+public class Pirates extends Components implements Characters {
     private int state;
     private Position position;
     private final int size;
