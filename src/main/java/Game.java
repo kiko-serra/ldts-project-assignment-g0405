@@ -18,7 +18,6 @@ public class Game {
     private final int height;
     private final TerminalScreen screen;
     public Map map;
-    private int countInputs;
 
     private final Menu menu;
     private int menuChoice;
@@ -34,7 +33,7 @@ public class Game {
         public void run()
         {
             //pirates only move if Jack is alive
-            if(map.moveEnemies(screen.newTextGraphics())) {
+            if(map.moveEnemies()) {
                 try{
                     setGameIsOver();
                     endGame("GAME OVER!");
@@ -135,10 +134,6 @@ public class Game {
             }
 
             map.keyStrokes(press);
-            /*countInputs=map.getKeyStrokes();
-            if (countInputs % 3 ==0){
-
-            }*/
         }
     }
 

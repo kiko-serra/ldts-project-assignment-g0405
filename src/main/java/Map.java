@@ -12,7 +12,6 @@ import java.util.Random;
 public class Map {
     private final int width;
     private final int height;
-    private int count =0;
 
     JackTheSparrow jack;
     Princess princess;
@@ -62,9 +61,11 @@ public class Map {
             for (Borders border : prison) border.draw(graphics);
 
             if(key != null) key.draw(graphics);
-            if(bomb != null) bomb.draw(graphics);
             for (Pirates pirate : pirates) pirate.draw(graphics);
-            for (Bombers bomber : bombers) bomber.draw(graphics);
+            for (Bombers bomber : bombers) {
+                if(bomber.getBomb() != null) bomber.getBomb().draw(graphics);
+                bomber.draw(graphics);
+            }
     }
 
     private List<Borders> createBorders() {
@@ -147,7 +148,7 @@ public class Map {
         Bombers bomber;
 
         for (int i = 0; i < 3; i++) {
-            bomber = new Bombers(random.nextInt(width - 2) + 1, random.nextInt(height - 8) +5, "m", 'M', width);
+            bomber = new Bombers(random.nextInt(width - 2) + 1, random.nextInt(height - 7) + 5, "m", 'M', width);
             if(checkPosition(bomber, biscuits)){
                 b.add(bomber);
             }
@@ -191,11 +192,6 @@ public class Map {
         princess.setJackPosition(jack.getPosition());
         jack.setJackDirection(press.getKeyType());
         moveJack(press.getKeyType());
-        count++;
-    }
-
-    public int getKeyStrokes(){
-        return this.count;
     }
 
     private void moveJack(KeyType press){
@@ -224,7 +220,7 @@ public class Map {
         this.openExit();
     }
 
-    public boolean moveEnemies(TextGraphics graphics){
+    public boolean moveEnemies(){
         for(Pirates pirate: pirates){
             moveEnemy(pirate);
             checkJackColision(pirate);
@@ -232,18 +228,8 @@ public class Map {
         for(Bombers bomber: bombers){
             moveEnemy(bomber);
             checkJackColision(bomber);
-            if(bomber.checkBomb()){
-               bomb = new Bombs(bomber.getBombPosition().getX(), bomber.getBombPosition().getY(), "d");
-            }
-            if(bomb != null) bomber.setCounter(bomber.getCounter() + 1);
-            if(bomber.getCounter() == 10) {
-                bomb = new Bombs(bomber.getBombPosition().getX(), bomber.getBombPosition().getY(), "g");
-            }
-            if(bomber.getCounter() == 14){
-                bomb = null;
-                bomber.setCounter(0);
-                bomber.createOtherBombPosition();
-            }
+
+            bomber.bombActions();
         }
 
         return jack.checkIfDead();

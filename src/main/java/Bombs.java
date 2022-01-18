@@ -19,4 +19,7 @@ public class Bombs extends Components{
         graphics.putString(new TerminalPosition(position.getX(), position.getY()), icon);
     }
 
+    public void setIcon(String icon) {
+        this.icon = icon;
+    }
 }
