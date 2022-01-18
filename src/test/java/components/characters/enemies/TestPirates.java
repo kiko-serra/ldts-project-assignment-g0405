@@ -11,7 +11,7 @@ public class TestPirates {
 
     @BeforeEach
     public void pirateConstructor(){
-        //pirate = new elements.components.components.characters.components.characters.enemies.Pirates(10,20);
+        pirate = new Pirates(10,20,null,'a');
     }
 
     @Test
