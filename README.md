@@ -1,4 +1,4 @@
-# LDTS_04_05 - Cross the game.Map
+# LDTS_04_05 - Cross the Map
 
 [![BCH compliance](https://bettercodehub.com/edge/badge/FEUP-LDTS-2021/ldts-project-assignment-g0405?branch=master&token=ddf1ebce54df1d51bddbfb146e3d8630c660b27d)](https://bettercodehub.com/)
 
