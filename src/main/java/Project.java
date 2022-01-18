@@ -1,3 +1,5 @@
+import game.Game;
+
 import java.awt.*;
 import java.io.IOException;
 
