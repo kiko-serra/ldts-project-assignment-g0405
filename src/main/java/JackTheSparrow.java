@@ -5,7 +5,7 @@ import com.googlecode.lanterna.input.KeyType;
 
 import java.util.List;
 
-public class JackTheSparrow extends Components implements Characters{
+public class JackTheSparrow extends Components implements Characters {
     private Position position;
     private KeyType direction;
     public int lives;
