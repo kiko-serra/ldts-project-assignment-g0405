@@ -29,6 +29,10 @@ public abstract class Enemies extends Components implements Characters {
             this.state=state;
     }
 
+    public int getState(){
+        return state;
+    }
+
     public void draw(TextGraphics graphics) {
         graphics.setForegroundColor(TextColor.Factory.fromString("#6577B3"));
         graphics.enableModifiers(SGR.BOLD);
