@@ -1,5 +1,6 @@
 package components.characters.enemies;
 
+import com.googlecode.lanterna.graphics.TextGraphics;
 import elements.components.characters.enemies.Pirates;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -11,7 +12,7 @@ public class TestPirates {
 
     @BeforeEach
     public void pirateConstructor(){
-        //pirate = new elements.components.components.characters.components.characters.enemies.Pirates(10,20);
+        pirate = new Pirates(10,20, "p", 'P');
     }
 
     @Test
