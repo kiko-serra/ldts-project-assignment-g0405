@@ -25,7 +25,7 @@ public abstract class Enemies extends Components implements Characters{
     }
 
     public void draw(TextGraphics graphics) {
-        graphics.setForegroundColor(TextColor.Factory.fromString("#B00000"));
+        graphics.setForegroundColor(TextColor.Factory.fromString("#6577B3"));
         graphics.enableModifiers(SGR.BOLD);
         graphics.putString(new TerminalPosition(position.getX(), position.getY()), icon);
     }
@@ -50,6 +50,10 @@ public abstract class Enemies extends Components implements Characters{
         this.icon = icon;
     }
 
+    public String getIcon() {
+        return icon;
+    }
+
     public void canEnemyMove(int width){
         int x = this.getPosition().getX();
         int y = this.getPosition().getY();
@@ -61,9 +65,5 @@ public abstract class Enemies extends Components implements Characters{
         if ((x==width-2 || (x==(width/2)-3 && y<=4))&& this.state==0) {
             setState(1);
         }
-    }
-
-    public int getState(){
-        return state;
     }
 }
