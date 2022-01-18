@@ -19,12 +19,13 @@ public class Map {
     private List<Borders> borders;
     private List<Biscuits> biscuits;
     private List<Borders> prison;
-    private List<Pirates> piratesSmall = new ArrayList<>();
-    private List<Pirates> piratesBig = new ArrayList<>();
+    private List<Pirates> pirates;
+    private List<Bombers> bombers;
     private Key key;
     private Exit exit;
     private List<Lives> lives;
     private Points points;
+    private Bombs bomb;
 
     public Map(int width, int height) {
         this.width = width;
@@ -36,9 +37,11 @@ public class Map {
         this.borders = createBorders();
         this.prison = createPrison();
         this.biscuits = createBiscuits();
-        createPirates();
+        this.pirates = createPirates();
+        this.bombers = createBombers();
         this.key = createKey();
         this.exit = null;
+        this.bomb = null;
 
         this.lives = createLives();
         this.points = new Points(width - 1, height, "POINTS: ");
@@ -56,9 +59,13 @@ public class Map {
             for (Borders border : borders) border.draw(graphics);
             for (Biscuits biscuit : biscuits) biscuit.draw(graphics);
             for (Borders border : prison) border.draw(graphics);
-            for (Pirates pirate : piratesSmall) pirate.draw(graphics);
-            for (Pirates pirate : piratesBig) pirate.draw(graphics);
+
             if(key != null) key.draw(graphics);
+            for (Pirates pirate : pirates) pirate.draw(graphics);
+            for (Bombers bomber : bombers) {
+                if(bomber.getBomb() != null) bomber.getBomb().draw(graphics);
+                bomber.draw(graphics);
+            }
     }
 
     private List<Borders> createBorders() {
@@ -118,26 +125,38 @@ public class Map {
         return k;
     }
 
-    private void createPirates(){
+    private List<Pirates> createPirates(){
         Random random = new Random();
+        List<Pirates> p = new ArrayList<>();
         Pirates pirate;
 
-        for (int i = 0; i < 11; i++) {
-            pirate = new Pirates(random.nextInt(width - 2) + 1, random.nextInt(height - 3) + 1);
+        for (int i = 0; i < 9; i++) {
+            pirate = new Pirates(random.nextInt(width - 2) + 1, random.nextInt(height - 3) + 1, "p", 'P');
             if(checkPosition(pirate, biscuits)){
-                switch (pirate.getSize()){
-                    case 0:
-                        piratesSmall.add(pirate);
-                        break;
-                    case 1:
-                        piratesBig.add(pirate);
-                        break;
-                }
+                p.add(pirate);
             }
             else{
                 i--;
             }
         }
+        return p;
+    }
+
+    private List<Bombers> createBombers(){
+        Random random = new Random();
+        List<Bombers> b = new ArrayList<>();
+        Bombers bomber;
+
+        for (int i = 0; i < 3; i++) {
+            bomber = new Bombers(random.nextInt(width - 2) + 1, random.nextInt(height - 7) + 5, "m", 'M', width);
+            if(checkPosition(bomber, biscuits)){
+                b.add(bomber);
+            }
+            else{
+                i--;
+            }
+        }
+        return b;
     }
 
     private List<Lives> createLives(){
@@ -201,19 +220,24 @@ public class Map {
         this.openExit();
     }
 
-    public boolean movePirate(){
-        moveP(piratesSmall);
-        moveP(piratesBig);
+    public boolean moveEnemies(){
+        for(Pirates pirate: pirates){
+            moveEnemy(pirate);
+            checkJackColision(pirate);
+        }
+        for(Bombers bomber: bombers){
+            moveEnemy(bomber);
+            checkJackColision(bomber);
 
-        checkJackColision();
+            bomber.bombActions();
+        }
+
         return jack.checkIfDead();
     }
 
-    private void moveP(List<Pirates> pirates){
-        for (Pirates pirate : pirates){
-            pirate.move();
-            pirate.canPirateMove(width);
-        }
+    private void moveEnemy(Enemies enemy){
+        enemy.move();
+        enemy.canEnemyMove(width);
     }
 
     private void eatBiscuits (){
@@ -227,18 +251,10 @@ public class Map {
         }
     }
 
-    private void checkJackColision (){
-        checkP(piratesSmall);
-        checkP(piratesBig);
-    }
-
-    private void checkP(List<Pirates> pirates){
-        for (Pirates pirate: pirates){
-            if (jack.getPosition().equals(pirate.getPosition())){
-                jack.setLives();
-                lives.remove(lives.get(lives.size()-1));
-                break;
-            }
+    private void checkJackColision (Enemies enemy){
+        if (jack.getPosition().equals(enemy.getPosition())){
+            jack.setLives();
+            lives.remove(lives.get(lives.size()-1));
         }
     }
 

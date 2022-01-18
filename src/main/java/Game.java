@@ -29,11 +29,11 @@ public class Game {
 
     private boolean gameIsOver = false;
 
-    class Aux extends TimerTask {
+    class ControlPirates extends TimerTask {
         public void run()
         {
             //pirates only move if Jack is alive
-            if(map.movePirate()) {
+            if(map.moveEnemies()) {
                 try{
                     setGameIsOver();
                     endGame("GAME OVER!");
@@ -62,7 +62,8 @@ public class Game {
         map = new Map(width, height);
 
         timer = new Timer();
-        moving = new Aux();
+        moving = new ControlPirates();
+
 
         menu = new Menu(this);
         this.menuChoice = -1;
@@ -156,7 +157,7 @@ public class Game {
     }
 
     public AWTTerminalFontConfiguration loadFont() throws FontFormatException, IOException {
-        File fontFile = new File("src/main/resources/Courier-changed2.ttf");
+        File fontFile = new File("src/main/resources/Courier-changed3.ttf");
         Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
 
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();

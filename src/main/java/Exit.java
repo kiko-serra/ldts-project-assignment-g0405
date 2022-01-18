@@ -1,10 +1,5 @@
-
-
-public class Exit extends Components {
-    private Position position;
-
+public class Exit extends Components{
     public Exit(int x, int y){
         super(x, y);
-        this.position = super.getPosition();
     }
 }

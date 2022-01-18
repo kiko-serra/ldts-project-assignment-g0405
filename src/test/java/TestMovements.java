@@ -25,7 +25,7 @@ public class TestMovements {
         assertEquals(10,jack.getPosition().getX());
     }
 
-    @Test
+    /*@Test
     public void testMovePirates(){
         Pirates pirates = new Pirates(10, 20);
 
@@ -57,7 +57,7 @@ public class TestMovements {
         pirates4.setState(0);
         pirates4.canPirateMove(30);
         assertEquals(1, pirates4.getState());
-    }
+    }*/
 
     @Test
     public void testMovePosition(){

@@ -106,14 +106,14 @@ public class TestComponents {
 
     }
 
-    @Test
-    public void testPirates() {
+    //@Test
+    /*public void testPirates() {
         Pirates pirates = new Pirates(10, 20);
 
         assertEquals(10, pirates.getPosition().getX());
         assertEquals(20, pirates.getPosition().getY());
 
-    }
+    }*/
 
     @Test
     public void testPrincess() {
