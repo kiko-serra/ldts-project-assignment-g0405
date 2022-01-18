@@ -25,7 +25,6 @@ public class Map {
     private Exit exit;
     private List<Lives> lives;
     private Points points;
-    private Bombs bomb;
 
     public Map(int width, int height) {
         this.width = width;
@@ -41,7 +40,6 @@ public class Map {
         this.bombers = createBombers();
         this.key = createKey();
         this.exit = null;
-        this.bomb = null;
 
         this.lives = createLives();
         this.points = new Points(width - 1, height, "POINTS: ");
@@ -230,6 +228,12 @@ public class Map {
             checkJackColision(bomber);
 
             bomber.bombActions();
+            if(bomber.getBomb() != null && bomber.getCounter() == 10){
+                if(checkJackAround(bomber.getBomb())){
+                    jack.setLives();
+                    lives.remove(lives.get(lives.size()-1));
+                }
+            }
         }
 
         return jack.checkIfDead();
@@ -240,6 +244,22 @@ public class Map {
         enemy.canEnemyMove(width);
     }
 
+    private void checkJackColision (Enemies enemy){
+        if (jack.getPosition().equals(enemy.getPosition())){
+            jack.setLives();
+            lives.remove(lives.get(lives.size()-1));
+        }
+    }
+
+    private boolean checkJackAround(Bombs bomb){
+        for(int i = -1; i <= 1; i++){
+            for(int k = -1; k <= 1; k++){
+                if(comparePositions(jack.getPosition(), bomb.getPosition(), i, k)) return true;
+            }
+        }
+        return false;
+    }
+
     private void eatBiscuits (){
         for (Biscuits biscuit: biscuits){
             if (jack.getPosition().equals(biscuit.getPosition())){
@@ -248,13 +268,6 @@ public class Map {
                 points.setPoints();
                 break;
             }
-        }
-    }
-
-    private void checkJackColision (Enemies enemy){
-        if (jack.getPosition().equals(enemy.getPosition())){
-            jack.setLives();
-            lives.remove(lives.get(lives.size()-1));
         }
     }
 

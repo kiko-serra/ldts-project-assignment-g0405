@@ -14,7 +14,7 @@ public class Bombs extends Components{
     }
 
     public void draw(TextGraphics graphics) {
-        graphics.setForegroundColor(TextColor.Factory.fromString("#48A14D"));
+        graphics.setForegroundColor(TextColor.Factory.fromString("#EDD94C"));
         graphics.enableModifiers(SGR.BOLD);
         graphics.putString(new TerminalPosition(position.getX(), position.getY()), icon);
     }
