@@ -1,6 +1,6 @@
 # LDTS_04_05 - Cross the Map
 
-[![BCH compliance](https://bettercodehub.com/edge/badge/FEUP-LDTS-2021/ldts-project-assignment-g0405?branch=main&token=ddf1ebce54df1d51bddbfb146e3d8630c660b27d)](https://bettercodehub.com/)
+[![BCH compliance](https://bettercodehub.com/edge/badge/FEUP-LDTS-2021/ldts-project-assignment-g0405?branch=main&token=e13264603f79bc7b3a224eb89e8f866e44f94999)](https://bettercodehub.com/)
 
 Our game consists in a text-based version of the Crossy Road game with some SuperMario combinations and some new characters.
 
