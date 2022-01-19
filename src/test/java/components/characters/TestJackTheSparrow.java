@@ -6,7 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.times;
 
 public class TestJackTheSparrow {
@@ -62,11 +62,11 @@ public class TestJackTheSparrow {
         jack.setLives();
         Mockito.when(jack.checkIfDead()).thenReturn(true);
 
-        assertEquals(false,jack1.checkIfDead());
+        assertFalse(jack1.checkIfDead());
         jack1.setLives();
         jack1.setLives();
         jack1.setLives();
-        assertEquals(true,jack1.checkIfDead());
+        assertTrue(jack1.checkIfDead());
     }
 
     @Test

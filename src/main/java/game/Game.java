@@ -90,7 +90,7 @@ public class Game {
                 .setInitialTerminalSize(terminalSize)
                 .setTerminalEmulatorFontConfiguration(font)
                 .setForceAWTOverSwing(true)
-                .setTerminalEmulatorTitle("Cross the game.Map");
+                .setTerminalEmulatorTitle("Cross the Map");
 
         Terminal terminal = terminalFactory.createTerminal();
         ((AWTTerminalFrame)terminal).setResizable(false);
