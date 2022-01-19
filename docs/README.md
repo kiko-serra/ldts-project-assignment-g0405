@@ -42,7 +42,8 @@ This project was developed by _André Costa_ (https://github.com/AndreCosta20190
   * [Coverage Report](#coverage-report)
 * [Self-Evaluation](self-evaluation)
 
-##GamePlay Demo
+
+## GamePlay Demo
 <p align="center">
     <img width="550" src="images/gameplayDemo.gif">
 </p>
@@ -100,42 +101,42 @@ This project was developed by _André Costa_ (https://github.com/AndreCosta20190
 - **Lives and score** - On the lower portion of the game will have the amount of lives remaining and how many biscuits you have caught.
 - **Sounds and music** - There will be background music and each time Jack catches anything a sound will be played.
 
-##Design
+## Design
 
-###Characters
+### Characters
 
-####Problem in Context
+#### Problem in Context
 
-####Pattern
+#### Pattern
 
-####Implementation
+#### Implementation
 
-####Consequences
+#### Consequences
 
-###Music
+### Music
 
-####Problem in Context
+#### Problem in Context
 
-####Pattern
+#### Pattern
 
-####Implementation
+#### Implementation
 
-####Consequences
+#### Consequences
 
-###Input
+### Input
 
-####Problem in Context
+#### Problem in Context
 
-####Pattern
+#### Pattern
 
-####Implementation
+#### Implementation
 
-####Consequences
+#### Consequences
 
 
 
-##Code Smells and Possible Refactorings
-###Large Class
+## Code Smells and Possible Refactorings
+### Large Class
 
 Our classes Game and Map contain many fields and methods.
 In both cases, we find it justifiable as the classes require these fields,
