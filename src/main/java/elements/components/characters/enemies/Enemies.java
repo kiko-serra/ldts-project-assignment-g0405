@@ -63,6 +63,10 @@ public abstract class Enemies extends Components implements Characters {
         return icon;
     }
 
+    public char getType(){
+        return type;
+    }
+
     public void canEnemyMove(int width){
         int x = this.getPosition().getX();
         int y = this.getPosition().getY();
