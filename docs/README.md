@@ -13,7 +13,7 @@ Each biscuit that Jack catches makes his score go up, but these are not necessar
 This project was developed by _André Costa_ (https://github.com/AndreCosta201905916) (up201905016@fe.up.pt) and _Francisco Serra_ (https://github.com/kiko-serra) (up202007723@fe.up.pt) and _Válter Castro_ (https://github.com/ValterCastro) (up201706546@fe.up.pt) for LDTS 2021⁄22.
 
 ## Index
-* [GamePlay Demo](gameplay-demo)
+* [GamePlay Demo](#gameplay-demo)
 * [Implemented Features](#implemented-features)
   * [Jack the Sparrow](#jack-the-sparrow)
   * [Pirates](#pirates)
