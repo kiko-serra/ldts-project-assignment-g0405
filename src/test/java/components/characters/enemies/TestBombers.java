@@ -23,6 +23,9 @@ public class TestBombers {
 
         assertEquals(10,bomber1.getPosition().getX());
         assertEquals(20,bomber1.getPosition().getY());
+        assertEquals(null,bomber1.getIcon());
+        assertEquals('a',bomber1.getType());
+
     }
 
     @Test
