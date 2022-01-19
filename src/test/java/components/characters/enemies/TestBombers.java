@@ -1,22 +1,25 @@
 
 package components.characters.enemies;
 
+import elements.components.Bombs;
 import elements.components.characters.enemies.Bombers;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 public class TestBombers {
 
     Bombers bomber;
     Bombers bomber1;
 
+
     @BeforeEach
     public void bomberConstructor(){
         bomber = Mockito.mock(Bombers.class);
-        bomber1 = new Bombers(10,20,null,'a',3);
+        bomber1 = new Bombers(10,20,"m",'M',3);
     }
 
     @Test
@@ -24,22 +27,18 @@ public class TestBombers {
 
         assertEquals(10,bomber1.getPosition().getX());
         assertEquals(20,bomber1.getPosition().getY());
-        assertEquals(null,bomber1.getIcon());
-        assertEquals('a',bomber1.getType());
+        assertEquals("m",bomber1.getIcon());
+        assertEquals('M',bomber1.getType());
 
-    }
-
-    @Test
-    public void testBomberBombActions(){
-
-        bomber.bombActions();
-        Mockito.verify(bomber).bombActions();
     }
 
     @Test
     public void testBomberGetBomb(){
         bomber.getBomb();
         Mockito.verify(bomber).getBomb();
+
+        bomber1.getBomb();
+        assertNull(bomber1.getBomb());
     }
 
     @Test
@@ -52,17 +51,7 @@ public class TestBombers {
         assertEquals(null,bomber1.getBomb());
     }
 
-    @Test
-    public void testBomberCheckBomb(){
-        bomber.checkBomb();
-        Mockito.verify(bomber).checkBomb();
-    }
 
-    @Test
-    public void testBomberCreateBombPosition(){
-        bomber.createBombPosition();
-        Mockito.verify(bomber).createBombPosition();
-    }
 
 
     @Test
@@ -75,6 +64,17 @@ public class TestBombers {
         bomber.setCounter(2);
         bomber.setCounter(6);
         Mockito.verify(bomber).setCounter(6);
+    }
+
+    @Test
+    public void testBomberSetIcon(){
+        bomber1.setIcon("l");
+        assertEquals("l",bomber1.getIcon());
+    }
+
+    @Test
+    public void testBomberGetType(){
+        assertEquals('M',bomber1.getType());
     }
 }
 
