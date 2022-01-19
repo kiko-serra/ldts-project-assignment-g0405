@@ -13,6 +13,7 @@ Each biscuit that Jack catches makes his score go up, but these are not necessar
 This project was developed by _André Costa_ (https://github.com/AndreCosta201905916) (up201905016@fe.up.pt) and _Francisco Serra_ (https://github.com/kiko-serra) (up202007723@fe.up.pt) and _Válter Castro_ (https://github.com/ValterCastro) (up201706546@fe.up.pt) for LDTS 2021⁄22.
 
 ## Index
+* [GamePlay Demo](gameplay-demo)
 * [Implemented Features](#implemented-features)
   * [Jack the Sparrow](#jack-the-sparrow)
   * [Pirates](#pirates)
@@ -41,8 +42,12 @@ This project was developed by _André Costa_ (https://github.com/AndreCosta20190
   * [Coverage Report](#coverage-report)
 * [Self-Evaluation](self-evaluation)
 
+##GamePlay Demo
+<p align="center">
+    <img width="550" src="images/gameplayDemo.gif">
+</p>
 
-## IMPLEMENTED FEATURES
+## Implemented Features
 
 ### Jack the Sparrow
 
@@ -53,28 +58,28 @@ This project was developed by _André Costa_ (https://github.com/AndreCosta20190
 
 - **Getting biscuits** - When Jack hits a biscuit his score goes up by one biscuit until he reaches the maximum score.
 <p align="center">
-    <img width=550 src="images/catchCoockie.com-gif-maker.gif">
+    <img width=550 src="images/catchCoockie.gif">
 </p>
 
 - **Catching key** - For Jack to release his beloved Princess he needs to catch the key to open the prison door.
 <p align="center">
-    <img width=550 src="images/catchCoin&OpenPrison.com-gif-maker.gif">
+    <img width=550 src="images/collectKey.gif">
 </p>
 
 <p align="center">
-    <img width=550 src="images/openExit&RescuePrincess.com-gif-maker.gif">
+    <img width=550 src="images/rescuePrincess.gif">
 </p>
 
 - **Lives** - Collisions are implemented so that each time Jack gets hit by one of the pirates he loses a life. When the game starts Jack has 3 lives, and if he loses them all he dies.
 <p align="center">
-    <img width=550 src="images/dieToPirates.com-gif-maker.gif">
+    <img width=550 src="images/losingLivesAndTheGame.gif">
 </p>
 
 ### Pirates
 
 - **Movement** - Each pirate moves independently horizontally and when they hit a border their direction changes.
 <p align="center">
-    <img width=550 src="images/pirateMoves.com-gif-maker.gif">
+    <img width=550 src="images/enemiesMoves.gif">
 </p>
 
 - **Removing lives** - Any Pirate that hits Jack removes one of the three lives he has.
@@ -83,10 +88,10 @@ This project was developed by _André Costa_ (https://github.com/AndreCosta20190
 
 - **Following Jack** - When Jack enters the prison, the Princess will start following until they leave the map.
 <p align="center">
-    <img width=550 src="images/openExit&RescuePrincess.com-gif-maker.gif">
+    <img width=550 src="images/rescuePrincess.gif">
 </p>
 
-## PLANNED FEATURES
+## Planned Features
 
 - **Different Pirates** - We will make three kinds of Pirates, each one with different speeds and the bigger one will leave bombs behind.
 - **Menu** - There will be a menu when you open the game with some buttons.
@@ -137,7 +142,7 @@ In both cases, we find it justifiable as the classes require these fields,
 in one hand the Game class is the main class of the program and it needs to store a considerable amount of data,
 on the other hand various methods are needed for the interface and it wouldn't make sense to split it into two separate ones (extract method).
 
-## TESTING
+## Testing
 
 ### Coverage Report
 <p align="center">
@@ -145,7 +150,7 @@ on the other hand various methods are needed for the interface and it wouldn't m
 </p>
 
 
-## SELF-EVALUATION
+## Self-Evaluation
 
 - André Costa: 
 - Francisco Serra: 
