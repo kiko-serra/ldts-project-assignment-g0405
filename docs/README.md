@@ -35,13 +35,12 @@ This project was developed by _André Costa_ (https://github.com/AndreCosta20190
     * [The Pattern](#the-pattern-4)
     * [Implementation](#implementation-4)
     * [Consequences](#consequences-4)
-  
 * [Code Smells and Possible Refactorings](#code-smells-and-possible-refactorings)
   * [Large Class](#large-class)
 * [Testing](#testing)
   * [Coverage Report](#coverage-report)
 * [Self-Evaluation](self-evaluation)
-
+* 
 
 ## GamePlay Demo
 <p align="center">
