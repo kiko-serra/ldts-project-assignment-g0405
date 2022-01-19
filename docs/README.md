@@ -16,7 +16,7 @@ This project was developed by _André Costa_ (https://github.com/AndreCosta20190
 * [GamePlay Demo](#gameplay-demo)
 * [Implemented Features](#implemented-features)
   * [Jack the Sparrow](#jack-the-sparrow)
-  * [Pirates](#pirates)
+  * [Enemies](#enemies)
   * [Princess](#princess)
 * [Planned Features](#planned-features)
 * [Design](#design)
@@ -74,14 +74,14 @@ This project was developed by _André Costa_ (https://github.com/AndreCosta20190
     <img width=550 src="images/losingLivesAndTheGame.gif">
 </p>
 
-### Pirates
+### Enemies
 
-- **Movement** - Each pirate moves independently horizontally and when they hit a border their direction changes.
+- **Movement** - Each enemy moves independently horizontally and when they hit a border their direction changes. Bomber planes will randomly drop bombs.
 <p align="center">
     <img width=550 src="images/enemiesMoves.gif">
 </p>
 
-- **Removing lives** - Any Pirate that hits Jack removes one of the three lives he has.
+- **Removing lives** - Any Enemy that hits Jack removes one of the three lives he has. If Jack is nearby a bomb explosion, he will also lose one life.
 
 ### Princess
 
