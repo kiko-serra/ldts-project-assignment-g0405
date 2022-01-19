@@ -1,3 +1,4 @@
+
 package components.characters.enemies;
 
 import elements.components.characters.enemies.Bombers;
@@ -76,3 +77,4 @@ public class TestBombers {
         Mockito.verify(bomber).setCounter(6);
     }
 }
+
