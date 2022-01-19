@@ -12,7 +12,9 @@ public class TestPirates {
 
     @BeforeEach
     public void pirateConstructor(){
+
         pirate = new Pirates(10,20, "p", 'P');
+
     }
 
     @Test
