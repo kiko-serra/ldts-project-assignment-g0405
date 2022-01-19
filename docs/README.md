@@ -40,7 +40,6 @@ This project was developed by _André Costa_ (https://github.com/AndreCosta20190
 * [Testing](#testing)
   * [Coverage Report](#coverage-report)
 * [Self-Evaluation](self-evaluation)
-* 
 
 ## GamePlay Demo
 <p align="center">
