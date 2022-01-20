@@ -25,7 +25,7 @@ This project was developed by _André Costa_ (https://github.com/AndreCosta20190
     * [Pattern](#pattern)
     * [Implementation](#implementation)
     * [Consequences](#consequences)
-  * [Music](#music)
+  * [Enemies](#enemies-1)
     * [Problem in Context](#problem-in-context-1)
     * [Pattern](#pattern-1)
     * [Implementation](#implementation-1)
@@ -111,9 +111,10 @@ This project was developed by _André Costa_ (https://github.com/AndreCosta20190
 
 #### Consequences
 
-### Music
+### Enemies
 
 #### Problem in Context
+Since we have 2 main enemies in our game the best approach to create them is by using the Factory Method. 
 
 #### Pattern
 
