@@ -3,13 +3,15 @@ package elements;
 import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
+import elements.components.Components;
 
-public class Points {
+public class Points extends Components {
     private final Position position;
     private int points;
     private final String text;
 
     public Points(int width, int height, String text){
+        super(width, height);
         this.text = text;
         points = 0;
 
