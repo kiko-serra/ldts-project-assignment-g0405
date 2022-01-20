@@ -1,4 +1,3 @@
-
 package components.characters.enemies;
 
 import elements.components.Bombs;
@@ -26,7 +25,6 @@ public class TestBombers {
         assertEquals(20,bomber1.getPosition().getY());
         assertEquals("m",bomber1.getIcon());
         assertEquals('M',bomber1.getType());
-
     }
 
     @Test
@@ -47,7 +45,6 @@ public class TestBombers {
         bomber1.setBombNull();
         assertEquals(null,bomber1.getBomb());
     }
-
 
     @Test
     public void testBomberSetCounter(){
