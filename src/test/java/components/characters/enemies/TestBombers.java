@@ -1,4 +1,3 @@
-
 package components.characters.enemies;
 
 import elements.components.Bombs;
@@ -11,10 +10,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
 public class TestBombers {
-
     Bombers bomber;
     Bombers bomber1;
-
 
     @BeforeEach
     public void bomberConstructor(){
@@ -24,12 +21,10 @@ public class TestBombers {
 
     @Test
     public void testBomberConstructor(){
-
         assertEquals(10,bomber1.getPosition().getX());
         assertEquals(20,bomber1.getPosition().getY());
         assertEquals("m",bomber1.getIcon());
         assertEquals('M',bomber1.getType());
-
     }
 
     @Test
@@ -50,9 +45,6 @@ public class TestBombers {
         bomber1.setBombNull();
         assertEquals(null,bomber1.getBomb());
     }
-
-
-
 
     @Test
     public void testBomberSetCounter(){
@@ -77,4 +69,3 @@ public class TestBombers {
         assertEquals('M',bomber1.getType());
     }
 }
-

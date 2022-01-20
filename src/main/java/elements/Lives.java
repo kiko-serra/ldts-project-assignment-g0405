@@ -8,9 +8,11 @@ import elements.components.Components;
 public class Lives extends Components {
     private final Position position;
 
-    public Lives(int with, int height){
-        super(with, height);
-        this.position = super.getPosition();
+
+    public Lives(int width, int height){
+        super(width, height);
+        position = new Position(width, height);
+
     }
 
     public void draw(TextGraphics graphics){
