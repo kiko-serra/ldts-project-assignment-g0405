@@ -3,12 +3,14 @@ package elements;
 import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
+import elements.components.Components;
 
-public class Lives {
+public class Lives extends Components {
     private final Position position;
 
-    public Lives(int with, int height){
-        position = new Position(with, height);
+    public Lives(int width, int height){
+        super(width, height);
+        position = new Position(width, height);
     }
 
     public void draw(TextGraphics graphics){
