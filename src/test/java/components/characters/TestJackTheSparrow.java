@@ -1,5 +1,10 @@
 package components.characters;
 
+import com.googlecode.lanterna.TerminalPosition;
+import com.googlecode.lanterna.TerminalSize;
+import com.googlecode.lanterna.TextColor;
+import com.googlecode.lanterna.graphics.TextGraphics;
+import elements.Position;
 import elements.components.characters.JackTheSparrow;
 import com.googlecode.lanterna.input.KeyType;
 import org.junit.jupiter.api.BeforeEach;
@@ -13,11 +18,15 @@ public class TestJackTheSparrow {
 
     JackTheSparrow jack;
     JackTheSparrow jack1;
+    TextGraphics tg;
+    TextColor tc;
 
     @BeforeEach
     public void jackConstructor(){
         jack = Mockito.mock(JackTheSparrow.class);
         jack1 = new JackTheSparrow(10,20);
+        tc = TextColor.Factory.fromString("#171717");
+        tg = Mockito.mock(TextGraphics.class);
     }
 
     @Test
@@ -80,5 +89,18 @@ public class TestJackTheSparrow {
         jack1.setPoints();
         jack1.setPoints();
         assertEquals(2,jack1.getPoints());
+    }
+
+    @Test
+    public void testJackDrawSetBackgroundColor(){
+        jack1.draw(tg);
+        Mockito.verify(tg, Mockito.times(1)).setBackgroundColor(tc);
+
+    }
+
+    @Test
+    public void testJackDrawPutString(){
+        jack1.draw(tg);
+        Mockito.verify(tg, Mockito.times(1)).putString(new TerminalPosition(10, 20),"j");
     }
 }

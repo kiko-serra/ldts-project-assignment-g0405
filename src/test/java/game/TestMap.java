@@ -358,13 +358,13 @@ public class TestMap {
        prison.add(prison2);
 
        for(Borders border : prison){
-           if(!map.checkPosition(border,map.getBiscuits())){
+           if(map.checkPosition(border,map.getBiscuits())){
                checkpos = false;
                break;
            }
        }
 
-       //assertTrue(checkpos);
+       assertTrue(checkpos);
 
 
        checkpos = true;

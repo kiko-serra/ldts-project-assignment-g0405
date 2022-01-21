@@ -90,4 +90,12 @@ public class JackTheSparrow extends Components implements Characters {
     public boolean checkIfDead(){
         return this.lives == 0;
     }
+
+    public String getIcon() {
+        return icon;
+    }
+
+    public void setIcon(String icon) {
+        this.icon = icon;
+    }
 }
