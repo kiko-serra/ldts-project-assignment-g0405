@@ -10,17 +10,15 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TestKey {
 
-    Key key;
+
     Key key1;
-    TextGraphics graphics;
 
     @BeforeEach
     public void keyConstructor(){
 
-        key = Mockito.mock(Key.class);
         key1 = new Key(10,20);
 
-        graphics = Mockito.mock(TextGraphics.class);
+
     }
 
     @Test
@@ -31,9 +29,5 @@ public class TestKey {
 
     }
 
-    @Test
-    public void testKeyDraw(){
-        key.draw(graphics);
-        Mockito.verify(key).draw(graphics);
-    }
+
 }

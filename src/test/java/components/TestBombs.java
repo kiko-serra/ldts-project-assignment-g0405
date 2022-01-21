@@ -19,4 +19,15 @@ public class TestBombs {
         assertEquals(10,bomb.getPosition().getX());
         assertEquals(20,bomb.getPosition().getY());
     }
+
+    @Test
+    public void testBombsSetIcon(){
+        bomb.setIcon("d");
+        assertEquals("d",bomb.getIcon());
+    }
+
+    @Test
+    public void testBombsGetIcon(){
+        assertEquals("g",bomb.getIcon());
+    }
 }

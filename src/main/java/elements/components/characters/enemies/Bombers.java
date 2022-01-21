@@ -40,6 +40,10 @@ public class Bombers extends Enemies {
         this.bomb = null;
     }
 
+    public void setBomb(Bombs bomb1){
+        bomb = bomb1;
+    }
+
     public void checkBomb(){
         if(this.getPosition().equals(bombPos)){
             bomb = new Bombs(bombPos.getX(), bombPos.getY(), "d");

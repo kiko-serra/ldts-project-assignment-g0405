@@ -95,6 +95,15 @@ public class Map {
         return borders;
     }
 
+    public void setBorders(List<Borders> borders1){
+        borders = borders1;
+    }
+
+    public List<Borders> getBorders(){
+
+        return borders;
+    }
+
     private List<Biscuits> createBiscuits(){
         Random random = new Random();
         List<Biscuits> biscuits = new ArrayList<>();
@@ -112,6 +121,14 @@ public class Map {
         return biscuits;
     }
 
+    public List<Biscuits> getBiscuits(){
+        return biscuits;
+    }
+
+    public void setBiscuits(List<Biscuits> biscuits1){
+        biscuits = biscuits1;
+    }
+
     private List<Borders> createPrison() {
         List<Borders> prison = new ArrayList<>();
 
@@ -127,6 +144,14 @@ public class Map {
         return prison;
     }
 
+    public List<Borders> getPrison(){
+        return prison;
+    }
+
+    public void setPrison(List<Borders> prison1){
+        prison = prison1;
+    }
+
     private Key createKey(){
         Key k;
         do {
@@ -134,6 +159,14 @@ public class Map {
             k = new Key(random.nextInt(width - 2) + 1, random.nextInt(height - 2) + 1);
         } while (!checkPosition(k, biscuits));
         return k;
+    }
+
+    public Key getKey(){
+        return key;
+    }
+
+    public void setKey(Key key1){
+        key = key1;
     }
 
     private List<Pirates> createPirates(){
@@ -153,6 +186,14 @@ public class Map {
         return p;
     }
 
+    public List<Pirates> getPirates(){
+        return pirates;
+    }
+
+    public void setPirates(List<Pirates> pirates1){
+        pirates = pirates1;
+    }
+
     private List<Bombers> createBombers(){
         Random random = new Random();
         List<Bombers> b = new ArrayList<>();
@@ -170,6 +211,14 @@ public class Map {
         return b;
     }
 
+    public List<Bombers> getBombers(){
+        return bombers;
+    }
+
+    public void setBombers(List<Bombers> bombers1){
+        bombers = bombers1;
+    }
+
     private List<Lives> createLives(){
         int k = 0;
         List<Lives> l = new ArrayList<>();
@@ -182,8 +231,12 @@ public class Map {
         return l;
     }
 
+    public List<Lives> getLives(){
+        return lives;
+    }
+
     //verifica se o objeto esta dentro da prisao ou se esta coincidente com as paredes da mesma
-    private boolean checkPosition (Components component, List<Biscuits> biscuits){
+    public boolean checkPosition (Components component, List<Biscuits> biscuits){
         for (int i=-1; i<3; i++){
             if (comparePositions(component.getPosition(), princess.getPosition(), -2, i)) return false;
             if (comparePositions(component.getPosition(), princess.getPosition(), -1, i)) return false;
@@ -205,7 +258,7 @@ public class Map {
         moveJack(press.getKeyType());
     }
 
-    private void moveJack(KeyType press){
+    public void moveJack(KeyType press){
         princess.setJackPosition(jack.getPosition());
         jack.move();
         if(jack.canJackMove(borders, prison)){
@@ -257,14 +310,14 @@ public class Map {
         enemy.canEnemyMove(width);
     }
 
-    private void checkJackColision (Enemies enemy){
+    public void checkJackColision (Enemies enemy){
         if (jack.getPosition().equals(enemy.getPosition())){
             jack.setLives();
             lives.remove(lives.get(lives.size()-1));
         }
     }
 
-    private boolean checkJackAround(Bombs bomb){
+    public boolean checkJackAround(Bombs bomb){
         for(int i = -1; i <= 1; i++){
             for(int k = -1; k <= 1; k++){
                 if(comparePositions(jack.getPosition(), bomb.getPosition(), i, k)) return true;
@@ -273,7 +326,7 @@ public class Map {
         return false;
     }
 
-    private void eatBiscuits (){
+    public void eatBiscuits (){
         for (Biscuits biscuit: biscuits){
             if (jack.getPosition().equals(biscuit.getPosition())){
                 biscuits.remove(biscuit);
@@ -284,7 +337,7 @@ public class Map {
         }
     }
 
-    private void collectKey(){
+    public void collectKey(){
         if (jack.getPosition().equals(key.getPosition())){
             key = null;
             for (Borders border: prison){
@@ -296,7 +349,7 @@ public class Map {
         }
     }
 
-    private void openExit(){
+    public void openExit(){
         if(comparePositions(jack.getPosition(), princess.getPosition(), 0, 1)){
             for(Borders border: borders){
                 if(border.getPosition().getX() == (width/2) && border.getPosition().getY() == height-1){
@@ -321,7 +374,15 @@ public class Map {
         else return false;
     }
 
-    public JackTheSparrow getJack(){
-        return this.jack;
+    public Points getPoints(){
+        return points;
+    }
+
+    public Exit getExit(){
+        return exit;
+    }
+
+    public void setExit(Exit exit1){
+        exit = exit1;
     }
 }

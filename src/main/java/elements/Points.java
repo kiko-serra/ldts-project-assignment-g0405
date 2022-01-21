@@ -27,4 +27,8 @@ public class Points extends Components {
     public void setPoints() {
         this.points++;
     }
+
+    public int getPoints(){
+        return points;
+    }
 }

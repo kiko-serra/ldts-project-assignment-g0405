@@ -10,12 +10,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
 public class TestBombers {
-    Bombers bomber;
     Bombers bomber1;
 
     @BeforeEach
     public void bomberConstructor(){
-        bomber = Mockito.mock(Bombers.class);
         bomber1 = new Bombers(10,20,"m",'M',3);
     }
 
@@ -29,18 +27,12 @@ public class TestBombers {
 
     @Test
     public void testBomberGetBomb(){
-        bomber.getBomb();
-        Mockito.verify(bomber).getBomb();
-
         bomber1.getBomb();
         assertNull(bomber1.getBomb());
     }
 
     @Test
     public void testBomberSetBombNull(){
-        bomber.setBombNull();
-        Mockito.verify(bomber).setBombNull();
-
         bomber1.getBomb();
         bomber1.setBombNull();
         assertEquals(null,bomber1.getBomb());
@@ -51,11 +43,6 @@ public class TestBombers {
         bomber1.setCounter(5);
         assertEquals(5,bomber1.getCounter());
 
-        bomber.setCounter(5);
-        bomber.setCounter(3);
-        bomber.setCounter(2);
-        bomber.setCounter(6);
-        Mockito.verify(bomber).setCounter(6);
     }
 
     @Test
