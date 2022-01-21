@@ -9,14 +9,14 @@ import org.mockito.Mockito;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TestBiscuits {
-    Biscuits biscuit;
+
     Biscuits biscuit1;
 
-    TextGraphics graphics;
+
 
     @BeforeEach
     public void biscuitsConstructor(){
-        biscuit = Mockito.mock(Biscuits.class);
+
         biscuit1 = new Biscuits(10, 20);
     }
 
@@ -27,9 +27,4 @@ public class TestBiscuits {
     }
 
 
-    @Test
-    public void testBiscuitsDraw(){
-        biscuit.draw(graphics);
-        Mockito.verify(biscuit).draw(graphics);
-    }
 }

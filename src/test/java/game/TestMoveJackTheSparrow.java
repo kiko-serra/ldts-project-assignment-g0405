@@ -10,12 +10,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TestMoveJackTheSparrow {
 
-    JackTheSparrow jack;
+
     JackTheSparrow jack1;
 
     @BeforeEach
     public void jackConstructor(){
-        jack = Mockito.mock(JackTheSparrow.class);
         jack1 = new JackTheSparrow(10,20);
     }
 

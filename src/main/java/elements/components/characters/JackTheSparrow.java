@@ -71,6 +71,10 @@ public class JackTheSparrow extends Components implements Characters {
         this.lives--;
     }
 
+    public int getLives(){
+        return lives;
+    }
+
     public void setPoints(){
         this.points++;
     }
