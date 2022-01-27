@@ -1,9 +1,9 @@
-package com.g0405.elements.components;
+package elements.components;
 
 import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
-import com.g0405.elements.Position;
+import elements.Position;
 
 public class Key extends Components {
     private Position position;

@@ -1,4 +1,4 @@
-package com.g0405.game;
+package game;
 
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;

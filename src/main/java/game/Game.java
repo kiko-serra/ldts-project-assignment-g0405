@@ -1,4 +1,4 @@
-package com.g0405.game;
+package game;
 
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.input.KeyStroke;

@@ -1,6 +1,6 @@
-package com.g0405.game;
+package game;
 
-import com.g0405.elements.components.*;
+import elements.components.*;
 
 import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TerminalSize;
@@ -9,13 +9,13 @@ import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.input.KeyType;
 
-import com.g0405.elements.Lives;
-import com.g0405.elements.Points;
-import com.g0405.elements.Position;
-import com.g0405.elements.components.characters.*;
-import com.g0405.elements.components.characters.enemies.Bombers;
-import com.g0405.elements.components.characters.enemies.Enemies;
-import com.g0405.elements.components.characters.enemies.Pirates;
+import elements.components.Lives;
+import elements.components.Points;
+import elements.Position;
+import elements.components.characters.*;
+import elements.components.characters.enemies.Bombers;
+import elements.components.characters.enemies.Enemies;
+import elements.components.characters.enemies.Pirates;
 
 
 import java.util.ArrayList;

@@ -1,12 +1,12 @@
-package com.g0405.elements.components.characters;
+package elements.components.characters;
 
 import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyType;
-import com.g0405.elements.Position;
-import com.g0405.elements.components.Borders;
-import com.g0405.elements.components.Components;
+import elements.Position;
+import elements.components.Borders;
+import elements.components.Components;
 
 import java.util.List;
 
@@ -89,13 +89,5 @@ public class JackTheSparrow extends Components implements Characters {
 
     public boolean checkIfDead(){
         return this.lives == 0;
-    }
-
-    public String getIcon() {
-        return icon;
-    }
-
-    public void setIcon(String icon) {
-        this.icon = icon;
     }
 }
