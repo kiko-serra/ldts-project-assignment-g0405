@@ -1,6 +1,6 @@
 package com.g0405;
 
-import com.g0405.elements.Lives;
+import com.g0405.elements.components.Lives;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

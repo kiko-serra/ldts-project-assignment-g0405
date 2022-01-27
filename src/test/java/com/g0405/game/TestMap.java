@@ -1,9 +1,8 @@
 package com.g0405.game;
 
-import com.g0405.game.Map;
 import com.googlecode.lanterna.input.KeyStroke;
-import com.g0405.elements.Lives;
-import com.g0405.elements.Points;
+import com.g0405.elements.components.Lives;
+import com.g0405.elements.components.Points;
 import com.g0405.elements.Position;
 import com.g0405.elements.components.*;
 import com.g0405.elements.components.characters.JackTheSparrow;

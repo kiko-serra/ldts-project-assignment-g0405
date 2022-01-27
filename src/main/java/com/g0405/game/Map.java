@@ -9,8 +9,8 @@ import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.input.KeyType;
 
-import com.g0405.elements.Lives;
-import com.g0405.elements.Points;
+import com.g0405.elements.components.Lives;
+import com.g0405.elements.components.Points;
 import com.g0405.elements.Position;
 import com.g0405.elements.components.characters.*;
 import com.g0405.elements.components.characters.enemies.Bombers;
