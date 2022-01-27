@@ -1,9 +1,8 @@
 package game;
 
 import com.googlecode.lanterna.input.KeyStroke;
-import com.googlecode.lanterna.input.KeyType;
-import elements.Lives;
-import elements.Points;
+import elements.components.Lives;
+import elements.components.Points;
 import elements.Position;
 import elements.components.*;
 import elements.components.characters.JackTheSparrow;
@@ -13,7 +12,6 @@ import elements.components.characters.enemies.Pirates;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import javax.swing.border.Border;
 import java.util.ArrayList;
 import java.util.List;
 

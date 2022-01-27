@@ -1,6 +1,6 @@
 package components;
 
-import elements.Lives;
+import elements.components.Lives;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
