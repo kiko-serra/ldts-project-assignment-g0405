@@ -154,7 +154,7 @@ With this in mind we decided to use the **Factory Method** to help us design our
 
 
 ## Code Smells and Possible Refactorings
-### Bloaters - Large Class
+### Bloaters Large Class
 
 Our classes Game and Map contain many fields and methods.
 In both cases, we find it justifiable as the classes require these fields,
@@ -164,7 +164,7 @@ on the other hand with a different code structure, it could have fewer methods a
 In Map there are a lot of methods that are necessary. Method related to everything that happens during our Game time and that deal with different classes.
 Some methods could be **extracted**. 
 
-### Couplers - Feature Envy
+### Couplers Feature Envy
 In Map there are some methods that could be **extracted** but since they require information about other classes
 we don't **extract** them to keep our relations simpler. There are cases where we could use inline methods in various larger methods to keep them smaller and with less duplicate code.
 
