@@ -2,7 +2,7 @@
 
 [![BCH compliance](https://bettercodehub.com/edge/badge/FEUP-LDTS-2021/ldts-project-assignment-g0405?branch=main&token=e13264603f79bc7b3a224eb89e8f866e44f94999)](https://bettercodehub.com/)
 
-Our game consists in a text-based version of the Crossy Road game with some SuperMario combinations and some new characters.
+Our com.g0405.game consists in a text-based version of the Crossy Road com.g0405.game with some SuperMario combinations and some new characters.
 
 For the player to finish each level with the highest score, it needs to catch all the biscuits and the special key to open the prison door where the Princess is being kept.
 
