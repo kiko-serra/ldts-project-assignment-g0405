@@ -101,46 +101,71 @@ This project was developed by _André Costa_ (https://github.com/AndreCosta20190
 
 ## Design
 
-### Characters
-
-#### Problem in Context
-
-#### Pattern
-
-#### Implementation
-
-#### Consequences
-
 ### Enemies
 
 #### Problem in Context
-Since we have 2 main enemies in our game the best approach to create them is by using the Factory Method. 
+Our game had two different enemies that behaved very similarly. It is like the game had two variants of an enemy.
 
 #### Pattern
-
+We implemented the **Abstract Factory Pattern**. It suggests an implementation of an individual enemy so that the different enemies belong to the same family. 
+We chose an abstract class because they have the same interaction with some changes.
 #### Implementation
+<p align="center">
+    <img width=550 src="UML/AbstractFactoryEnemies.png">
+</p>
 
 #### Consequences
+* More classes.
+* Override the draw method.
+* Less repetitive code.
 
-### Input
+### Components
 
 #### Problem in Context
+Similarly to the enemies' problem our game had many components that used the same methods. 
 
 #### Pattern
-
+We implemented the **Abstract Factory Pattern**. It suggests an implementation of an individual component so that the different components belong to the same family.
+We chose an abstract class because they have the same methods.
 #### Implementation
+<p align="center">
+    <img width=550 src="UML/AbstractFactoryComponents.png">
+</p>
 
 #### Consequences
+* More classes.
+* Less repetitive code.
 
+### Characters
+
+#### Problem in Context
+Since the beginning we knew we would have a lot of moving characters in our game and even if they don't act all the same way there are only some subtle changes.
+#### Pattern
+With this in mind we decided to use the **Factory Method** to help us design our code in a better way. Implemented an interface with all common methods to every character.
+#### Implementation
+<p align="center">
+    <img width=550 src="UML/FactoryMethodCharacters.png">
+</p>
+
+#### Consequences
+* One additional interface.
+* Code organization improved.
 
 
 ## Code Smells and Possible Refactorings
-### Large Class
+### Bloaters - Large Class
 
 Our classes Game and Map contain many fields and methods.
 In both cases, we find it justifiable as the classes require these fields,
 in one hand the Game class is the main class of the program and it needs to store a considerable amount of data,
-on the other hand various methods are needed for the interface and it wouldn't make sense to split it into two separate ones (extract method).
+on the other hand with a different code structure, it could have fewer methods and be more organized (extract method).
+
+In Map there are a lot of methods that are necessary. Method related to everything that happens during our Game time and that deal with different classes.
+Some methods could be **extracted**. 
+
+### Couplers - Feature Envy
+In Map there are some methods that could be **extracted** but since they require information about other classes
+we don't **extract** them to keep our relations simpler. There are cases where we could use inline methods in various larger methods to keep them smaller and with less duplicate code.
 
 ## Testing
 
