@@ -6,8 +6,8 @@ import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.screen.TerminalScreen;
-import game.Button;
-import game.Game;
+import com.g0405.game.Button;
+import com.g0405.game.Game;
 
 import java.io.IOException;
 import java.util.Arrays;

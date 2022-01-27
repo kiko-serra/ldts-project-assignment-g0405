@@ -11,12 +11,20 @@ public class Points extends Components {
     private int points;
     private final String text;
 
+<<<<<<< HEAD
 
     public Points(int width, int height, String text){
         super(width, height);
 
         this.text = text;
         points = 0;
+=======
+    public Points(int width, int height, String text){
+        super(width, height);
+        this.text = text;
+        points = 0;
+
+>>>>>>> pitestmeu
         position = new Position(width - (text.length()+1), height);
     }
 
@@ -28,8 +36,11 @@ public class Points extends Components {
     public void setPoints() {
         this.points++;
     }
+<<<<<<< HEAD
 
     public int getPoints(){
         return points;
     }
+=======
+>>>>>>> pitestmeu
 }
