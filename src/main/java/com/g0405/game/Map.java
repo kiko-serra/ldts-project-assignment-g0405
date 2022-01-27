@@ -1,6 +1,8 @@
 package com.g0405.game;
 
 import com.g0405.elements.components.*;
+import com.g0405.elements.components.characters.JackTheSparrow;
+import com.g0405.elements.components.characters.Princess;
 
 import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TerminalSize;
@@ -9,10 +11,7 @@ import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.input.KeyType;
 
-import com.g0405.elements.Lives;
-import com.g0405.elements.Points;
 import com.g0405.elements.Position;
-import com.g0405.elements.components.characters.*;
 import com.g0405.elements.components.characters.enemies.Bombers;
 import com.g0405.elements.components.characters.enemies.Enemies;
 import com.g0405.elements.components.characters.enemies.Pirates;

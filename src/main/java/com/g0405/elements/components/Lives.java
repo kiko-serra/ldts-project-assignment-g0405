@@ -1,18 +1,26 @@
-package com.g0405.elements;
+package com.g0405.elements.components;
 
 import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TextColor;
-import com.googlecode.lanterna.graphics.TextGraphics;
-import com.g0405.elements.components.Components;
+import com.g0405.elements.Position;
+<<<<<<< HEAD
+=======
+>>>>>>> pitestmeu
 
 public class Lives extends Components {
     private final Position position;
 
+<<<<<<< HEAD
 
     public Lives(int width, int height){
         super(width, height);
         position = new Position(width, height);
 
+=======
+    public Lives(int width, int height){
+        super(width, height);
+        position = new Position(width, height);
+>>>>>>> pitestmeu
     }
 
     public void draw(TextGraphics graphics){
