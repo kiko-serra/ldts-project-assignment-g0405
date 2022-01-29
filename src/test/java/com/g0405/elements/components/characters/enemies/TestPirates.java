@@ -1,6 +1,5 @@
-package com.g0405.components.characters.enemies;
+package com.g0405.elements.components.characters.enemies;
 
-import com.g0405.elements.components.characters.enemies.Pirates;
 import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
@@ -17,7 +16,6 @@ public class TestPirates {
 
     @BeforeEach
     public void pirateConstructor(){
-
         pirate = new Pirates(10,20, "p", 'P');
         tc = TextColor.Factory.fromString("#B00000");
         tg = Mockito.mock(TextGraphics.class);
@@ -25,10 +23,8 @@ public class TestPirates {
 
     @Test
     public void testPirateConstructor(){
-
         assertEquals(10, pirate.getPosition().getX());
         assertEquals(20, pirate.getPosition().getY());
-
     }
 
 

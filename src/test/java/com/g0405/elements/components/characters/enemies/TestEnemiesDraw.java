@@ -1,7 +1,5 @@
-package com.g0405.components.characters.enemies;
+package com.g0405.elements.components.characters.enemies;
 
-import com.g0405.elements.components.characters.enemies.Bombers;
-import com.g0405.elements.components.characters.enemies.Enemies;
 import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;

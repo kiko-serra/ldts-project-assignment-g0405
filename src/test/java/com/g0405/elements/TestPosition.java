@@ -1,4 +1,4 @@
-package com.g0405.game;
+package com.g0405.elements;
 
 import com.g0405.elements.Position;
 import org.junit.jupiter.api.BeforeEach;
@@ -71,5 +71,8 @@ public class TestPosition {
 
         assertTrue(position1.equals(new Position(10, 20)));
         assertFalse(position1.equals(new Position(11, 20)));
+
+        assertFalse(position1.equals(null));
+        assertFalse(position1.equals(null));
     }
 }
