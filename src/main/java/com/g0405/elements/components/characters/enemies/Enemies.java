@@ -1,12 +1,12 @@
 package com.g0405.elements.components.characters.enemies;
 
+import com.g0405.elements.components.Components;
+import com.g0405.elements.components.characters.Characters;
 import com.googlecode.lanterna.SGR;
 import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.g0405.elements.Position;
-import com.g0405.elements.components.Components;
-import com.g0405.elements.components.characters.Characters;
 
 import java.util.Random;
 

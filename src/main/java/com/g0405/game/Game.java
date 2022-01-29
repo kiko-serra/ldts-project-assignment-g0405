@@ -120,7 +120,7 @@ public class Game {
         }
     }
 
-    private void newGame() throws IOException {
+    public void newGame() throws IOException {
         while (true) {
             draw();
 
@@ -141,7 +141,7 @@ public class Game {
         }
     }
 
-    private void endGame(String msg) throws IOException {
+    public void endGame(String msg) throws IOException {
         timer.cancel();
         timer.purge();
         screen.clear();
@@ -149,7 +149,7 @@ public class Game {
         screen.close();
     }
 
-    private void instructions() throws IOException {
+    public void instructions() throws IOException {
         int helperGuy = instruction.run(screen);
 
         if(helperGuy == -1){
@@ -175,7 +175,15 @@ public class Game {
 
     public int getHeight(){ return this.height; }
 
-    private void setMenuChoice(int menuChoice){ this.menuChoice = menuChoice; }
+    public void setMenuChoice(int menuChoice){ this.menuChoice = menuChoice; }
 
-    private void setGameIsOver(){ gameIsOver = true; }
+    public void setGameIsOver(){ gameIsOver = true; }
+
+    public Boolean getGameIsOver(){
+        return gameIsOver;
+    }
+
+    public int getMenuChoice() {
+        return menuChoice;
+    }
 }

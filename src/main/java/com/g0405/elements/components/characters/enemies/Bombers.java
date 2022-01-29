@@ -59,4 +59,8 @@ public class Bombers extends Enemies {
     }
 
     public int getCounter(){ return counter; }
+
+    public Position getBombPos(){
+        return bombPos;
+    }
 }

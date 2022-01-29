@@ -4,7 +4,7 @@ import com.g0405.elements.Position;
 import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
-import com.g0405.elements.components.Components;
+
 
 public class Lives extends Components {
     private final Position position;

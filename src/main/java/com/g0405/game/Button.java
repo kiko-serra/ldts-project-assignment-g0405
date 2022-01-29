@@ -22,4 +22,8 @@ public class Button {
     }
 
     public void changeColor(String color){ this.color = color; }
+
+    public String getColor() {
+        return color;
+    }
 }

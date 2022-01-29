@@ -1,5 +1,6 @@
 package com.g0405.game.menu;
 
+import com.g0405.game.Game;
 import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;
@@ -7,7 +8,6 @@ import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.screen.TerminalScreen;
 import com.g0405.game.Button;
-import com.g0405.game.Game;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -69,5 +69,9 @@ public class Menu {
         return this.selector;
     }
 
-    private void setSelector(int incre){ this.selector += incre; }
+    public void setSelector(int incre){ this.selector += incre; }
+
+    public int getSelector() {
+        return selector;
+    }
 }
