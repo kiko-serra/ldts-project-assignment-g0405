@@ -55,12 +55,12 @@ public class JackTheSparrow extends Components implements Characters {
 
     public boolean canJackMove(List<Borders> borders, List<Borders> prison){
         for(Borders border : borders){
-            if(border.getPosition().getX() == getPosition().getX() && border.getPosition().getY() == getPosition().getY()){
+            if(getPosition().equals(border.getPosition())){
                 return true;
             }
         }
         for(Borders p : prison){
-            if(p.getPosition().getX() == getPosition().getX() && p.getPosition().getY() == getPosition().getY()){
+            if(getPosition().equals(p.getPosition())){
                 return true;
             }
         }

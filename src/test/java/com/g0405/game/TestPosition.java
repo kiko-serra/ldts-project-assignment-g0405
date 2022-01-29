@@ -71,5 +71,8 @@ public class TestPosition {
 
         assertTrue(position1.equals(new Position(10, 20)));
         assertFalse(position1.equals(new Position(11, 20)));
+
+        assertFalse(position1.equals(null));
+        assertFalse(position1.equals(null));
     }
 }

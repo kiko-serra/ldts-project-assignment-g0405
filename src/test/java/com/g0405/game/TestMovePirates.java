@@ -16,11 +16,11 @@ public class TestMovePirates {
 
     @BeforeEach
     public void piratesConstructor(){
-        pirate = new Pirates(10,20,null,'a');
-        pirate1 = new Pirates(1, 20,null,'a');
-        pirate2 = new Pirates(12, 4,null,'a');
-        pirate3 = new Pirates(18, 4,null,'a');
-        pirate4 = new Pirates(28, 4,null,'a');
+        pirate = new Pirates(10,20,"p",'P');
+        pirate1 = new Pirates(1, 20,"p",'P');
+        pirate2 = new Pirates(12, 4,"p",'P');
+        pirate3 = new Pirates(18, 4,"p",'P');
+        pirate4 = new Pirates(28, 4,"p",'P');
 
     }
 
@@ -29,11 +29,12 @@ public class TestMovePirates {
         pirate.setState(0);
         pirate.move();
         assertEquals(11, pirate.getPosition().getX());
+        assertEquals("p", pirate.getIcon());
 
         pirate.setState(1);
         pirate.move();
         assertEquals(10, pirate.getPosition().getX());
-
+        assertEquals("q", pirate.getIcon());
     }
 
     @Test
