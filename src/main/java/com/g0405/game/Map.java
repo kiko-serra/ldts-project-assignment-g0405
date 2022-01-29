@@ -1,12 +1,8 @@
 package com.g0405.game;
 
 import com.g0405.elements.components.*;
-<<<<<<< HEAD:src/main/java/com/g0405/game/Map.java
-=======
 import com.g0405.elements.components.characters.JackTheSparrow;
 import com.g0405.elements.components.characters.Princess;
->>>>>>> pitest:src/main/java/game/Map.java
-
 import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;
@@ -17,10 +13,6 @@ import com.googlecode.lanterna.input.KeyType;
 import com.g0405.elements.components.Lives;
 import com.g0405.elements.components.Points;
 import com.g0405.elements.Position;
-<<<<<<< HEAD:src/main/java/com/g0405/game/Map.java
-import com.g0405.elements.components.characters.*;
-=======
->>>>>>> pitest:src/main/java/game/Map.java
 import com.g0405.elements.components.characters.enemies.Bombers;
 import com.g0405.elements.components.characters.enemies.Enemies;
 import com.g0405.elements.components.characters.enemies.Pirates;

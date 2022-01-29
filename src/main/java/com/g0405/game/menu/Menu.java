@@ -8,10 +8,6 @@ import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.screen.TerminalScreen;
 import com.g0405.game.Button;
-<<<<<<< HEAD:src/main/java/com/g0405/game/menu/Menu.java
-import com.g0405.game.Game;
-=======
->>>>>>> pitest:src/main/java/game/menu/Menu.java
 
 import java.io.IOException;
 import java.util.Arrays;
