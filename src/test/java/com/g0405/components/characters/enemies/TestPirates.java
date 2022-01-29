@@ -17,7 +17,6 @@ public class TestPirates {
 
     @BeforeEach
     public void pirateConstructor(){
-
         pirate = new Pirates(10,20, "p", 'P');
         tc = TextColor.Factory.fromString("#B00000");
         tg = Mockito.mock(TextGraphics.class);
@@ -25,10 +24,8 @@ public class TestPirates {
 
     @Test
     public void testPirateConstructor(){
-
         assertEquals(10, pirate.getPosition().getX());
         assertEquals(20, pirate.getPosition().getY());
-
     }
 
 
