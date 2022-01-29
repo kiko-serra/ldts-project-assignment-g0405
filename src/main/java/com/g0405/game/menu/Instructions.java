@@ -1,5 +1,6 @@
 package com.g0405.game.menu;
 
+import com.g0405.game.Game;
 import com.googlecode.lanterna.SGR;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
@@ -7,7 +8,10 @@ import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.screen.TerminalScreen;
 import com.g0405.elements.Position;
 import com.g0405.game.Button;
+<<<<<<< HEAD:src/main/java/com/g0405/game/menu/Instructions.java
 import com.g0405.game.Game;
+=======
+>>>>>>> pitest:src/main/java/game/menu/Instructions.java
 
 import java.io.IOException;
 
@@ -72,5 +76,9 @@ public class Instructions {
         } while (helper_guy != -1);
 
         return res;
+    }
+
+    public Game getGame(){
+        return game;
     }
 }

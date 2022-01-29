@@ -5,11 +5,10 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.times;
 
 public class TestPosition {
-
     Position position;
     Position position1;
 
@@ -32,15 +31,12 @@ public class TestPosition {
         Mockito.verify(position).setX(15);
         Mockito.verify(position).setY(25);
 
-
         position.setX(20);
         position.setX(15);
         Mockito.verify(position,times(2)).setX(15);
         position.setY(20);
         position.setY(25);
         Mockito.verify(position,times(2)).setY(25);
-
-
     }
 
     @Test
@@ -53,7 +49,6 @@ public class TestPosition {
     public void testPositionMoveDown(){
         Position position3 = position1.moveDown();
         assertEquals(21,position3.getY());
-
     }
 
     @Test
@@ -74,7 +69,7 @@ public class TestPosition {
         Mockito.when(position.equals(new Position(position.getX(),position.getY()))).thenReturn(true);
         Mockito.when(position.equals(new Position(position.getX(),position.getY()+1))).thenReturn(false);
 
-        assertEquals(true, position1.equals(new Position(10,20)));
-        assertEquals(false, position1.equals(new Position(11,20)));
+        assertTrue(position1.equals(new Position(10, 20)));
+        assertFalse(position1.equals(new Position(11, 20)));
     }
 }

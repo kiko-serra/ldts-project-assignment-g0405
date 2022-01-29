@@ -1,12 +1,12 @@
 package com.g0405.elements.components.characters;
 
+import com.g0405.elements.components.Borders;
+import com.g0405.elements.components.Components;
 import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyType;
 import com.g0405.elements.Position;
-import com.g0405.elements.components.Borders;
-import com.g0405.elements.components.Components;
 
 import java.util.List;
 
