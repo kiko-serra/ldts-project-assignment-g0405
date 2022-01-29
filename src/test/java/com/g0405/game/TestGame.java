@@ -13,7 +13,6 @@ import java.awt.*;
 import java.io.IOException;
 
 public class TestGame {
-
     Game game;
     TextGraphics tg;
     TextColor tcb;
@@ -25,15 +24,13 @@ public class TestGame {
         tg = Mockito.mock(TextGraphics.class);
     }
 
-
-    @Test
+    /*@Test
     public void testGameDraw() throws IOException {
         game.draw();
     }
 
-
     @Test
-    public void testGameSetGameIsOver() throws IOException {
+    public void testGameSetGameIsOver() {
         game.setGameIsOver();
         assertTrue(game.getGameIsOver());
     }
@@ -43,4 +40,14 @@ public class TestGame {
         game.setMenuChoice(1);
         assertEquals(1,game.getMenuChoice());
     }
+
+    @Test
+    public void testGameGetWidth(){
+        assertEquals(30, game.getWidth());
+    }
+
+    @Test
+    public void testGameGetHeight(){
+        assertEquals(30, game.getWidth());
+    }*/
 }

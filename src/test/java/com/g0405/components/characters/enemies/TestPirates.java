@@ -1,5 +1,6 @@
-package com.g0405.elements.components.characters.enemies;
+package com.g0405.components.characters.enemies;
 
+import com.g0405.elements.components.characters.enemies.Pirates;
 import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;

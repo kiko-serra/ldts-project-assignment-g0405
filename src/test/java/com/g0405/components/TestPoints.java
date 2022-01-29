@@ -1,5 +1,6 @@
-package com.g0405.elements.components;
+package com.g0405.components;
 
+import com.g0405.elements.components.Points;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import org.junit.jupiter.api.BeforeEach;
@@ -15,7 +16,6 @@ public class TestPoints {
 
     @BeforeEach
     public void pointsConstructor(){
-
         points = new Points(10,20,"abc");
         tc = TextColor.Factory.fromString("#171717");
         tg = Mockito.mock(TextGraphics.class);
@@ -31,6 +31,5 @@ public class TestPoints {
     public void testPointsDrawSetBackgroundColor(){
         points.draw(tg);
         Mockito.verify(tg, Mockito.times(1)).setBackgroundColor(tc);
-
     }
 }

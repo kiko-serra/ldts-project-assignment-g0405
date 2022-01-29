@@ -1,5 +1,6 @@
-package com.g0405.elements.components;
+package com.g0405.components;
 
+import com.g0405.elements.components.Biscuits;
 import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;

@@ -14,7 +14,6 @@ import java.awt.*;
 import java.io.IOException;
 
 public class TestEndGameMsg {
-
     EndGameMsg endGameMsg;
     TextGraphics tg;
     TextColor tcb;
@@ -26,12 +25,11 @@ public class TestEndGameMsg {
         tg = Mockito.mock(TextGraphics.class);
     }
 
-    @Test
+    /*@Test
     public void testMenuDrawSetBackgroundColor(){
         endGameMsg.draw(tg);
         Mockito.verify(tg, Mockito.times(1)).setBackgroundColor(tcb);
     }
-
 
     @Test
     public void testMenuDrawSetFillRectangle(){
@@ -39,13 +37,9 @@ public class TestEndGameMsg {
         Mockito.verify(tg, Mockito.times(1)).fillRectangle(new TerminalPosition(0, 0), new TerminalSize(30, 31),' ');
     }
 
-
     @Test
     public void testMenuDrawPutString(){
         endGameMsg.draw(tg);
         Mockito.verify(tg, Mockito.times(1)).putString(new TerminalPosition(13,14),"abcd");
-    }
-
-
-
+    }*/
 }

@@ -21,29 +21,29 @@ public class TestMap {
 
     private Borders border;
     private Borders border1;
-    private Borders border2fail;
+    private Borders border2Fail;
 
     private Biscuits biscuit;
     private Biscuits biscuit1;
-    private Biscuits biscuitprisonfail;
-    private Biscuits biscuitpiratefail;
-    private Biscuits biscuitbomberfail;
+    private Biscuits biscuitPrisonFail;
+    private Biscuits biscuitPirateFail;
+    private Biscuits biscuitBomberFail;
 
-    private Borders prisonb;
+    private Borders prisonBombers;
     private Borders prison1;
     private Borders prison2;
-    private Borders prison3fail;
+    private Borders prison3Fail;
 
     private Pirates pirate;
     private Pirates pirate1;
     private Pirates pirate3;
-    private Pirates pirate2fail;
-    private Pirates piratejackfail;
+    private Pirates pirate2Fail;
+    private Pirates pirateJackFail;
 
     private Bombers bomber;
     private Bombers bomber1;
-    private Bombers bomber2fail;
-    private Bombers bomberjackfail;
+    private Bombers bomber2Fail;
+    private Bombers bomberJackFail;
 
     @BeforeEach
     public void setUp(){
@@ -51,29 +51,29 @@ public class TestMap {
 
        border = new Borders(1,30);
        border1 = new Borders(2,30);
-       border2fail = new Borders(4,25);
+       border2Fail = new Borders(4,25);
 
        biscuit = new Biscuits(10,10);
        biscuit1 = new Biscuits(5,26);
-       biscuitprisonfail = new Biscuits(17,4);
-       biscuitpiratefail = new Biscuits(10,10);
-       biscuitbomberfail = new Biscuits(7,10);
+       biscuitPrisonFail = new Biscuits(17,4);
+       biscuitPirateFail = new Biscuits(10,10);
+       biscuitBomberFail = new Biscuits(7,10);
 
-       prisonb = new Borders(17,4);
+       prisonBombers = new Borders(17,4);
        prison1 = new Borders(13,4);
        prison2 = new Borders(13,1);
-       prison3fail = new Borders(7,10);
+       prison3Fail = new Borders(7,10);
 
        pirate = new Pirates(10,10,"p",'P');
        pirate1 = new Pirates(4,11,"q",'P');
        pirate3 = new Pirates(6,14,"q",'P');
-       piratejackfail = new Pirates(11,10,"p",'P');
-       pirate2fail = new Pirates(15,2,"q",'P');
+       pirateJackFail = new Pirates(11,10,"p",'P');
+       pirate2Fail = new Pirates(15,2,"q",'P');
 
        bomber = new Bombers(5,10,"l",'M',30);
        bomber1 = new Bombers(7,10,"m",'M',30);
-       bomber2fail = new Bombers(4,25,"m",'M',30);
-       bomberjackfail = new Bombers(11,10,"m",'M',30);
+       bomber2Fail = new Bombers(4,25,"m",'M',30);
+       bomberJackFail = new Bombers(11,10,"m",'M',30);
 
        key = new Key(10,10);
 
@@ -86,10 +86,9 @@ public class TestMap {
         assertEquals(28,map.getJack().getPosition().getY());
     }
 
-
     @Test
     public void testCreateBorders(){
-        boolean bordersdone = true;
+        boolean bordersDone = true;
         int counter = 0;
 
         for(Borders bord : map.getBorders()){
@@ -101,10 +100,10 @@ public class TestMap {
             }
         }
         if(counter > map.getBorders().size()){
-            bordersdone = false;
+            bordersDone = false;
         }
 
-        assertTrue(bordersdone);
+        assertTrue(bordersDone);
     }
 
     @Test
@@ -116,12 +115,11 @@ public class TestMap {
 
     @Test
     public void testSetBorders(){
-
         List<Borders> borders1 = new ArrayList<>();
 
         borders1.add(border1);
         borders1.add(border);
-        borders1.add(border2fail);
+        borders1.add(border2Fail);
 
         map.setBorders(borders1);
 
@@ -130,18 +128,17 @@ public class TestMap {
 
     @Test
     public void testCreateBiscuits(){
-        boolean biscuitsdone = true;
+        boolean biscuitsDone = true;
         List<Biscuits> aux = map.getBiscuits();
 
         for(Biscuits biscuit : aux){
             if(map.checkPosition(biscuit,aux)){
-                biscuitsdone = false;
+                biscuitsDone = false;
                 break;
             }
         }
 
-
-        assertTrue(biscuitsdone);
+        assertTrue(biscuitsDone);
     }
 
     @Test
@@ -157,8 +154,8 @@ public class TestMap {
 
         biscuits1.add(biscuit);
         biscuits1.add(biscuit1);
-        biscuits1.add(biscuitprisonfail);
-        biscuits1.add(biscuitpiratefail);
+        biscuits1.add(biscuitPrisonFail);
+        biscuits1.add(biscuitPirateFail);
 
         map.setBiscuits(biscuits1);
 
@@ -167,13 +164,13 @@ public class TestMap {
 
     @Test
     public void testCreatePrison(){
-        boolean prisondone = true;
+        boolean prisonDone = true;
         int counter = 0;
 
         for(Borders prison : map.getPrison()){
             if((prison.getPosition().getX() > 17 && prison.getPosition().getX() < 13) ||
                     (prison.getPosition().getY() > 4 || prison.getPosition().getY() < 0)){
-                prisondone = false;
+                prisonDone = false;
                 break;
             }
             for(Borders prison1 : map.getPrison()){
@@ -184,10 +181,10 @@ public class TestMap {
             }
         }
         if(counter > map.getPrison().size()){
-            prisondone = false;
+            prisonDone = false;
         }
 
-        assertTrue(prisondone);
+        assertTrue(prisonDone);
 
     }
 
@@ -202,26 +199,25 @@ public class TestMap {
     public void testSetPrison(){
         List<Borders> prison1 = new ArrayList<>();
 
-        prison1.add(prisonb);
+        prison1.add(prisonBombers);
         prison1.add(prison2);
-        prison1.add(prison3fail);
+        prison1.add(prison3Fail);
 
         map.setPrison(prison1);
 
         assertEquals(prison1, map.getPrison());
     }
 
-
     @Test
     public void testCreateKey(){
-        boolean keydone = true;
+        boolean keyDone = true;
         Key aux = map.getKey();
 
         if(!map.checkPosition(aux,map.getBiscuits())){
-            keydone = false;
+            keyDone = false;
         }
 
-        assertTrue(keydone);
+        assertTrue(keyDone);
     }
 
 
@@ -243,20 +239,18 @@ public class TestMap {
 
     @Test
     public void testCreatePirates(){
-
-        boolean piratesdone = true;
+        boolean piratesDone = true;
         List<Pirates> aux = map.getPirates();
 
         for(Pirates pirate : aux){
             if(!map.checkPosition(pirate,map.getBiscuits())){
-                piratesdone = false;
+                piratesDone = false;
                 break;
             }
         }
 
 
-        assertTrue(piratesdone);
-
+        assertTrue(piratesDone);
     }
 
     @Test
@@ -272,7 +266,7 @@ public class TestMap {
 
         pirates1.add(pirate);
         pirates1.add(pirate1);
-        pirates1.add(pirate2fail);
+        pirates1.add(pirate2Fail);
         pirates1.add(pirate3);
 
         map.setPirates(pirates1);
@@ -280,21 +274,18 @@ public class TestMap {
         assertEquals(pirates1,map.getPirates());
     }
 
-
     @Test
     public void testCreateBombers(){
-        boolean bombersdone = true;
+        boolean bombersDone = true;
         List<Bombers> aux = map.getBombers();
 
         for(Bombers bomber : aux){
             if(!map.checkPosition(bomber,map.getBiscuits())){
-                bombersdone = false;
+                bombersDone = false;
             }
         }
 
-
-        assertTrue(bombersdone);
-
+        assertTrue(bombersDone);
     }
 
     @Test
@@ -310,7 +301,7 @@ public class TestMap {
 
         bombers1.add(bomber);
         bombers1.add(bomber1);
-        bombers1.add(bomber2fail);
+        bombers1.add(bomber2Fail);
 
 
         map.setBombers(bombers1);
@@ -320,118 +311,117 @@ public class TestMap {
 
     @Test
     public void testCreateLives(){
-        boolean livesdone = true;
+        boolean livesDone = true;
         for(Lives live : map.getLives()){
             if(live != null) continue;
-            livesdone = false;
+            livesDone = false;
         }
         assertEquals(3,map.getLives().size());
-        assertTrue(livesdone);
+        assertTrue(livesDone);
     }
 
     @Test
     public void testCheckPositionPrisonTrue() {
-        boolean checkpos = true;
-        prison.add(prisonb);
+        boolean checkPos = true;
+        prison.add(prisonBombers);
         prison.add(prison1);
         prison.add(prison2);
 
         for (Borders border : prison) {
             if (map.checkPosition(border, map.getBiscuits())) {
-                checkpos = false;
+                checkPos = false;
                 break;
             }
         }
 
-        assertTrue(checkpos);
+        assertTrue(checkPos);
     }
 
     @Test
     public void testCheckPositionPrisonFalse() {
-        List<Biscuits> auxbiscuits = map.getBiscuits();
-        auxbiscuits.add(biscuitprisonfail);
+        List<Biscuits> auxBiscuits = map.getBiscuits();
+        auxBiscuits.add(biscuitPrisonFail);
 
-        boolean checkpos = true;
-        prison.add(prisonb);
+        boolean checkPos = true;
+        prison.add(prisonBombers);
         prison.add(prison1);
         prison.add(prison2);
 
-
         for (Borders border : prison) {
-            if (!map.checkPosition(border, auxbiscuits)) {
-                checkpos = false;
+            if (!map.checkPosition(border, auxBiscuits)) {
+                checkPos = false;
                 break;
             }
         }
 
-        assertFalse(checkpos);
+        assertFalse(checkPos);
     }
 
     @Test
     public void testCheckPositionPirateTrue(){
-        boolean checkpos = true;
+        boolean checkPos = true;
 
         for(Pirates pirate : map.getPirates()){
             if(!map.checkPosition(pirate,map.getBiscuits())){
-                checkpos = false;
+                checkPos = false;
                 break;
             }
         }
-        assertTrue(checkpos);
+        assertTrue(checkPos);
     }
 
     @Test
     public void testCheckPositionPirateFalse(){
-        boolean checkpos = true;
+        boolean checkPos = true;
 
-        List<Biscuits> auxbiscuits = map.getBiscuits();
-        auxbiscuits.add(biscuitpiratefail);
+        List<Biscuits> auxBiscuits = map.getBiscuits();
+        auxBiscuits.add(biscuitPirateFail);
 
-        List<Pirates> auxpirates = map.getPirates();
+        List<Pirates> auxPirates = map.getPirates();
 
-        auxpirates.add(pirate);
+        auxPirates.add(pirate);
 
-        map.setPirates(auxpirates);
+        map.setPirates(auxPirates);
 
-        for(Pirates pirate : auxpirates){
-            if(map.checkPosition(pirate,auxbiscuits)){
-                checkpos = false;
+        for(Pirates pirate : auxPirates){
+            if(map.checkPosition(pirate,auxBiscuits)){
+                checkPos = false;
                 break;
             }
         }
-        assertFalse(checkpos);
+        assertFalse(checkPos);
     }
 
     @Test
     public void testCheckPositionBomberTrue(){
-        boolean checkpos = true;
+        boolean checkPos = true;
 
         for(Bombers bomber : map.getBombers()){
             if(!map.checkPosition(bomber,map.getBiscuits())){
-                checkpos = false;
+                checkPos = false;
                 break;
             }
         }
-        assertTrue(checkpos);
+        assertTrue(checkPos);
     }
 
     @Test
     public void testCheckPositionBomberFalse(){
-        boolean checkpos = true;
+        boolean checkPos = true;
 
-        List<Biscuits> auxbiscuits = map.getBiscuits();
-        auxbiscuits.add(biscuitbomberfail);
+        List<Biscuits> auxBiscuits = map.getBiscuits();
+        auxBiscuits.add(biscuitBomberFail);
 
-        List<Bombers> auxbombers = map.getBombers();
-        auxbombers.add(bomber1);
+        List<Bombers> auxBombers = map.getBombers();
+        auxBombers.add(bomber1);
 
         for(Bombers bomber : map.getBombers()){
             if(!map.checkPosition(bomber,map.getBiscuits())){
-                checkpos = false;
+                checkPos = false;
                 break;
             }
         }
-        assertFalse(checkpos);
+        assertFalse(checkPos);
     }
 
     @Test
@@ -442,30 +432,24 @@ public class TestMap {
 
         assertEquals(10,map.getPrincess().getJackPosition().getX());
         assertEquals(10,map.getPrincess().getJackPosition().getY());
-
     }
 
     @Test
     public void testKeyStrokesMapJackGetDirection(){
-
         KeyStroke stroke = new KeyStroke(ArrowDown);
         map.getJack().setPosition(new Position(10,10));
         map.keyStrokes(stroke);
 
         assertEquals(ArrowDown,map.getJack().getDirection());
-
     }
-
 
     @Test
     public void testKeyStrokesMapJackGetPosition(){
-
         KeyStroke stroke = new KeyStroke(ArrowDown);
         map.getJack().setPosition(new Position(10,10));
         map.keyStrokes(stroke);
 
         assertNotEquals(9,map.getJack().getPosition().getY());
-
     }
 
     @Test
@@ -514,10 +498,8 @@ public class TestMap {
         map.getJack().setJackDirection(ArrowUp);
         map.moveJack(ArrowUp);
 
-
         assertEquals(1,map.getJack().getPosition().getY());
     }
-
 
     @Test
     public void testMoveJackArrowDown(){
@@ -528,18 +510,14 @@ public class TestMap {
         assertEquals(28,map.getJack().getPosition().getY());
     }
 
-
     @Test
     public void testMoveJackArrowLeft(){
         map.getJack().setPosition(new Position(1,2));
         map.getJack().setJackDirection(ArrowLeft);
         map.moveJack(ArrowLeft);
 
-
         assertEquals(1,map.getJack().getPosition().getX());
-
     }
-
 
     @Test
     public void testMoveJackArrowRight(){
@@ -547,15 +525,13 @@ public class TestMap {
         map.getJack().setJackDirection(ArrowRight);
         map.moveJack(ArrowRight);
 
-
         assertEquals(28,map.getJack().getPosition().getX());
-
     }
+
     @Test
     public void testMoveEnemiesCheckJackDead(){
         map.getJack().setPosition(new Position(10,10));
 
-
         map.getLives().remove(0);
         map.getLives().remove(0);
         map.getLives().remove(0);
@@ -564,21 +540,21 @@ public class TestMap {
         map.getJack().setLives();
         map.getJack().setLives();
 
-        boolean checkjack = map.moveEnemies();
+        boolean checkJack = map.moveEnemies();
 
-        assertTrue(checkjack);
+        assertTrue(checkJack);
     }
 
     @Test
     public void testMoveEnemiesBomberActions(){
         map.getJack().setPosition(new Position(11,10));
 
-        bomberjackfail.setBomb(new Bombs(10,10,"g"));
-        bomberjackfail.setCounter(9);
+        bomberJackFail.setBomb(new Bombs(10,10,"g"));
+        bomberJackFail.setCounter(9);
 
-        List<Bombers> auxbombers = map.getBombers();
-        auxbombers.add(bomberjackfail);
-        map.setBombers(auxbombers);
+        List<Bombers> auxBombers = map.getBombers();
+        auxBombers.add(bomberJackFail);
+        map.setBombers(auxBombers);
 
         map.moveEnemies();
 
@@ -586,20 +562,18 @@ public class TestMap {
         assertEquals(2,map.getJack().getLives());
     }
 
-
     @Test
     public void testCheckJackColisionPirate(){
         map.getJack().setPosition(new Position(11,10));
-        map.checkJackColision(piratejackfail);
+        map.checkJackColision(pirateJackFail);
         assertEquals(2,map.getLives().size());
         assertEquals(2,map.getJack().getLives());
     }
 
-
     @Test
     public void testCheckJackColisionBomber(){
         map.getJack().setPosition(new Position(11,10));
-        map.checkJackColision(bomberjackfail);
+        map.checkJackColision(bomberJackFail);
         assertEquals(2,map.getLives().size());
         assertEquals(2,map.getJack().getLives());
     }
@@ -608,17 +582,15 @@ public class TestMap {
     public void testJackAround(){
         map.getJack().setPosition(new Position(10,10));
         Bombs bomb = new Bombs(10,10,"d");
-        boolean checkjackaround = map.checkJackAround(bomb);
+        boolean checkJackAround = map.checkJackAround(bomb);
 
-        assertTrue(checkjackaround);
+        assertTrue(checkJackAround);
 
         map.getJack().setPosition(new Position(8,10));
-        checkjackaround = map.checkJackAround(bomb);
+        checkJackAround = map.checkJackAround(bomb);
 
-        assertFalse(checkjackaround);
-
+        assertFalse(checkJackAround);
     }
-
 
     @Test
     public void testEatBiscuitsSize(){
@@ -631,9 +603,7 @@ public class TestMap {
         map.eatBiscuits();
 
         assertEquals(5,map.getBiscuits().size());
-
     }
-
 
     @Test
     public void testEatBiscuitsPoints(){
@@ -651,58 +621,49 @@ public class TestMap {
 
     @Test
     public void testCollectKeyNULLKey(){
-
         map.getJack().setPosition(new Position(10,10));
         map.setKey(new Key(10,10));
 
         map.collectKey();
 
         assertNull(map.getKey());
-
-
     }
-
 
     @Test
     public void testCollectKeyPrisonOpen(){
-
-        Position openprison = new Position(15,4);
-        boolean checkopenprison = true;
+        Position openPrison = new Position(15,4);
+        boolean checkOpenPrison = true;
         map.getJack().setPosition(new Position(10,10));
         map.setKey(new Key(10,10));
 
         for(Borders prison : map.getPrison()){
-            if(prison.getPosition() == openprison){
-                checkopenprison = false;
+            if(prison.getPosition() == openPrison){
+                checkOpenPrison = false;
                 break;
             }
         }
 
-        assertTrue(checkopenprison);
+        assertTrue(checkOpenPrison);
     }
 
     @Test
     public void testOpenExit(){
-        Position openexit = new Position(15,29);
-        boolean checkopenexit = true;
+        Position openExit = new Position(15,29);
+        boolean checkOpenExit = true;
         map.getJack().setPosition(new Position(15,3));
-
 
         map.openExit();
 
-
         for (Borders border : map.getBorders()){
-            if(border.getPosition() == openexit){
-                checkopenexit = false;
+            if(border.getPosition() == openExit){
+                checkOpenExit = false;
                 break;
             }
         }
 
-        assertEquals(map.getExit().getPosition().getX(),openexit.getX());
-        assertEquals(map.getExit().getPosition().getY(),openexit.getY());
-        assertTrue(checkopenexit);
-
-
+        assertEquals(map.getExit().getPosition().getX(),openExit.getX());
+        assertEquals(map.getExit().getPosition().getY(),openExit.getY());
+        assertTrue(checkOpenExit);
     }
 
     @Test
@@ -710,21 +671,18 @@ public class TestMap {
         map.getJack().setPosition(new Position(15,29));
         map.setExit(new Exit(15,29));
 
-        boolean checkjackexitdoor = map.checkJackOnExitDoor();
+        boolean checkJackExitDoor = map.checkJackOnExitDoor();
 
-        assertTrue(checkjackexitdoor);
-
-
+        assertTrue(checkJackExitDoor);
 
     }
 
-
     @Test
     public void testCheckJackOnExitDoorFalse(){
-        boolean checkjackexitdoor = map.checkJackOnExitDoor();
+        boolean checkJackExitDoor = map.checkJackOnExitDoor();
 
         map.setExit(null);
 
-        assertFalse(checkjackexitdoor);
+        assertFalse(checkJackExitDoor);
     }
 }

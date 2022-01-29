@@ -1,6 +1,7 @@
-package com.g0405.elements.components.characters.enemies;
+package com.g0405.components.characters.enemies;
 
 import com.g0405.elements.components.Bombs;
+import com.g0405.elements.components.characters.enemies.Bombers;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -8,7 +9,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class TestBombers {
     Bombers bomber1;
-
 
     @BeforeEach
     public void bomberConstructor(){
@@ -21,20 +21,17 @@ public class TestBombers {
         assertEquals(20,bomber1.getPosition().getY());
         assertEquals("m",bomber1.getIcon());
         assertEquals('M',bomber1.getType());
-
     }
 
     @Test
     public void testBomberGetBomb(){
-        bomber1.getBomb();
         assertNull(bomber1.getBomb());
     }
 
     @Test
     public void testBomberSetBombNull(){
-        bomber1.getBomb();
         bomber1.setBombNull();
-        assertEquals(null,bomber1.getBomb());
+        assertNull(bomber1.getBomb());
     }
 
     @Test
@@ -52,7 +49,6 @@ public class TestBombers {
 
     @Test
     public void testBomberGetType(){
-
         assertEquals('M',bomber1.getType());
     }
 
@@ -68,7 +64,6 @@ public class TestBombers {
         assertEquals(bomber1.getBomb().getPosition().getY(),bomber1.getPosition().getY());
     }
 
-
     @Test
     public void testBomberCheckActionsSetIcon(){
         bomber1.getBombPos().setX(10);
@@ -78,9 +73,7 @@ public class TestBombers {
         bomber1.bombActions();
 
         assertEquals("g",bomber1.getBomb().getIcon());
-
     }
-
 
     @Test
     public void testBomberCheckActionsSetBombNull(){
@@ -93,7 +86,6 @@ public class TestBombers {
         assertNull(bomber1.getBomb());
     }
 
-
     @Test
     public void testBomberCheckActionsSetCounter(){
         bomber1.getBombPos().setX(10);
@@ -104,7 +96,6 @@ public class TestBombers {
 
         assertEquals(0,bomber1.getCounter());
     }
-
 
     @Test
     public void testBomberCheckActionsCreateBombPos(){
@@ -117,7 +108,6 @@ public class TestBombers {
         assertNotNull(bomber1.getBombPos());
     }
 
-
     @Test
     public void testBomberSetBomb(){
         bomber1.setBomb(new Bombs(10,10,"g"));
@@ -126,8 +116,4 @@ public class TestBombers {
         assertEquals(10,bomber1.getBomb().getPosition().getY());
         assertEquals("g",bomber1.getBomb().getIcon());
     }
-
-
-
-
 }

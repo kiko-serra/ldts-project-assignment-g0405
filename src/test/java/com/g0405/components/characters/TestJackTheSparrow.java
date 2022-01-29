@@ -1,5 +1,6 @@
-package com.g0405.elements.components.characters;
+package com.g0405.components.characters;
 
+import com.g0405.elements.components.characters.JackTheSparrow;
 import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;

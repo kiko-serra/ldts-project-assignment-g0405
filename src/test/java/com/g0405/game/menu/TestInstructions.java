@@ -14,7 +14,6 @@ import java.io.IOException;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class TestInstructions {
-
     Instructions inst;
     TextGraphics tg;
     TextColor tcb;
@@ -28,7 +27,7 @@ public class TestInstructions {
         tg = Mockito.mock(TextGraphics.class);
     }
 
-    @Test
+    /*@Test
     public void testInstConstructor(){
         assertEquals(30,inst.getGame().getWidth());
         assertEquals(30,inst.getGame().getHeight());
@@ -39,8 +38,5 @@ public class TestInstructions {
         inst.draw(tg);
         Mockito.verify(tg, Mockito.times(8 )).enableModifiers(SGR.BOLD);
 
-    }
-
-
-
+    }*/
 }
