@@ -16,7 +16,7 @@ public class Bombers extends Enemies {
         this.counter = 0;
         this.width = width;
 
-        this.bombPos = new Position(new Random().nextInt(width - 1) + 1, super.getPosition().getY());
+        this.bombPos = new Position(new Random().nextInt(width - 2) + 1, super.getPosition().getY());
     }
 
     public void bombActions(){
@@ -51,7 +51,7 @@ public class Bombers extends Enemies {
     }
 
     public void createBombPosition(){
-        bombPos = new Position(new Random().nextInt(width - 1) + 1, this.getPosition().getY());
+        bombPos = new Position(new Random().nextInt(width - 2) + 1, this.getPosition().getY());
     }
 
     public void setCounter(int counter){
