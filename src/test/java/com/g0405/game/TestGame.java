@@ -1,6 +1,5 @@
-package com.g0405_Tests.game;
+package com.g0405.game;
 
-import com.g0405.game.Game;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import org.junit.jupiter.api.BeforeEach;

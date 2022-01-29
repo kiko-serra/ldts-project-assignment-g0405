@@ -1,9 +1,8 @@
-package com.g0405_Tests.elements.components.characters;
+package com.g0405.elements.components.characters;
 
 import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
-import com.g0405.elements.components.characters.JackTheSparrow;
 import com.googlecode.lanterna.input.KeyType;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

@@ -1,7 +1,6 @@
-package com.g0405_Tests.elements.components.characters.enemies;
+package com.g0405.elements.components.characters.enemies;
 
 import com.g0405.elements.components.Bombs;
-import com.g0405.elements.components.characters.enemies.Bombers;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

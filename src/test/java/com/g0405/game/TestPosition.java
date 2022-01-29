@@ -1,4 +1,4 @@
-package com.g0405_Tests.game;
+package com.g0405.game;
 
 import com.g0405.elements.Position;
 import org.junit.jupiter.api.BeforeEach;

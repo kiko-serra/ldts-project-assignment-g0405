@@ -1,6 +1,5 @@
-package com.g0405_Tests.game.menu;
+package com.g0405.game.menu;
 
-import com.g0405.game.menu.Instructions;
 import com.googlecode.lanterna.SGR;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;

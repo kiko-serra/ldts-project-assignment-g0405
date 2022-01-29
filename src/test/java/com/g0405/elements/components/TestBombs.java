@@ -1,6 +1,5 @@
-package com.g0405_Tests.elements.components;
+package com.g0405.elements.components;
 
-import com.g0405.elements.components.Bombs;
 import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;

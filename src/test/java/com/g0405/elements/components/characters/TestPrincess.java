@@ -1,9 +1,8 @@
-package com.g0405_Tests.elements.components.characters;
+package com.g0405.elements.components.characters;
 
 import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
-import com.g0405.elements.components.characters.Princess;
 import com.g0405.elements.Position;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

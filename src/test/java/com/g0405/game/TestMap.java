@@ -1,10 +1,9 @@
-package com.g0405_Tests.game;
+package com.g0405.game;
 
 import com.g0405.elements.Position;
 import com.g0405.elements.components.*;
 import com.g0405.elements.components.characters.enemies.Bombers;
 import com.g0405.elements.components.characters.enemies.Pirates;
-import com.g0405.game.Map;
 import com.googlecode.lanterna.input.KeyStroke;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -17,8 +16,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class TestMap {
     private List<Borders> prison;
-    private List<Pirates> pirates;
-    private List<Bombers> bombers;
     private Key key;
     private Map map;
 
@@ -51,8 +48,6 @@ public class TestMap {
     @BeforeEach
     public void setUp(){
        prison = new ArrayList<>();
-       pirates = new ArrayList<>();
-       bombers = new ArrayList<>();
 
        border = new Borders(1,30);
        border1 = new Borders(2,30);
@@ -376,11 +371,7 @@ public class TestMap {
     public void testCheckPositionPirateTrue(){
         boolean checkpos = true;
 
-        pirates.add(pirate);
-        pirates.add(pirate1);
-        pirates.add(pirate3);
-
-        for(Pirates pirate : pirates){
+        for(Pirates pirate : map.getPirates()){
             if(!map.checkPosition(pirate,map.getBiscuits())){
                 checkpos = false;
                 break;
@@ -396,11 +387,13 @@ public class TestMap {
         List<Biscuits> auxbiscuits = map.getBiscuits();
         auxbiscuits.add(biscuitpiratefail);
 
-        pirates.add(pirate);
-        pirates.add(pirate1);
-        pirates.add(pirate3);
+        List<Pirates> auxpirates = map.getPirates();
 
-        for(Pirates pirate : pirates){
+        auxpirates.add(pirate);
+
+        map.setPirates(auxpirates);
+
+        for(Pirates pirate : auxpirates){
             if(map.checkPosition(pirate,auxbiscuits)){
                 checkpos = false;
                 break;
@@ -413,10 +406,7 @@ public class TestMap {
     public void testCheckPositionBomberTrue(){
         boolean checkpos = true;
 
-        bombers.add(bomber);
-        bombers.add(bomber1);
-
-        for(Bombers bomber : bombers){
+        for(Bombers bomber : map.getBombers()){
             if(!map.checkPosition(bomber,map.getBiscuits())){
                 checkpos = false;
                 break;
@@ -432,11 +422,11 @@ public class TestMap {
         List<Biscuits> auxbiscuits = map.getBiscuits();
         auxbiscuits.add(biscuitbomberfail);
 
-        bombers.add(bomber);
-        bombers.add(bomber1);
+        List<Bombers> auxbombers = map.getBombers();
+        auxbombers.add(bomber1);
 
-        for(Bombers bomber : bombers){
-            if(map.checkPosition(bomber,map.getBiscuits())){
+        for(Bombers bomber : map.getBombers()){
+            if(!map.checkPosition(bomber,map.getBiscuits())){
                 checkpos = false;
                 break;
             }
@@ -563,9 +553,8 @@ public class TestMap {
     }
     @Test
     public void testMoveEnemiesCheckJackDead(){
-
         map.getJack().setPosition(new Position(10,10));
-        map.setBombers(bombers);
+
 
         map.getLives().remove(0);
         map.getLives().remove(0);
@@ -578,8 +567,6 @@ public class TestMap {
         boolean checkjack = map.moveEnemies();
 
         assertTrue(checkjack);
-
-
     }
 
     @Test
@@ -738,9 +725,6 @@ public class TestMap {
 
         map.setExit(null);
 
-
         assertFalse(checkjackexitdoor);
-
     }
-
 }

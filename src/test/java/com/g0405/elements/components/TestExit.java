@@ -1,6 +1,5 @@
-package com.g0405_Tests.elements.components;
+package com.g0405.elements.components;
 
-import com.g0405.elements.components.Exit;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

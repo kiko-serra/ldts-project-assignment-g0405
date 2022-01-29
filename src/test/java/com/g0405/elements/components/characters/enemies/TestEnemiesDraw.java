@@ -1,10 +1,8 @@
-package com.g0405_Tests.elements.components.characters.enemies;
+package com.g0405.elements.components.characters.enemies;
 
 import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
-import com.g0405.elements.components.characters.enemies.Bombers;
-import com.g0405.elements.components.characters.enemies.Enemies;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;

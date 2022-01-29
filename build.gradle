@@ -27,6 +27,6 @@ test {
 
 
 pitest {
-    targetClasses = ["com.g0405_Tests.*"]
+    targetClasses = ["com.g0405.*"]
     junit5PluginVersion = '0.12'
 }
