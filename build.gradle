@@ -1,9 +1,10 @@
 plugins {
     id 'java'
     id 'application'
+    id 'info.solidsoft.pitest' version '1.7.0'
 }
 application {
-    mainClass.set("Project")
+    mainClass.set("com.g0405/Project")
 }
 
 group 'org.example'
@@ -22,4 +23,10 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+
+pitest {
+    targetClasses = ["com.g0405.*"]
+    junit5PluginVersion = '0.12'
 }
