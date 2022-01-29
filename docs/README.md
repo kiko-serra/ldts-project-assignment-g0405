@@ -2,11 +2,11 @@
 
 Our game consists in a text-based version of the Crossy Road game with some SuperMario combinations and some new characters.
 
-The main character is Jack the Sparrow who is trying to free his Princess, and for that he needs to avoid the Pirates and all explosions from the bombs and collect the special key.
+The main character is Jack the Sparrow who is trying to free his Princess and for that he needs to avoid the Pirates and all explosions from the bombs and collect the special key.
 
 For the player to win the game with the highest score, it needs to catch all the biscuits, which represents the score, and the special key to open the prison door where the Princess is being kept.
 
-After rescuing the Princess is opened and Jack needs to leave the map through that door.
+After rescuing the Princess a door is opened and Jack needs to leave the map through that door.
 
 Each biscuit that Jack catches makes his score go up, but these are not necessary to release the Princess and finish the game.
 
@@ -40,6 +40,7 @@ This project was developed by _André Costa_ (https://github.com/AndreCosta20190
   * [Couplers - Feature Envy](#couplers-feature-envy)
 * [Testing](#testing)
   * [Coverage Report](#coverage-report)
+  * [Mutation Test](#mutation-test)
 * [Self-Evaluation](#self-evaluation)
 
 ## GamePlay Demo
@@ -108,11 +109,11 @@ This project was developed by _André Costa_ (https://github.com/AndreCosta20190
 Our game had two different enemies that behaved very similarly. It is like the game had two variants of an enemy.
 
 #### Pattern
-We implemented the **Abstract Factory Pattern**. It suggests an implementation of an individual enemy so that the different enemies belong to the same family. 
-We chose an abstract class because they have the same interaction with some changes.
+We implemented the **Template Method**. It implements a skeleton of an algorithm in the _Enemies_ abstract class and all the 
+different enemies that extend this abstract class can override the methods to accommodate them in the better way without changing the super class.
 #### Implementation
 <p align="center">
-    <img width=550 src="UML/AbstractFactoryEnemies.png">
+    <img width=550 src="UML/TemplateMethodEnemies.png">
 </p>
 
 #### Consequences
@@ -126,11 +127,13 @@ We chose an abstract class because they have the same interaction with some chan
 Similarly to the enemies' problem our game had many components that used the same methods. 
 
 #### Pattern
-We implemented the **Abstract Factory Pattern**. It suggests an implementation of an individual component so that the different components belong to the same family.
-We chose an abstract class because they have the same methods.
+We implemented the **Template Method**. It implements a skeleton of an algorithm in the _Components_ abstract class and all the
+different components that extend this abstract class can override the methods to accommodate them in the better way without changing the super class.
+
+In this case we didn't override any of the implemented methods because it was just a couple of sets and gets for each components' position.
 #### Implementation
 <p align="center">
-    <img width=550 src="UML/AbstractFactoryComponents.png">
+    <img width=550 src="UML/TemplateMethodComponents.png">
 </p>
 
 #### Consequences
@@ -142,10 +145,10 @@ We chose an abstract class because they have the same methods.
 #### Problem in Context
 Since the beginning we knew we would have a lot of moving characters in our game and even if they don't act all the same way there are only some subtle changes.
 #### Pattern
-With this in mind we decided to use the **Factory Method** to help us design our code in a better way. Implemented an interface with all common methods to every character.
+With this in mind we decided to use the **Abstract Factory** to help us design our code in a better way. Implemented an interface with all common methods to every character.
 #### Implementation
 <p align="center">
-    <img width=550 src="UML/FactoryMethodCharacters.png">
+    <img width=550 src="UML/AbstractFactoryCharacters.png">
 </p>
 
 #### Consequences
@@ -172,9 +175,20 @@ we don't **extract** them to keep our relations simpler. There are cases where w
 
 ### Coverage Report
 <p align="center">
-    <img width=550 src="images/intermediateReportCoverage.png">
+    <img width=550 src="images/finalReportCoverage.png">
 </p>
 
+### Mutation Test
+>This doesn't envolve some of the coverage because we had problems due to opening the terminal from lanterna in some of
+>  the mutation tests it would crash. From this it was necessary to comment out the methods causing this problem.
+> In conclusion we ended up with two kinds of coverage reports. The one [above](#coverage-report) didn't implement pitest and reached a higher coverage
+> percentage. The report below used Pit test for a lower coverage percentage compared to the report [above](#coverage-report).
+
+<p align="center">
+    <img width=550 src="images/pitestCoverage.png">
+</p>
+
+[Link to mutation report](./reports/index.html)
 
 ## Self-Evaluation
 
