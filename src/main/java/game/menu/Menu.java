@@ -69,5 +69,9 @@ public class Menu {
         return this.selector;
     }
 
-    private void setSelector(int incre){ this.selector += incre; }
+    public void setSelector(int incre){ this.selector += incre; }
+
+    public int getSelector() {
+        return selector;
+    }
 }

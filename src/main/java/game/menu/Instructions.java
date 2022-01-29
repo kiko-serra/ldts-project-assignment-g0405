@@ -73,4 +73,8 @@ public class Instructions {
 
         return res;
     }
+
+    public Game getGame(){
+        return game;
+    }
 }

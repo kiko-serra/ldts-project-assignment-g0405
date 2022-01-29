@@ -1,5 +1,8 @@
 package components.characters;
 
+import com.googlecode.lanterna.TerminalPosition;
+import com.googlecode.lanterna.TextColor;
+import com.googlecode.lanterna.graphics.TextGraphics;
 import elements.components.characters.Princess;
 import elements.Position;
 import org.junit.jupiter.api.BeforeEach;
@@ -12,11 +15,15 @@ public class TestPrincess {
 
     Princess princess;
     Princess princess1;
+    TextGraphics tg;
+    TextColor tc;
 
     @BeforeEach
-    public void princessConstructor(){
+    public void setUp(){
          princess  = Mockito.mock(Princess.class);
          princess1 = new Princess(10,20);
+         tc = TextColor.Factory.fromString("#171717");
+         tg = Mockito.mock(TextGraphics.class);
     }
 
     @Test
@@ -42,5 +49,19 @@ public class TestPrincess {
     public void testPrincessGetJackPosition(){
         assertEquals(0,princess1.getJackPosition().getX());
         assertEquals(0,princess1.getJackPosition().getY());
+    }
+
+
+    @Test
+    public void testPrincessDrawSetBackgroundColor(){
+        princess1.draw(tg);
+        Mockito.verify(tg, Mockito.times(1)).setBackgroundColor(tc);
+
+    }
+
+    @Test
+    public void testPrincessDrawPutString(){
+        princess1.draw(tg);
+        Mockito.verify(tg, Mockito.times(1)).putString(new TerminalPosition(10, 20),"f");
     }
 }

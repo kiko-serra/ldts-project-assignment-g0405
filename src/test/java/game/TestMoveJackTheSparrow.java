@@ -19,24 +19,40 @@ public class TestMoveJackTheSparrow {
     }
 
 
+
     @Test
-    public void jackMove(){
+    public void jack1MoveArrowUp(){
 
         jack1.setJackDirection(KeyType.ArrowUp);
         jack1.move();
         assertEquals(19, jack1.getPosition().getY());
 
+    }
+
+    @Test
+    public void jack1MoveArrowDown(){
+
         jack1.setJackDirection(KeyType.ArrowDown);
         jack1.move();
-        assertEquals(20, jack1.getPosition().getY());
+        assertEquals(21, jack1.getPosition().getY());
+    }
+
+    @Test
+    public void jack1MoveArrowLeft(){
+
+        jack1.setJackDirection(KeyType.ArrowLeft);
+        jack1.move();
+        assertEquals(9, jack1.getPosition().getX());
+
+
+    }
+
+    @Test
+    public void jack1MoveArrowRight(){
 
         jack1.setJackDirection(KeyType.ArrowRight);
         jack1.move();
         assertEquals(11, jack1.getPosition().getX());
-
-        jack1.setJackDirection(KeyType.ArrowLeft);
-        jack1.move();
-        assertEquals(10, jack1.getPosition().getX());
 
     }
 }

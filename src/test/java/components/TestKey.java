@@ -1,5 +1,7 @@
 package components;
 
+import com.googlecode.lanterna.TerminalPosition;
+import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import elements.components.Key;
 import org.junit.jupiter.api.BeforeEach;
@@ -12,12 +14,15 @@ public class TestKey {
 
 
     Key key1;
+    TextGraphics tg;
+    TextColor tcf;
 
     @BeforeEach
     public void keyConstructor(){
 
         key1 = new Key(10,20);
-
+        tcf = TextColor.Factory.fromString("#ffffff");
+        tg = Mockito.mock(TextGraphics.class);
 
     }
 
@@ -29,5 +34,17 @@ public class TestKey {
 
     }
 
+    @Test
+    public void testKeySetForegroundColor(){
+        key1.draw(tg);
+        Mockito.verify(tg, Mockito.times(1)).setForegroundColor(tcf);
+
+    }
+
+    @Test
+    public void testKeyDrawPutString(){
+        key1.draw(tg);
+        Mockito.verify(tg, Mockito.times(1)).putString(new TerminalPosition(10, 20),"k");
+    }
 
 }
