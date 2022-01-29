@@ -4,11 +4,14 @@
 
 Our game consists in a text-based version of the Crossy Road game with some SuperMario combinations and some new characters.
 
-For the player to finish each level with the highest score, it needs to catch all the biscuits and the special key to open the prison door where the Princess is being kept.
+The main character is Jack the Sparrow who is trying to free his Princess and for that he needs to avoid the Pirates and all explosions from the bombs and collect the special key.
 
-The main character is Jack the Sparrow who is trying to free his Princess, and for that he needs to avoid the Pirates and all explosions from the bombs and collect the special key.
+For the player to win the game with the highest score, it needs to catch all the biscuits, which represents the score, and the special key to open the prison door where the Princess is being kept.
 
-Each biscuit that Jack catches makes his score go up, but these are not necessary to release the Princess.
+After rescuing the Princess a door is opened and Jack needs to leave the map through that door.
+
+Each biscuit that Jack catches makes his score go up, but these are not necessary to release the Princess and finish the game.
+
 
 [**Full Report**](docs/README.md)
 

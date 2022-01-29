@@ -18,7 +18,7 @@ This project was developed by _André Costa_ (https://github.com/AndreCosta20190
   * [Jack the Sparrow](#jack-the-sparrow)
   * [Enemies](#enemies)
   * [Princess](#princess)
-* [Planned Features](#planned-features)
+* [Features](#features)
 * [Design](#design)
   * [Enemies](#enemies-1)
     * [Problem in Context](#problem-in-context)
@@ -92,14 +92,13 @@ This project was developed by _André Costa_ (https://github.com/AndreCosta20190
     <img width=550 src="images/rescuePrincess.gif">
 </p>
 
-## Planned Features
+## Features
 
 - **Different Pirates** - We will make three kinds of Pirates, each one with different speeds and the bigger one will leave bombs behind.
 - **Menu** - There will be a menu when you open the game with some buttons.
 - **Personalized Font** - We'll create a new font to have our characters and some objects printed on the game.
 - **Game Over** - After you die there will be a message on the screen saying that you've died and if you want to restart playing.
 - **Lives and score** - On the lower portion of the game will have the amount of lives remaining and how many biscuits you have caught.
-- **Sounds and music** - There will be background music and each time Jack catches anything a sound will be played.
 
 ## Design
 
