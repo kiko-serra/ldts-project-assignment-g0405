@@ -26,10 +26,6 @@ public class TestMap {
     private List<Pirates> pirates;
     private List<Bombers> bombers;
     private Key key;
-    private Exit exit;
-    private Points points;
-    private JackTheSparrow jack1;
-    private Princess princess1;
     private Map map;
 
 
@@ -95,10 +91,7 @@ public class TestMap {
        bomberjackfail = new Bombers(11,10,"m",'M',30);
 
        key = new Key(10,10);
-       exit = new Exit(15,29);
 
-       jack1 = new JackTheSparrow(15,28);
-       princess1 = new Princess(15,17);
 
        map = new Map(30,30);
 
@@ -406,11 +399,7 @@ public class TestMap {
     public void testCheckPositionPirateTrue(){
         boolean checkpos = true;
 
-        pirates.add(pirate);
-        pirates.add(pirate1);
-        pirates.add(pirate3);
-
-        for(Pirates pirate : pirates){
+        for(Pirates pirate : map.getPirates()){
             if(!map.checkPosition(pirate,map.getBiscuits())){
                 checkpos = false;
                 break;
@@ -427,11 +416,13 @@ public class TestMap {
         List<Biscuits> auxbiscuits = map.getBiscuits();
         auxbiscuits.add(biscuitpiratefail);
 
-        pirates.add(pirate);
-        pirates.add(pirate1);
-        pirates.add(pirate3);
+        List<Pirates> auxpirates = map.getPirates();
 
-        for(Pirates pirate : pirates){
+        auxpirates.add(pirate);
+
+        map.setPirates(auxpirates);
+
+        for(Pirates pirate : auxpirates){
             if(map.checkPosition(pirate,auxbiscuits)){
                 checkpos = false;
                 break;
@@ -445,11 +436,7 @@ public class TestMap {
     public void testCheckPositionBomberTrue(){
         boolean checkpos = true;
 
-
-        bombers.add(bomber);
-        bombers.add(bomber1);
-
-        for(Bombers bomber : bombers){
+        for(Bombers bomber : map.getBombers()){
             if(!map.checkPosition(bomber,map.getBiscuits())){
                 checkpos = false;
                 break;
@@ -467,11 +454,11 @@ public class TestMap {
         List<Biscuits> auxbiscuits = map.getBiscuits();
         auxbiscuits.add(biscuitbomberfail);
 
-        bombers.add(bomber);
-        bombers.add(bomber1);
+        List<Bombers> auxbombers = map.getBombers();
+        auxbombers.add(bomber1);
 
-        for(Bombers bomber : bombers){
-            if(map.checkPosition(bomber,map.getBiscuits())){
+        for(Bombers bomber : map.getBombers()){
+            if(!map.checkPosition(bomber,map.getBiscuits())){
                 checkpos = false;
                 break;
             }
@@ -603,7 +590,7 @@ public class TestMap {
     public void testMoveEnemiesCheckJackDead(){
 
         map.jack.setPosition(new Position(10,10));
-        map.setBombers(bombers);
+     
 
         map.getLives().remove(0);
         map.getLives().remove(0);
