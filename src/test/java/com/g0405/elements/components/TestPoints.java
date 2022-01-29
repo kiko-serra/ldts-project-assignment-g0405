@@ -1,6 +1,5 @@
-package com.g0405.components;
+package com.g0405.elements.components;
 
-import com.g0405.elements.components.Points;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import org.junit.jupiter.api.BeforeEach;
